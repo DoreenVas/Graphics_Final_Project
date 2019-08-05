@@ -72,7 +72,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         gl.glEnable(GL2.GL_TEXTURE_2D);
 
         //box1 = new Box();
-        cube = new Cube(new Vector(-10,10,3),2,"resources/box.jpg");
+        cube = new Cube(new Vector(-1,-1,1),2,"resources/box.jpg");
         world = new World();
         sphere = new Sphere(1, -5, 2, 0);
 

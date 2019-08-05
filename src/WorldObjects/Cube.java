@@ -22,6 +22,7 @@ public class Cube implements WorldObject {
     private Texture cubeTexture;
     private Vector o; //left bottom corner close to view
     private float length;
+    float step = 0.1f;
 
     public Cube(Vector v, float l, String texturePath) {
         try {
@@ -37,6 +38,9 @@ public class Cube implements WorldObject {
 
     @Override
     public void draw(GL2 gl) {
+        // update position
+        //moveCube();
+
         gl.glPushMatrix();
 
         cubeTexture.bind(gl);
@@ -103,6 +107,13 @@ public class Cube implements WorldObject {
 
         gl.glPopMatrix();
         gl.glFlush();
+    }
+
+    private void moveCube() {
+        if (o.getX() < -20 || o.getX() > 20) {
+            step = step * -1;
+        }
+        o.setX(o.getX()+step);
     }
 
     @Override
