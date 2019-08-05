@@ -8,10 +8,7 @@ package Scene;
 
 import Movement.MovementEnum;
 import Steer.SteerEnum;
-import WorldObjects.Box;
-import WorldObjects.Sphere;
-import WorldObjects.World;
-import WorldObjects.WorldObject;
+import WorldObjects.*;
 import com.jogamp.newt.Window;
 import com.jogamp.newt.event.KeyAdapter;
 import com.jogamp.newt.event.KeyEvent;
@@ -28,7 +25,8 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
     private static GLU glu = new GLU();
     private WorldObject world;
-    private Box box1;
+    //private Box box1;
+    private Cube cube;
     private Sphere sphere;
     private Vector direction;
     private Vector pos = new Vector(0.0f, 1.0f, 10.0f);
@@ -54,7 +52,8 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
 
         world.draw(gl);
-        box1.draw(gl);
+        //box1.draw(gl);
+        cube.draw(gl);
         sphere.draw(gl);
     }
 
@@ -72,7 +71,8 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
         gl.glEnable(GL2.GL_TEXTURE_2D);
 
-        box1 = new Box();
+        //box1 = new Box();
+        cube = new Cube(new Vector(-10,10,3),2,"resources/box.jpg");
         world = new World();
         sphere = new Sphere(1, -5, 2, 0);
 
