@@ -30,16 +30,13 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
     private Cube cube;
     private Sphere sphere;
     private Player player;
-    private Vector pos;
-    private Vector direction;
-    private Vector up;
     private float alpha = (float)Math.toRadians(5);
     private static float step = 0.1f;
 
     public void display(GLAutoDrawable gLDrawable) {
-        direction = new Vector(player.getCoordination().getzAxis().getX(), player.getCoordination().getzAxis().getY(), player.getCoordination().getzAxis().getZ());
-        up = new Vector(player.getCoordination().getyAxis().getX(), player.getCoordination().getyAxis().getY(), player.getCoordination().getyAxis().getZ());
-        pos = player.getPos();
+        Vector direction = player.getDirection();
+        Vector up = player.getUp();
+        Vector pos = player.getPos();
 
         final GL2 gl = gLDrawable.getGL().getGL2();
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
@@ -52,6 +49,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
                 up.getY(),
                 up.getZ());
 
+        // Check for collision
         CollisionDetector.point_cube(pos, cube);
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
         world.draw(gl);
@@ -130,22 +128,22 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
                 player.getCoordination().rotate(SteerEnum.LEFT_Z, -alpha);
                 break;
             case 'w': // move forward
-                player.setPos(player.getCoordination().move(MovementEnum.FORWARD ,pos, step));
+                player.setPos(player.getCoordination().move(MovementEnum.FORWARD ,player.getPos(), step));
                 break;
             case 's': // move backward
-                player.setPos(player.getCoordination().move(MovementEnum.BACKWARD ,pos , step));
+                player.setPos(player.getCoordination().move(MovementEnum.BACKWARD ,player.getPos() , step));
                 break;
             case 'd': // move right
-                player.setPos(player.getCoordination().move(MovementEnum.RIGHT ,pos , step));
+                player.setPos(player.getCoordination().move(MovementEnum.RIGHT ,player.getPos() , step));
                 break;
             case 'a': // move left
-                player.setPos(player.getCoordination().move(MovementEnum.LEFT ,pos , step));
+                player.setPos(player.getCoordination().move(MovementEnum.LEFT ,player.getPos() , step));
                 break;
             case 'e': // move up
-                player.setPos(pos = player.getCoordination().move(MovementEnum.UP ,pos , step));
+                player.setPos(player.getCoordination().move(MovementEnum.UP ,player.getPos() , step));
                 break;
             case 'q': // move down
-                player.setPos(player.getCoordination().move(MovementEnum.DOWN ,pos , step));
+                player.setPos(player.getCoordination().move(MovementEnum.DOWN ,player.getPos() , step));
                 break;
         }
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {

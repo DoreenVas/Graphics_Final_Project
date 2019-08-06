@@ -164,7 +164,7 @@ public class Cube implements WorldObject, Collidable{
     }
 
     @Override
-    public void Hit(Player hitter) {
+    public void hit(Player hitter) {
         this.notifyHit(hitter);
     }
 

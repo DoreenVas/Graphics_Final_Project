@@ -4,5 +4,5 @@ import WorldObjects.Player;
 
 public interface Collidable {
 
-    void Hit(Player hitter);
+    void hit(Player hitter);
 }
