@@ -7,8 +7,8 @@
 package WorldObjects;
 
 import Coordinations.Coordination;
-import Movement.MovementEnum;
-import Steer.SteerEnum;
+import Enums.MovementEnum;
+import Enums.SteerEnum;
 import Utils.Vector;
 import com.jogamp.opengl.util.gl2.GLUT;
 

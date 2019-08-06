@@ -9,20 +9,19 @@ package WorldObjects;
 import Collision.Collidable;
 import Collision.HitListener;
 import Coordinations.Coordination;
-import Movement.MovementEnum;
-import Steer.SteerEnum;
+import Enums.MovementEnum;
+import Enums.SteerEnum;
 import Utils.Vector;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
 
 import javax.media.opengl.GL2;
-import java.beans.VetoableChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cube implements WorldObject, Collidable{
+public class Cube implements Collidable{
     // members
     private List<HitListener> hitListeners;
     private Texture cubeTexture;
@@ -30,9 +29,11 @@ public class Cube implements WorldObject, Collidable{
     private float length;
     float step = 0.1f;
     private Vector[] arr = new Vector[8];
+    private Type type;
 
-    public Cube(Vector v, float l, String texturePath) {
+    public Cube(Vector v, float l, String texturePath, Type t) {
         try {
+            type = t;
             o = v;
             length = l;
             String cubeTextureFile = texturePath; // the FileName to open
@@ -55,7 +56,10 @@ public class Cube implements WorldObject, Collidable{
         this.hitListeners.add(hl);
     }
 
-    @Override
+    public Type getType() {
+        return type;
+    }
+
     public void draw(GL2 gl) {
         // update position
         //moveCube();
@@ -135,32 +139,12 @@ public class Cube implements WorldObject, Collidable{
         o.setX(o.getX()+step);
     }
 
-    @Override
-    public void activateMove(MovementEnum direction) {
-
-    }
-
-    @Override
-    public void activateRotate(SteerEnum rotateDirection) {
-
-    }
-
     public float getLength() {
         return this.length;
     }
 
     public Vector[] getVertexes() {
         return this.arr;
-    }
-
-    @Override
-    public Vector getLocation() {
-        return this.o;
-    }
-
-    @Override
-    public Coordination getCoordination() {
-        return null;
     }
 
     @Override

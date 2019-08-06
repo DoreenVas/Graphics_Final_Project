@@ -4,7 +4,7 @@
  * Student name: Nadav Spitzer
  * Student ID: 302228275
  */
-package Movement;
+package Enums;
 
 public enum MovementEnum {
     FORWARD, BACKWARD, LEFT, RIGHT, UP, DOWN;

@@ -2,9 +2,12 @@ package Collision;
 
 import Utils.Vector;
 import WorldObjects.Cube;
+import WorldObjects.World;
+import WorldObjects.WorldObject;
+
+import java.util.ArrayList;
 
 public class CollisionDetector {
-
     /*****
      * Check collision between a cube and a point.
      * @param point a given point.
@@ -115,6 +118,19 @@ public class CollisionDetector {
         angles += getAngle(point.sub(p3), point.sub(p4));
         angles += getAngle(point.sub(p4), point.sub(p1));
         return angles;
+    }
+
+    public static boolean checkCollisions(Vector point) {
+        ArrayList<Cube> itemsList = World.getItemsList();
+        for(Cube c : itemsList) {
+            if(point_cube(point, c)) {
+                if(c.getType()== Collidable.Type.vanish) {
+                    World.removeFromList(c);
+                }
+                return true;
+            }
+        }
+        return false;
     }
 
 }

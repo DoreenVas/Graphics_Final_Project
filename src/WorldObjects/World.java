@@ -8,26 +8,27 @@ package WorldObjects;
 
 import Coordinations.Cartesian;
 import Coordinations.Coordination;
-import Movement.MovementEnum;
-import Steer.SteerEnum;
+import Enums.MovementEnum;
+import Enums.SteerEnum;
 import Utils.Vector;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
 import javax.media.opengl.GL2;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class World implements WorldObject {
+public class World {
     // members
-    private Coordination coordination;
     private Texture floorTexture;
     private Texture wallTexture;
     private Texture ceilingTexture;
+    private static ArrayList<Cube> itemsList;
 
     public World() {
+        itemsList = new ArrayList<>();
         // define textures
         try {
-            this.coordination = new Cartesian();
             String floorTextureFile = "resources/floor.jpeg"; // the FileName to open
             floorTexture = TextureIO.newTexture(new File(floorTextureFile), true);
             String wallTextureFile = "resources/wall.jpg"; // the FileName to open
@@ -40,7 +41,6 @@ public class World implements WorldObject {
         }
     }
 
-    @Override
     public void draw(GL2 gl) {
         gl.glPushMatrix();
 
@@ -137,6 +137,10 @@ public class World implements WorldObject {
 
         gl.glPopMatrix();
         gl.glFlush();
+
+        for (Cube c : itemsList) {
+            c.draw(gl);
+        }
     }
 
     private void addLight(GL2 gl) {
@@ -163,22 +167,15 @@ public class World implements WorldObject {
         gl.glEnable(GL2.GL_NORMALIZE);
     }
 
-    @Override
-    public void activateMove(MovementEnum direction) {
-
+    public static ArrayList<Cube> getItemsList() {
+        return itemsList;
     }
 
-    @Override
-    public void activateRotate(SteerEnum rotateDirection) {
-
+    public static void addToList(Cube c) {
+        itemsList.add(c);
     }
 
-    @Override
-    public Vector getLocation() {
-        return null;
-    }
-
-    public Coordination getCoordination() {
-        return this.coordination;
+    public static void removeFromList(Cube c) {
+        itemsList.remove(c);
     }
 }

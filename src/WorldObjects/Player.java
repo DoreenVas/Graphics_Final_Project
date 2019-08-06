@@ -1,10 +1,14 @@
 package WorldObjects;
 
 import Collision.Collidable;
+import Collision.CollisionDetector;
 import Collision.HitListener;
 import Coordinations.Cartesian;
 import Coordinations.Coordination;
+import Enums.MovementEnum;
 import Utils.Vector;
+
+import static Enums.MovementEnum.*;
 
 public class Player implements HitListener{
     // members
@@ -50,6 +54,39 @@ public class Player implements HitListener{
 
     public void setUp(Vector up) {
         this.up = up;
+    }
+
+    public void move(MovementEnum direction) {
+        boolean collide = false;
+        Vector nextPos = checkNextPos(pos, direction);
+        collide = CollisionDetector.checkCollisions(nextPos);
+        if (!collide) {
+            switch(direction) {
+                case FORWARD: // move forward
+                    coordination.move(FORWARD, pos, step);
+                    break;
+                case BACKWARD: // move backward
+                    coordination.move(BACKWARD, pos, step);
+                    break;
+                case RIGHT: // move right
+                    coordination.move(RIGHT, pos, step);
+                    break;
+                case LEFT: // move left
+                    coordination.move(LEFT, pos, step);
+                    break;
+                case UP: // move up
+                    coordination.move(UP, pos, step);
+                    break;
+                case DOWN: // move down
+                    coordination.move(DOWN, pos, step);
+                    break;
+            }
+        }
+    }
+
+    private Vector checkNextPos(Vector pos, MovementEnum direction) {
+        Vector nextPos = coordination.move(direction, new Vector(pos), step);
+        return nextPos;
     }
 
     @Override

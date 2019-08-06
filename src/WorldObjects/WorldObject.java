@@ -7,16 +7,20 @@
 package WorldObjects;
 
 import Coordinations.Coordination;
-import Movement.MovementEnum;
-import Steer.SteerEnum;
+import Enums.MovementEnum;
+import Enums.SteerEnum;
 import Utils.Vector;
 
 import javax.media.opengl.GL2;
+import java.util.ArrayList;
 
 public interface WorldObject {
+    ArrayList<Cube> itemsList = new ArrayList<>();
+
     void draw(GL2 gl);
     void activateMove(MovementEnum direction);
     void activateRotate(SteerEnum rotateDirection);
     Vector getLocation();
     Coordination getCoordination();
+
 }

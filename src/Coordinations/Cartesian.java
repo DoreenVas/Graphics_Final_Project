@@ -6,8 +6,8 @@
  */
 package Coordinations;
 
-import Movement.MovementEnum;
-import Steer.SteerEnum;
+import Enums.MovementEnum;
+import Enums.SteerEnum;
 import Utils.Vector;
 
 public class Cartesian implements Coordination {
