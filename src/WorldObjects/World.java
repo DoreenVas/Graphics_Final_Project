@@ -5,12 +5,6 @@
  * Student ID: 302228275
  */
 package WorldObjects;
-
-import Coordinations.Cartesian;
-import Coordinations.Coordination;
-import Enums.MovementEnum;
-import Enums.SteerEnum;
-import Utils.Vector;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
 import javax.media.opengl.GL2;
