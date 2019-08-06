@@ -6,6 +6,7 @@
  */
 package Scene;
 
+import Collision.CollisionDetector;
 import Movement.MovementEnum;
 import Steer.SteerEnum;
 import WorldObjects.*;
@@ -49,8 +50,8 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
                 up.getY(),
                 up.getZ());
 
+        CollisionDetector.point_cube(pos, cube);
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
-
         world.draw(gl);
         //box1.draw(gl);
         cube.draw(gl);

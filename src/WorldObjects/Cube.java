@@ -14,6 +14,7 @@ import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
 
 import javax.media.opengl.GL2;
+import java.beans.VetoableChangeListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -23,6 +24,7 @@ public class Cube implements WorldObject {
     private Vector o; //left bottom corner close to view
     private float length;
     float step = 0.1f;
+    private Vector[] arr = new Vector[8];
 
     public Cube(Vector v, float l, String texturePath) {
         try {
@@ -30,6 +32,14 @@ public class Cube implements WorldObject {
             length = l;
             String cubeTextureFile = texturePath; // the FileName to open
             cubeTexture= TextureIO.newTexture(new File( cubeTextureFile ),true);
+            arr[0] = new Vector(o.getX(), o.getY(), o.getZ());
+            arr[1] = new Vector(o.getX()+length, o.getY(), o.getZ());
+            arr[2] = new Vector(o.getX()+length, o.getY()+length, o.getZ());
+            arr[3] = new Vector(o.getX(), o.getY()+length, o.getZ());
+            arr[4] = new Vector(o.getX(), o.getY(), o.getZ()-length);
+            arr[5] = new Vector(o.getX(), o.getY()+length, o.getZ()-length);
+            arr[6] = new Vector(o.getX()+length, o.getY()+length, o.getZ()-length);
+            arr[7] = new Vector(o.getX()+length, o.getY(), o.getZ()-length);
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -126,9 +136,17 @@ public class Cube implements WorldObject {
 
     }
 
+    public float getLength() {
+        return this.length;
+    }
+
+    public Vector[] getVertexes() {
+        return this.arr;
+    }
+
     @Override
     public Vector getLocation() {
-        return null;
+        return this.o;
     }
 
     @Override
