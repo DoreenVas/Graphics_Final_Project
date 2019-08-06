@@ -29,15 +29,17 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
     //private Box box1;
     private Cube cube;
     private Sphere sphere;
+    private Player player;
+    private Vector pos;
     private Vector direction;
-    private Vector pos = new Vector(0.0f, 1.0f, 10.0f);
     private Vector up;
     private float alpha = (float)Math.toRadians(5);
     private static float step = 0.1f;
 
     public void display(GLAutoDrawable gLDrawable) {
-        direction = new Vector(world.getCoordination().getzAxis().getX(), world.getCoordination().getzAxis().getY(), world.getCoordination().getzAxis().getZ());
-        up = new Vector(world.getCoordination().getyAxis().getX(), world.getCoordination().getyAxis().getY(), world.getCoordination().getyAxis().getZ());
+        direction = new Vector(player.getCoordination().getzAxis().getX(), player.getCoordination().getzAxis().getY(), player.getCoordination().getzAxis().getZ());
+        up = new Vector(player.getCoordination().getyAxis().getX(), player.getCoordination().getyAxis().getY(), player.getCoordination().getyAxis().getZ());
+        pos = player.getPos();
 
         final GL2 gl = gLDrawable.getGL().getGL2();
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
@@ -75,6 +77,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         //box1 = new Box();
         cube = new Cube(new Vector(-1,-1,1),2,"resources/box.jpg");
         world = new World();
+        player = new Player();
         sphere = new Sphere(1, -5, 2, 0);
 
         gl.glEnable(GL2.GL_LIGHTING);
@@ -109,40 +112,40 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
     public void keyPressed(KeyEvent e) {
         switch(e.getKeyChar()) {
             case 'i': // rotate up (x axis)
-                world.getCoordination().rotate(SteerEnum.UP_X, -alpha);
+                player.getCoordination().rotate(SteerEnum.UP_X, -alpha);
                 break;
             case 'k': // rotate down (x axis)
-                world.getCoordination().rotate(SteerEnum.DOWN_X, alpha);
+                player.getCoordination().rotate(SteerEnum.DOWN_X, alpha);
                 break;
             case 'l': // rotate right (y axis)
-                world.getCoordination().rotate(SteerEnum.RIGHT_Y, -alpha);
+                player.getCoordination().rotate(SteerEnum.RIGHT_Y, -alpha);
                 break;
             case 'j': // rotate left (y axis)
-                world.getCoordination().rotate(SteerEnum.LEFT_Y, alpha);
+                player.getCoordination().rotate(SteerEnum.LEFT_Y, alpha);
                 break;
             case 'o': // rotate right (z axis)
-                world.getCoordination().rotate(SteerEnum.RIGHT_Z, alpha);
+                player.getCoordination().rotate(SteerEnum.RIGHT_Z, alpha);
                 break;
             case 'u': // rotate left (z axis)
-                world.getCoordination().rotate(SteerEnum.LEFT_Z, -alpha);
+                player.getCoordination().rotate(SteerEnum.LEFT_Z, -alpha);
                 break;
             case 'w': // move forward
-                pos = world.getCoordination().move(MovementEnum.FORWARD ,pos, step);
+                player.setPos(player.getCoordination().move(MovementEnum.FORWARD ,pos, step));
                 break;
             case 's': // move backward
-                pos = world.getCoordination().move(MovementEnum.BACKWARD ,pos , step);
+                player.setPos(player.getCoordination().move(MovementEnum.BACKWARD ,pos , step));
                 break;
             case 'd': // move right
-                pos = world.getCoordination().move(MovementEnum.RIGHT ,pos , step);
+                player.setPos(player.getCoordination().move(MovementEnum.RIGHT ,pos , step));
                 break;
             case 'a': // move left
-                pos = world.getCoordination().move(MovementEnum.LEFT ,pos , step);
+                player.setPos(player.getCoordination().move(MovementEnum.LEFT ,pos , step));
                 break;
             case 'e': // move up
-                pos = world.getCoordination().move(MovementEnum.UP ,pos , step);
+                player.setPos(pos = player.getCoordination().move(MovementEnum.UP ,pos , step));
                 break;
             case 'q': // move down
-                pos = world.getCoordination().move(MovementEnum.DOWN ,pos , step);
+                player.setPos(player.getCoordination().move(MovementEnum.DOWN ,pos , step));
                 break;
         }
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {

@@ -6,6 +6,8 @@
  */
 package WorldObjects;
 
+import Collision.Collidable;
+import Collision.HitListener;
 import Coordinations.Coordination;
 import Movement.MovementEnum;
 import Steer.SteerEnum;
@@ -17,9 +19,12 @@ import javax.media.opengl.GL2;
 import java.beans.VetoableChangeListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Cube implements WorldObject {
+public class Cube implements WorldObject, Collidable{
     // members
+    private List<HitListener> hitListeners;
     private Texture cubeTexture;
     private Vector o; //left bottom corner close to view
     private float length;
@@ -44,6 +49,10 @@ public class Cube implements WorldObject {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    public void addHitListener(HitListener hl) {
+        this.hitListeners.add(hl);
     }
 
     @Override
@@ -152,5 +161,19 @@ public class Cube implements WorldObject {
     @Override
     public Coordination getCoordination() {
         return null;
+    }
+
+    @Override
+    public void Hit(Player hitter) {
+        this.notifyHit(hitter);
+    }
+
+    private void notifyHit(Player hitter) {
+        // Make a copy of the hitListeners before iterating over them.
+        List<HitListener> listeners = new ArrayList<HitListener>(this.hitListeners);
+        // Notify all listeners about a hit event:
+        for (HitListener hl : listeners) {
+            hl.hitEvent(this, hitter);
+        }
     }
 }
