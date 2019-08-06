@@ -15,8 +15,6 @@ import javax.media.opengl.GL2;
 import java.util.ArrayList;
 
 public interface WorldObject {
-    ArrayList<Cube> itemsList = new ArrayList<>();
-
     void draw(GL2 gl);
     void activateMove(MovementEnum direction);
     void activateRotate(SteerEnum rotateDirection);

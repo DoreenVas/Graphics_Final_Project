@@ -5,6 +5,7 @@
  * Student ID: 302228275
  */
 package WorldObjects;
+import Utils.Vector;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
 import javax.media.opengl.GL2;
@@ -14,25 +15,13 @@ import java.util.ArrayList;
 
 public class World {
     // members
-    private Texture floorTexture;
-    private Texture wallTexture;
-    private Texture ceilingTexture;
     private static ArrayList<Cube> itemsList;
+    private Wall[] walls;
 
     public World() {
         itemsList = new ArrayList<>();
-        // define textures
-        try {
-            String floorTextureFile = "resources/floor.jpeg"; // the FileName to open
-            floorTexture = TextureIO.newTexture(new File(floorTextureFile), true);
-            String wallTextureFile = "resources/wall.jpg"; // the FileName to open
-            wallTexture = TextureIO.newTexture(new File(wallTextureFile), true);
-            String ceilingTextureFile = "resources/sky.jpg"; // the FileName to open
-            ceilingTexture = TextureIO.newTexture(new File(ceilingTextureFile), true);
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
+        walls = new Wall[6];
+        createWalls();
     }
 
     public void draw(GL2 gl) {
@@ -45,96 +34,132 @@ public class World {
         float mat_ambient[] = {1f, 1f, 1f, 1.0f};
         gl.glMaterialfv(GL2.GL_FRONT, GL2.GL_AMBIENT, mat_ambient, 0);
 
+        for (Wall w : walls) {
+            w.draw(gl);
+        }
 
-        floorTexture.bind(gl);
-        gl.glEnable(GL2.GL_TEXTURE_2D);
-
-        gl.glBegin(GL2.GL_QUADS);
-        // floor
-        gl.glTexCoord2f(1.0f, 1.0f);
-        gl.glVertex3f(-25f,-1f,-25f);
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(25f,-1f,-25f);
-        gl.glTexCoord2f(0.0f, 0.0f);
-        gl.glVertex3f(25f,-1f,25f);
-        gl.glTexCoord2f(1.0f, 0.0f);
-        gl.glVertex3f(-25f,-1f,25f);
-
-        gl.glEnd();
-        gl.glDisable(GL2.GL_TEXTURE_2D);
-
-        ceilingTexture.bind(gl);
-        gl.glEnable(GL2.GL_TEXTURE_2D);
-        gl.glColor4f(1f, 1f, 1f, 1f);
-        gl.glBegin(GL2.GL_QUADS);
-        // Ceiling
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(-25,40,-25);
-        gl.glTexCoord2f(1.0f, 1.0f);
-        gl.glVertex3f(25,40,-25);
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(25,40,25);
-        gl.glTexCoord2f(0.0f, 0.0f);
-        gl.glVertex3f(-25,40,25);
-
-        gl.glEnd();
-        gl.glDisable(GL2.GL_TEXTURE_2D);
-
-        // Walls
-        wallTexture.bind(gl);
-        gl.glEnable(GL2.GL_TEXTURE_2D);
-        gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
-        gl.glBegin(GL2.GL_QUADS);
-
-        // front wall
-        gl.glTexCoord2f(0.0f, 0.0f);
-        gl.glVertex3f(-25,-1,25);
-        gl.glTexCoord2f(1f, 0.0f);
-        gl.glVertex3f(25,-1,25);
-        gl.glTexCoord2f(1f, 1.0f);
-        gl.glVertex3f(25,40,25);
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(-25,40,25);
-
-        // back wall
-        gl.glTexCoord2f(1.0f, 0.0f);
-        gl.glVertex3f(-25,-1,-25);
-        gl.glTexCoord2f(0.0f, 0.0f);
-        gl.glVertex3f(25,-1,-25);
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(25,40,-25);
-        gl.glTexCoord2f(1.0f, 1.0f);
-        gl.glVertex3f(-25,40,-25);
-
-        // right wall
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(25,40,25);
-        gl.glTexCoord2f(0.0f, 0.0f);
-        gl.glVertex3f(25,-1,25);
-        gl.glTexCoord2f(1.0f, 0.0f);
-        gl.glVertex3f(25,-1,-25);
-        gl.glTexCoord2f(1.0f, 1.0f);
-        gl.glVertex3f(25,40,-25);
-
-        // left wall
-        gl.glTexCoord2f(1.0f, 1.0f);
-        gl.glVertex3f(-25,40,25);
-        gl.glTexCoord2f(1.0f, 0.0f);
-        gl.glVertex3f(-25,-1,25);
-        gl.glTexCoord2f(0.0f, 0.0f);
-        gl.glVertex3f(-25,-1,-25);
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(-25,40,-25);
-
-        gl.glEnd();
-        gl.glDisable(GL2.GL_TEXTURE_2D);
-
-        gl.glPopMatrix();
-        gl.glFlush();
+//        floorTexture.bind(gl);
+//        gl.glEnable(GL2.GL_TEXTURE_2D);
+//
+//        gl.glBegin(GL2.GL_QUADS);
+//        // floor
+//        gl.glTexCoord2f(1.0f, 1.0f);
+//        gl.glVertex3f(-25f,-1f,-25f);
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(25f,-1f,-25f);
+//        gl.glTexCoord2f(0.0f, 0.0f);
+//        gl.glVertex3f(25f,-1f,25f);
+//        gl.glTexCoord2f(1.0f, 0.0f);
+//        gl.glVertex3f(-25f,-1f,25f);
+//
+//        gl.glEnd();
+//        gl.glDisable(GL2.GL_TEXTURE_2D);
+//
+//        ceilingTexture.bind(gl);
+//        gl.glEnable(GL2.GL_TEXTURE_2D);
+//        gl.glColor4f(1f, 1f, 1f, 1f);
+//        gl.glBegin(GL2.GL_QUADS);
+//        // Ceiling
+//        gl.glTexCoord2f(1.0f, 1.0f);
+//        gl.glVertex3f(25,40,-25);
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(-25,40,-25);
+//        gl.glTexCoord2f(0.0f, 0.0f);
+//        gl.glVertex3f(-25,40,25);
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(25,40,25);
+//
+//        gl.glEnd();
+//        gl.glDisable(GL2.GL_TEXTURE_2D);
+//
+//        // Walls
+//        wallTexture.bind(gl);
+//        gl.glEnable(GL2.GL_TEXTURE_2D);
+//        gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
+//        gl.glBegin(GL2.GL_QUADS);
+//
+//        // front wall
+//        gl.glTexCoord2f(1f, 1.0f);
+//        gl.glVertex3f(25,40,25);
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(-25,40,25);
+//        gl.glTexCoord2f(0.0f, 0.0f);
+//        gl.glVertex3f(-25,-1,25);
+//        gl.glTexCoord2f(1f, 0.0f);
+//        gl.glVertex3f(25,-1,25);
+//
+//        // back wall
+//        gl.glTexCoord2f(1.0f, 1.0f);
+//        gl.glVertex3f(-25,40,-25);
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(25,40,-25);
+//        gl.glTexCoord2f(0.0f, 0.0f);
+//        gl.glVertex3f(25,-1,-25);
+//        gl.glTexCoord2f(1.0f, 0.0f);
+//        gl.glVertex3f(-25,-1,-25);
+//
+//        // right wall
+//        gl.glTexCoord2f(1.0f, 1.0f);
+//        gl.glVertex3f(25,40,-25);
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(25,40,25);
+//        gl.glTexCoord2f(0.0f, 0.0f);
+//        gl.glVertex3f(25,-1,25);
+//        gl.glTexCoord2f(1.0f, 0.0f);
+//        gl.glVertex3f(25,-1,-25);
+//
+//        // left wall
+//        gl.glTexCoord2f(1.0f, 1.0f);
+//        gl.glVertex3f(-25,40,25);
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(-25,40,-25);
+//        gl.glTexCoord2f(0.0f, 0.0f);
+//        gl.glVertex3f(-25,-1,-25);
+//        gl.glTexCoord2f(1.0f, 0.0f);
+//        gl.glVertex3f(-25,-1,25);
+//
+//        gl.glEnd();
+//        gl.glDisable(GL2.GL_TEXTURE_2D);
+//
+//        gl.glPopMatrix();
+//        gl.glFlush();
 
         for (Cube c : itemsList) {
             c.draw(gl);
         }
+    }
+
+    private void createWalls() {
+        walls[0] = new Wall(new Vector(-20f,-1f,-75f),
+                new Vector(20f,-1f,-75f),
+                new Vector(20f,-1f,25f),
+                new Vector(-20f,-1f,25f),
+                "resources/floor.jpeg");
+        walls[1] = new Wall(new Vector(20f,10f,-75f),
+                new Vector(-20,10,-75),
+                new Vector(-20,10,25),
+                new Vector(20,10,25),
+                "resources/sky.jpg");
+        walls[2] = new Wall(new Vector(20,10,25),
+                new Vector(-20,10,25),
+                new Vector(-20,-1,25),
+                new Vector(20,-1,25),
+                "resources/wall.jpg");
+        walls[3] = new Wall(new Vector(-20,10,-75),
+                new Vector(20,10,-75),
+                new Vector(20,-1,-75),
+                new Vector(-20,-1,-75),
+                "resources/wall.jpg");
+        walls[4] = new Wall(new Vector(20,10,-75),
+                new Vector(20,10,25),
+                new Vector(20,-1,25),
+                new Vector(20,-1,-75),
+                "resources/wall.jpg");
+        walls[5] = new Wall(new Vector(-20,10,25),
+                new Vector(-20,10,-75),
+                new Vector(-20,-1,-75),
+                new Vector(-20,-1,25),
+                "resources/wall.jpg");
     }
 
     private void addLight(GL2 gl) {
