@@ -73,9 +73,9 @@ public class Cube implements Collidable{
         // Front Face
         gl.glTexCoord2f(0.0f, 0.0f);
         gl.glVertex3f(o.getX(), o.getY(), o.getZ());
-        gl.glTexCoord2f(2f, 0.0f);
+        gl.glTexCoord2f(1f, 0.0f);
         gl.glVertex3f(o.getX()+length, o.getY(), o.getZ());
-        gl.glTexCoord2f(2f, 1.0f);
+        gl.glTexCoord2f(1f, 1.0f);
         gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ());
         gl.glTexCoord2f(0.0f, 1.0f);
         gl.glVertex3f(o.getX(), o.getY()+length, o.getZ());

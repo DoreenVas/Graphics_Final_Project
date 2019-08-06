@@ -38,92 +38,6 @@ public class World {
             w.draw(gl);
         }
 
-//        floorTexture.bind(gl);
-//        gl.glEnable(GL2.GL_TEXTURE_2D);
-//
-//        gl.glBegin(GL2.GL_QUADS);
-//        // floor
-//        gl.glTexCoord2f(1.0f, 1.0f);
-//        gl.glVertex3f(-25f,-1f,-25f);
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(25f,-1f,-25f);
-//        gl.glTexCoord2f(0.0f, 0.0f);
-//        gl.glVertex3f(25f,-1f,25f);
-//        gl.glTexCoord2f(1.0f, 0.0f);
-//        gl.glVertex3f(-25f,-1f,25f);
-//
-//        gl.glEnd();
-//        gl.glDisable(GL2.GL_TEXTURE_2D);
-//
-//        ceilingTexture.bind(gl);
-//        gl.glEnable(GL2.GL_TEXTURE_2D);
-//        gl.glColor4f(1f, 1f, 1f, 1f);
-//        gl.glBegin(GL2.GL_QUADS);
-//        // Ceiling
-//        gl.glTexCoord2f(1.0f, 1.0f);
-//        gl.glVertex3f(25,40,-25);
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(-25,40,-25);
-//        gl.glTexCoord2f(0.0f, 0.0f);
-//        gl.glVertex3f(-25,40,25);
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(25,40,25);
-//
-//        gl.glEnd();
-//        gl.glDisable(GL2.GL_TEXTURE_2D);
-//
-//        // Walls
-//        wallTexture.bind(gl);
-//        gl.glEnable(GL2.GL_TEXTURE_2D);
-//        gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
-//        gl.glBegin(GL2.GL_QUADS);
-//
-//        // front wall
-//        gl.glTexCoord2f(1f, 1.0f);
-//        gl.glVertex3f(25,40,25);
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(-25,40,25);
-//        gl.glTexCoord2f(0.0f, 0.0f);
-//        gl.glVertex3f(-25,-1,25);
-//        gl.glTexCoord2f(1f, 0.0f);
-//        gl.glVertex3f(25,-1,25);
-//
-//        // back wall
-//        gl.glTexCoord2f(1.0f, 1.0f);
-//        gl.glVertex3f(-25,40,-25);
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(25,40,-25);
-//        gl.glTexCoord2f(0.0f, 0.0f);
-//        gl.glVertex3f(25,-1,-25);
-//        gl.glTexCoord2f(1.0f, 0.0f);
-//        gl.glVertex3f(-25,-1,-25);
-//
-//        // right wall
-//        gl.glTexCoord2f(1.0f, 1.0f);
-//        gl.glVertex3f(25,40,-25);
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(25,40,25);
-//        gl.glTexCoord2f(0.0f, 0.0f);
-//        gl.glVertex3f(25,-1,25);
-//        gl.glTexCoord2f(1.0f, 0.0f);
-//        gl.glVertex3f(25,-1,-25);
-//
-//        // left wall
-//        gl.glTexCoord2f(1.0f, 1.0f);
-//        gl.glVertex3f(-25,40,25);
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(-25,40,-25);
-//        gl.glTexCoord2f(0.0f, 0.0f);
-//        gl.glVertex3f(-25,-1,-25);
-//        gl.glTexCoord2f(1.0f, 0.0f);
-//        gl.glVertex3f(-25,-1,25);
-//
-//        gl.glEnd();
-//        gl.glDisable(GL2.GL_TEXTURE_2D);
-//
-//        gl.glPopMatrix();
-//        gl.glFlush();
-
         for (Cube c : itemsList) {
             c.draw(gl);
         }
@@ -144,22 +58,22 @@ public class World {
                 new Vector(-20,10,25),
                 new Vector(-20,-1,25),
                 new Vector(20,-1,25),
-                "resources/pics/wall.jpg");
+                "resources/pics/steel-box.jpg");
         walls[3] = new Wall(new Vector(-20,10,-75),
                 new Vector(20,10,-75),
                 new Vector(20,-1,-75),
                 new Vector(-20,-1,-75),
-                "resources/pics/wall.jpg");
+                "resources/pics/steel-box.jpg");
         walls[4] = new Wall(new Vector(20,10,-75),
                 new Vector(20,10,25),
                 new Vector(20,-1,25),
                 new Vector(20,-1,-75),
-                "resources/pics/wall.jpg");
+                "resources/pics/steel-box.jpg");
         walls[5] = new Wall(new Vector(-20,10,25),
                 new Vector(-20,10,-75),
                 new Vector(-20,-1,-75),
                 new Vector(-20,-1,25),
-                "resources/pics/wall.jpg");
+                "resources/pics/steel-box.jpg");
     }
 
     private void addLight(GL2 gl) {

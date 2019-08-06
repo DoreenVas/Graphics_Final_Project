@@ -27,7 +27,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
     private static GLU glu = new GLU();
     private World world;
-    private Sphere sphere;
+//    private Sphere sphere;
     private Player player;
     private float alpha = (float)Math.toRadians(5);
     private static float step = 0.1f;
@@ -50,7 +50,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
         world.draw(gl);
-        sphere.draw(gl);
+//        sphere.draw(gl);
     }
 
     public void displayChanged(GLAutoDrawable gLDrawable, boolean modeChanged, boolean deviceChanged) {
@@ -72,7 +72,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         world = new World();
         world.addToList(cube);
         player = new Player();
-        sphere = new Sphere(1, -5, 2, 0);
+//        sphere = new Sphere(1, -5, 2, 0);
 
         gl.glEnable(GL2.GL_LIGHTING);
         if (drawable instanceof Window) {
