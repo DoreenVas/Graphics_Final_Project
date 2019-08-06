@@ -67,7 +67,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
         gl.glEnable(GL2.GL_TEXTURE_2D);
 
-        Cube cube = new Cube(new Vector(-1,-1,1),2,"resources/box.jpg", Collidable.Type.vanish);
+        Cube cube = new Cube(new Vector(-1,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.vanish);
 
         world = new World();
         world.addToList(cube);

@@ -134,32 +134,32 @@ public class World {
                 new Vector(20f,-1f,-75f),
                 new Vector(20f,-1f,25f),
                 new Vector(-20f,-1f,25f),
-                "resources/floor.jpeg");
+                "resources/pics/floor.jpeg");
         walls[1] = new Wall(new Vector(20f,10f,-75f),
                 new Vector(-20,10,-75),
                 new Vector(-20,10,25),
                 new Vector(20,10,25),
-                "resources/sky.jpg");
+                "resources/pics/sky.jpg");
         walls[2] = new Wall(new Vector(20,10,25),
                 new Vector(-20,10,25),
                 new Vector(-20,-1,25),
                 new Vector(20,-1,25),
-                "resources/wall.jpg");
+                "resources/pics/wall.jpg");
         walls[3] = new Wall(new Vector(-20,10,-75),
                 new Vector(20,10,-75),
                 new Vector(20,-1,-75),
                 new Vector(-20,-1,-75),
-                "resources/wall.jpg");
+                "resources/pics/wall.jpg");
         walls[4] = new Wall(new Vector(20,10,-75),
                 new Vector(20,10,25),
                 new Vector(20,-1,25),
                 new Vector(20,-1,-75),
-                "resources/wall.jpg");
+                "resources/pics/wall.jpg");
         walls[5] = new Wall(new Vector(-20,10,25),
                 new Vector(-20,10,-75),
                 new Vector(-20,-1,-75),
                 new Vector(-20,-1,25),
-                "resources/wall.jpg");
+                "resources/pics/wall.jpg");
     }
 
     private void addLight(GL2 gl) {
