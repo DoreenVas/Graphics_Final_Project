@@ -8,7 +8,7 @@ public class CollisionDetector {
     /*****
      * Check collision between a cube and a point.
      * @param point a given point.
-     * @param cube a guven cube.
+     * @param cube a given cube.
      * @return returns true if there is a collision, otherwise returns false.
      */
     public static boolean point_cube(Vector point, Cube cube){
@@ -118,3 +118,4 @@ public class CollisionDetector {
     }
 
 }
+
