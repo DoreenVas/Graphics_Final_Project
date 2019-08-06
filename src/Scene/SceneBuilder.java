@@ -48,11 +48,8 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
                 up.getY(),
                 up.getZ());
 
-        // Check for collision
-//        CollisionDetector.point_cube(pos, cube);
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
         world.draw(gl);
-//        cube.draw(gl);
         sphere.draw(gl);
     }
 
