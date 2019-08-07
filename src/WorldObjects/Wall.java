@@ -42,10 +42,8 @@ public class Wall implements WorldObject, Collidable {
     @Override
     public void draw(GL2 gl) {
         gl.glPushMatrix();
-
         wallTexture.bind(gl);
         gl.glEnable(GL2.GL_TEXTURE_2D);
-
         gl.glBegin(GL2.GL_QUADS);
         // Front Face
         gl.glTexCoord2f(1f, 1.0f);
@@ -59,7 +57,6 @@ public class Wall implements WorldObject, Collidable {
 
         gl.glEnd();
         gl.glDisable(GL2.GL_TEXTURE_2D);
-
         gl.glPopMatrix();
         gl.glFlush();
     }
@@ -71,7 +68,6 @@ public class Wall implements WorldObject, Collidable {
     public Vector[] getVertexes() {
         return vertexes;
     }
-
 
     @Override
     public void activateMove(MovementEnum direction) {
