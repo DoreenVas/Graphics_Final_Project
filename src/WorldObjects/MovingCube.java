@@ -8,7 +8,7 @@ import javax.media.opengl.GL2;
 public class MovingCube extends Cube implements Collidable {
     // members
 //    private Cube cube;
-    private float step = 0.5f;
+    private float step = 0.01f;
 
     public MovingCube(Vector v, float l, String texturePath, Type t) {
         super(v, l, texturePath, t);
