@@ -12,12 +12,8 @@ import Utils.Vector;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
 import javax.media.opengl.GL2;
-import java.applet.Applet;
-import java.applet.AudioClip;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -151,35 +147,6 @@ public class Cube implements Collidable{
     @Override
     public void hit(Player hitter) {
         this.notifyHit(hitter);
-    }
-
-    public void makeSound() {
-//        new Thread(new Runnable() {
-//            public void run() {
-//                try {
-//                    File f = new File("resources/sounds/shot.wav");
-//                    Clip clip = AudioSystem.getClip();
-//                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(f);
-//                    clip.open(inputStream);
-//                    clip.start();
-//                } catch (Exception e) {
-//                    System.err.println(e.getMessage());
-//                }
-//            }
-//        }).start();
-
-        File file = new File("resources/sounds/shot.wav");
-        URL url = null;
-        if (file.canRead()) {
-            try {
-                url = file.toURI().toURL();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        }
-        System.out.println(url);
-        AudioClip clip = Applet.newAudioClip(url);
-        clip.play();
     }
 
     private void notifyHit(Player hitter) {

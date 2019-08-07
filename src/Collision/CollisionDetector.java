@@ -1,11 +1,10 @@
 package Collision;
 
+import Scene.Sounds;
 import Utils.Vector;
 import WorldObjects.Cube;
 import WorldObjects.Wall;
 import WorldObjects.World;
-import WorldObjects.WorldObject;
-
 import java.util.ArrayList;
 
 public class CollisionDetector {
@@ -126,7 +125,7 @@ public class CollisionDetector {
         for(Cube c : itemsList) {
             if(point_cube(point, c)) {
                 if(c.getType()== Collidable.Type.vanish) {
-                    c.makeSound();
+                    Sounds.makeSound("resources/sounds/shot.wav");
                     World.removeFromList(c);
                 }
                 return true;
