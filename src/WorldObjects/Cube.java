@@ -8,23 +8,14 @@ package WorldObjects;
 
 import Collision.Collidable;
 import Collision.HitListener;
-import Coordinations.Coordination;
-import Enums.MovementEnum;
-import Enums.SteerEnum;
 import Utils.Vector;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
-
 import javax.media.opengl.GL2;
-import javax.sound.sampled.*;
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -176,7 +167,7 @@ public class Cube implements Collidable{
 //            }
 //        }).start();
 
-        File file = new File("resources/sounds/box_crush.wav");
+        File file = new File("resources/sounds/shot.wav");
         URL url = null;
         if (file.canRead()) {
             try {
