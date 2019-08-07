@@ -15,7 +15,8 @@ import com.jogamp.opengl.util.Animator;
 public class Main extends JFrame {
 
     public static void main(String[] args) {
-        menu_window();
+//        menu_window();
+        game_window();
     }
 
     public static void menu_window(){
@@ -36,12 +37,12 @@ public class Main extends JFrame {
         {
             public void actionPerformed(ActionEvent e)
             {
-                game_window(frame);
+//                game_window(frame);
             }
         });
     }
 
-    private static void game_window(JFrame frame){
+    private static void game_window(){
         JFrame game_frame = new JFrame();
         GLCanvas canvas = new GLCanvas();
         Animator animator = new Animator(canvas);
@@ -65,6 +66,6 @@ public class Main extends JFrame {
         game_frame.setVisible(true);
         animator.start();
         canvas.requestFocus();
-        frame.dispose();
+//        frame.dispose();
     }
 }

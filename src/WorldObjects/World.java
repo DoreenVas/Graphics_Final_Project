@@ -13,11 +13,13 @@ import java.util.ArrayList;
 public class World {
     // members
     private static ArrayList<Cube> itemsList;
-    private static Wall[] walls;
+//    private static Wall[] walls;
+    private static BlockWall[] walls;
 
     public World() {
         itemsList = new ArrayList<>();
-        walls = new Wall[6];
+//        walls = new Wall[6];
+        walls = new BlockWall[6];
         createWalls();
     }
 
@@ -31,7 +33,10 @@ public class World {
         float mat_ambient[] = {1f, 1f, 1f, 1.0f};
         gl.glMaterialfv(GL2.GL_FRONT, GL2.GL_AMBIENT, mat_ambient, 0);
 
-        for (Wall w : walls) {
+//        for (Wall w : walls) {
+//            w.draw(gl);
+//        }
+        for (BlockWall w : walls) {
             w.draw(gl);
         }
 
@@ -41,40 +46,70 @@ public class World {
     }
 
     private void createWalls() {
-        walls[0] = new Wall(new Vector(-10f,-1f,-75f),
-                new Vector(10f,-1f,-75f),
-                new Vector(10f,-1f,25f),
-                new Vector(-10f,-1f,25f),
+//        walls[0] = new Wall(new Vector(-10f,-1f,-75f),
+//                new Vector(10f,-1f,-75f),
+//                new Vector(10f,-1f,25f),
+//                new Vector(-10f,-1f,25f),
+//                "resources/pics/floor.jpeg",
+//                Collidable.Type.stay);
+//        walls[1] = new Wall(new Vector(10f,10f,-75f),
+//                new Vector(-10,10,-75),
+//                new Vector(-10,10,25),
+//                new Vector(10,10,25),
+//                "resources/pics/cave.jpg",
+//                Collidable.Type.stay);
+//        walls[2] = new Wall(new Vector(10,10,25),
+//                new Vector(-10,10,25),
+//                new Vector(-10,-1,25),
+//                new Vector(10,-1,25),
+//                "resources/pics/steel-box.jpg",
+//                Collidable.Type.stay);
+//        walls[3] = new Wall(new Vector(-10,10,-75),
+//                new Vector(10,10,-75),
+//                new Vector(10,-1,-75),
+//                new Vector(-10,-1,-75),
+//                "resources/pics/steel-box.jpg",
+//                Collidable.Type.stay);
+//        walls[4] = new Wall(new Vector(10,10,-75),
+//                new Vector(10,10,25),
+//                new Vector(10,-1,25),
+//                new Vector(10,-1,-75),
+//                "resources/pics/steel-box.jpg",
+//                Collidable.Type.stay);
+//        walls[5] = new Wall(new Vector(-10,10,25),
+//                new Vector(-10,10,-75),
+//                new Vector(-10,-1,-75),
+//                new Vector(-10,-1,25),
+//                "resources/pics/steel-box.jpg",
+//                Collidable.Type.stay);
+        // floor
+        walls[0] = new BlockWall(new Vector(-11f,-2f,25f),
+                22,1,100,
                 "resources/pics/floor.jpeg",
                 Collidable.Type.stay);
-        walls[1] = new Wall(new Vector(10f,10f,-75f),
-                new Vector(-10,10,-75),
-                new Vector(-10,10,25),
-                new Vector(10,10,25),
+        // ceiling
+        walls[1] = new BlockWall(new Vector(-11f,10f,25f),
+                22,1,100,
                 "resources/pics/cave.jpg",
                 Collidable.Type.stay);
-        walls[2] = new Wall(new Vector(10,10,25),
-                new Vector(-10,10,25),
-                new Vector(-10,-1,25),
-                new Vector(10,-1,25),
+        // front wall
+        walls[2] = new BlockWall(new Vector(-10,-2,25),
+                20,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay);
-        walls[3] = new Wall(new Vector(-10,10,-75),
-                new Vector(10,10,-75),
-                new Vector(10,-1,-75),
-                new Vector(-10,-1,-75),
+        // back wall
+        walls[3] = new BlockWall(new Vector(-10,-2,-75),
+                20,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay);
-        walls[4] = new Wall(new Vector(10,10,-75),
-                new Vector(10,10,25),
-                new Vector(10,-1,25),
-                new Vector(10,-1,-75),
+        // right wall
+        walls[4] = new BlockWall(new Vector(10,-2,25),
+                1,13,100,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay);
-        walls[5] = new Wall(new Vector(-10,10,25),
-                new Vector(-10,10,-75),
-                new Vector(-10,-1,-75),
-                new Vector(-10,-1,25),
+        // left wall
+        walls[5] = new BlockWall(new Vector(-10,-2,25),
+                1,13,100,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay);
     }
@@ -115,7 +150,11 @@ public class World {
         itemsList.remove(c);
     }
 
-    public static Wall[] getWalls() {
+//    public static Wall[] getWalls() {
+//        return walls;
+//    }
+
+    public static BlockWall[] getWalls() {
         return walls;
     }
 }
