@@ -16,15 +16,14 @@ public class Player implements HitListener, Collidable {
     private Vector direction;
     private Vector up;
     private Coordination coordination;
-//    private float alpha = (float)Math.toRadians(5);
     private Type type = Type.player;
     private static float step = 0.5f;
 
     public Player(){
         coordination = new Cartesian();
         pos = new Vector(0.0f, 1.0f, 10.0f);
-        up = new Vector(coordination.getyAxis().getX(), coordination.getyAxis().getY(), coordination.getyAxis().getZ());
-        direction = new Vector(coordination.getzAxis().getX(), coordination.getzAxis().getY(), coordination.getzAxis().getZ());
+        up = getUp();
+        direction = getDirection();
     }
 
     public Coordination getCoordination() {
@@ -36,12 +35,14 @@ public class Player implements HitListener, Collidable {
     }
 
     public Vector getDirection() {
-        direction = new Vector(coordination.getzAxis().getX(), coordination.getzAxis().getY(), coordination.getzAxis().getZ());
+        Vector zAxis = coordination.getzAxis();
+        direction = new Vector(zAxis.getX(), zAxis.getY(), zAxis.getZ());
         return direction;
     }
 
     public Vector getUp() {
-        up = new Vector(coordination.getyAxis().getX(), coordination.getyAxis().getY(), coordination.getyAxis().getZ());
+        Vector yAxis = coordination.getyAxis();
+        up = new Vector(yAxis.getX(), yAxis.getY(), yAxis.getZ());
         return up;
     }
 

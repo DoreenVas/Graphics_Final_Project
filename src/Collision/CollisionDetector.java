@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class CollisionDetector {
     // memebers
     private static float itemsThreshold = 130.0f;
-    private static float wallsThreshold = 2f;
+    private static float wallsThreshold = 1.5f;
 
     /*****
      * Check collision between a cube and a point.
@@ -20,70 +20,39 @@ public class CollisionDetector {
      * @return returns true if there is a collision, otherwise returns false.
      */
     public static boolean point_cube(Vector point, Cube cube){
-        Vector p1, p2, p3, p4;
         Vector[] arr = cube.getVertexes();
         // check front
-        p1 = arr[0];
-        p2 = arr[1];
-        p3 = arr[2];
-        p4 = arr[3];
-        if (point_polygon(point, p1, p2, p3, p4, itemsThreshold)) {
+        if (point_polygon(point, arr[0], arr[1], arr[2], arr[3], itemsThreshold)) {
             System.out.println("Collision front wall");
             return true;
         }
-
         // check back
-        p1 = arr[4];
-        p2 = arr[5];
-        p3 = arr[6];
-        p4 = arr[7];
-        if (point_polygon(point, p1, p2, p3, p4, itemsThreshold)) {
+        if (point_polygon(point, arr[4], arr[5], arr[6], arr[6], itemsThreshold)) {
             System.out.println("Collision back wall");
             return true;
         }
-
         // check left
-        p1 = arr[4];
-        p2 = arr[0];
-        p3 = arr[3];
-        p4 = arr[5];
-        if (point_polygon(point, p1, p2, p3, p4, itemsThreshold)) {
+        if (point_polygon(point, arr[4], arr[0], arr[3], arr[5], itemsThreshold)) {
             System.out.println("Collision left wall");
             return true;
         }
-
         //check right
-        p1 = arr[7];
-        p2 = arr[6];
-        p3 = arr[2];
-        p4 = arr[1];
-        if (point_polygon(point, p1, p2, p3, p4, itemsThreshold)) {
+        if (point_polygon(point, arr[7], arr[6], arr[2], arr[1], itemsThreshold)) {
             System.out.println("Collision right wall");
             return true;
         }
-
         //check up
-        p1 = arr[5];
-        p2 = arr[3];
-        p3 = arr[2];
-        p4 = arr[6];
-        if (point_polygon(point, p1, p2, p3, p4, itemsThreshold)) {
+        if (point_polygon(point, arr[5], arr[3], arr[2], arr[6], itemsThreshold)) {
             System.out.println("Collision up wall");
             return true;
         }
-
         //check down
-        p1 = arr[4];
-        p2 = arr[7];
-        p3 = arr[1];
-        p4 = arr[0];
-        if (point_polygon(point, p1, p2, p3, p4, itemsThreshold)) {
+        if (point_polygon(point, arr[4], arr[7], arr[1], arr[0], itemsThreshold)) {
             System.out.println("Collision down wall");
             return true;
         }
         return false;
     }
-
 
     /*****
      * Get the angle between 2 vertexes for collision algorithm.
@@ -142,13 +111,9 @@ public class CollisionDetector {
 
     public static boolean checkCollisionWithWalls(Vector point) {
         Wall walls[] = World.getWalls();
-        Vector p1, p2, p3, p4;
         for (Wall w : walls) {
-            p1 = w.getVertexes()[0];
-            p2 = w.getVertexes()[1];
-            p3 = w.getVertexes()[2];
-            p4 = w.getVertexes()[3];
-            if (point_polygon(point, p1, p2, p3, p4, wallsThreshold)) {
+            Vector[] vertexes = w.getVertexes();
+            if (point_polygon(point, vertexes[0], vertexes[1], vertexes[2], vertexes[3], wallsThreshold)) {
                 return true;
             }
         }
