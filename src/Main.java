@@ -4,32 +4,52 @@
  * Student name: Nadav Spitzer
  * Student ID: 302228275
  */
-import java.awt.Frame;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.media.opengl.awt.GLCanvas;
-
+import javax.swing.*;
 import Scene.SceneBuilder;
-import com.jogamp.newt.event.KeyAdapter;
 import com.jogamp.opengl.util.Animator;
 
-public class Main extends KeyAdapter {
-
-    static GLCanvas canvas = new GLCanvas();
-    static Frame frame = new Frame("Jogl 3D Room");
-    static Animator animator = new Animator(canvas);
-
-    public static void exit(){
-        animator.stop();
-        frame.dispose();
-        System.exit(0);
-    }
+public class Main extends JFrame {
 
     public static void main(String[] args) {
+        menu_window();
+    }
+
+    public static void menu_window(){
+        JFrame frame = new JFrame();
+        frame.setSize(new Dimension(800,700));
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.BLUE);
+        frame.getContentPane().add(panel);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("Game");
+        frame.setResizable(false);
+        JButton button = new JButton("START PLAYING");
+        panel.add(button);
+        frame.setVisible(true);
+
+        button.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                game_window(frame);
+            }
+        });
+    }
+
+    private static void game_window(JFrame frame){
+        JFrame game_frame = new JFrame();
+        GLCanvas canvas = new GLCanvas();
+        Animator animator = new Animator(canvas);
         canvas.addGLEventListener(new SceneBuilder());
-        frame.add(canvas);
-        frame.setSize(800, 600);
-		frame.setUndecorated(true);
-		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+        game_frame.add(canvas);
+        game_frame.setUndecorated(true);
+        game_frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+        game_frame.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent e) {
                 // Run this on another thread than the AWT event queue to
                 // make sure the call to Animator.stop() completes before
@@ -42,8 +62,9 @@ public class Main extends KeyAdapter {
                 }).start();
             }
         });
-        frame.setVisible(true);
+        game_frame.setVisible(true);
         animator.start();
         canvas.requestFocus();
+        frame.dispose();
     }
 }
