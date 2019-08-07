@@ -6,6 +6,7 @@
  */
 package WorldObjects;
 
+import Collision.Collidable;
 import Coordinations.Coordination;
 import Enums.MovementEnum;
 import Enums.SteerEnum;
@@ -17,12 +18,13 @@ import javax.media.opengl.GL2;
 import java.io.File;
 import java.io.IOException;
 
-public class Wall implements WorldObject {
+public class Wall implements WorldObject, Collidable {
     // members
     private Texture wallTexture;
     private Vector[] vertexes;
+    private Collidable.Type type;
 
-    public Wall(Vector p1, Vector p2, Vector p3, Vector p4, String texture) {
+    public Wall(Vector p1, Vector p2, Vector p3, Vector p4, String texture, Collidable.Type t) {
         try {
             vertexes = new Vector[4];
             vertexes[0] = p1;
@@ -30,6 +32,7 @@ public class Wall implements WorldObject {
             vertexes[2] = p3;
             vertexes[3] = p4;
             wallTexture= TextureIO.newTexture(new File( texture ),true);
+            type = t;
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -61,6 +64,10 @@ public class Wall implements WorldObject {
         gl.glFlush();
     }
 
+    public Type getType() {
+        return this.type;
+    }
+
     @Override
     public void activateMove(MovementEnum direction) {
 
@@ -79,5 +86,10 @@ public class Wall implements WorldObject {
     @Override
     public Coordination getCoordination() {
         return null;
+    }
+
+    @Override
+    public void hit(Player hitter) {
+        return;
     }
 }

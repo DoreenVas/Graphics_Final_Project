@@ -5,6 +5,7 @@
  * Student ID: 302228275
  */
 package WorldObjects;
+import Collision.Collidable;
 import Utils.Vector;
 import javax.media.opengl.GL2;
 import java.util.ArrayList;
@@ -44,32 +45,38 @@ public class World {
                 new Vector(10f,-1f,-75f),
                 new Vector(10f,-1f,25f),
                 new Vector(-10f,-1f,25f),
-                "resources/pics/floor.jpeg");
+                "resources/pics/floor.jpeg",
+                Collidable.Type.stay);
         walls[1] = new Wall(new Vector(10f,10f,-75f),
                 new Vector(-10,10,-75),
                 new Vector(-10,10,25),
                 new Vector(10,10,25),
-                "resources/pics/cave.jpg");
+                "resources/pics/cave.jpg",
+                Collidable.Type.stay);
         walls[2] = new Wall(new Vector(10,10,25),
                 new Vector(-10,10,25),
                 new Vector(-10,-1,25),
                 new Vector(10,-1,25),
-                "resources/pics/steel-box.jpg");
+                "resources/pics/steel-box.jpg",
+                Collidable.Type.stay);
         walls[3] = new Wall(new Vector(-10,10,-75),
                 new Vector(10,10,-75),
                 new Vector(10,-1,-75),
                 new Vector(-10,-1,-75),
-                "resources/pics/steel-box.jpg");
+                "resources/pics/steel-box.jpg",
+                Collidable.Type.stay);
         walls[4] = new Wall(new Vector(10,10,-75),
                 new Vector(10,10,25),
                 new Vector(10,-1,25),
                 new Vector(10,-1,-75),
-                "resources/pics/steel-box.jpg");
+                "resources/pics/steel-box.jpg",
+                Collidable.Type.stay);
         walls[5] = new Wall(new Vector(-10,10,25),
                 new Vector(-10,10,-75),
                 new Vector(-10,-1,-75),
                 new Vector(-10,-1,25),
-                "resources/pics/steel-box.jpg");
+                "resources/pics/steel-box.jpg",
+                Collidable.Type.stay);
     }
 
     private void addLight(GL2 gl) {
