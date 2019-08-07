@@ -3,11 +3,16 @@ package Collision;
 import Scene.Sounds;
 import Utils.Vector;
 import WorldObjects.Cube;
+import WorldObjects.Player;
 import WorldObjects.Wall;
 import WorldObjects.World;
 import java.util.ArrayList;
 
 public class CollisionDetector {
+    // memebers
+    private static float itemsThreshold = 130.0f;
+    private static float wallsThreshold = 2f;
+
     /*****
      * Check collision between a cube and a point.
      * @param point a given point.
@@ -16,72 +21,63 @@ public class CollisionDetector {
      */
     public static boolean point_cube(Vector point, Cube cube){
         Vector p1, p2, p3, p4;
-        float threshold = 130.0f;
         Vector[] arr = cube.getVertexes();
-        float angle = 0;
         // check front
         p1 = arr[0];
         p2 = arr[1];
         p3 = arr[2];
         p4 = arr[3];
-        // get the sum of angles between the point and all vertexes
-        angle = sumAngles(point, p1, p2, p3 ,p4);
-        if(angle > 360 - threshold && angle < 360 + threshold) {
+        if (point_polygon(point, p1, p2, p3, p4, itemsThreshold)) {
             System.out.println("Collision front wall");
             return true;
         }
+
         // check back
         p1 = arr[4];
         p2 = arr[5];
         p3 = arr[6];
         p4 = arr[7];
-        // get the sum of angles between the point and all vertexes
-        angle = sumAngles(point, p1, p2, p3 ,p4);
-        if(angle > 360 - threshold && angle < 360 + threshold) {
+        if (point_polygon(point, p1, p2, p3, p4, itemsThreshold)) {
             System.out.println("Collision back wall");
             return true;
         }
+
         // check left
         p1 = arr[4];
         p2 = arr[0];
         p3 = arr[3];
         p4 = arr[5];
-        // get the sum of angles between the point and all vertexes
-        angle = sumAngles(point, p1, p2, p3 ,p4);
-        if(angle > 360 - threshold && angle < 360 + threshold) {
+        if (point_polygon(point, p1, p2, p3, p4, itemsThreshold)) {
             System.out.println("Collision left wall");
             return true;
         }
+
         //check right
         p1 = arr[7];
         p2 = arr[6];
         p3 = arr[2];
         p4 = arr[1];
-        // get the sum of angles between the point and all vertexes
-        angle = sumAngles(point, p1, p2, p3 ,p4);
-        if(angle > 360 - threshold && angle < 360 + threshold) {
+        if (point_polygon(point, p1, p2, p3, p4, itemsThreshold)) {
             System.out.println("Collision right wall");
             return true;
         }
+
         //check up
         p1 = arr[5];
         p2 = arr[3];
         p3 = arr[2];
         p4 = arr[6];
-        // get the sum of angles between the point and all vertexes
-        angle = sumAngles(point, p1, p2, p3 ,p4);
-        if(angle > 360 - threshold && angle < 360 + threshold) {
+        if (point_polygon(point, p1, p2, p3, p4, itemsThreshold)) {
             System.out.println("Collision up wall");
             return true;
         }
+
         //check down
         p1 = arr[4];
         p2 = arr[7];
         p3 = arr[1];
         p4 = arr[0];
-        // get the sum of angles between the point and all vertexes
-        angle = sumAngles(point, p1, p2, p3 ,p4);
-        if(angle > 360 - threshold && angle < 360 + threshold) {
+        if (point_polygon(point, p1, p2, p3, p4, itemsThreshold)) {
             System.out.println("Collision down wall");
             return true;
         }
@@ -120,7 +116,7 @@ public class CollisionDetector {
         return angles;
     }
 
-    public static boolean checkCollisions(Vector point) {
+    public static boolean checkItemsCollisions(Vector point) {
         ArrayList<Cube> itemsList = World.getItemsList();
         for(Cube c : itemsList) {
             if(point_cube(point, c)) {
@@ -128,6 +124,31 @@ public class CollisionDetector {
                     Sounds.makeSound("resources/sounds/explosion.wav");
                     World.removeFromList(c);
                 }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean point_polygon(Vector point, Vector p1, Vector p2, Vector p3, Vector p4, float threshold) {
+        float angle = 0;
+        // get the sum of angles between the point and all vertexes
+        angle = sumAngles(point, p1, p2, p3 ,p4);
+        if(angle > 360 - threshold && angle < 360 + threshold) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean checkCollisionWithWalls(Vector point) {
+        Wall walls[] = World.getWalls();
+        Vector p1, p2, p3, p4;
+        for (Wall w : walls) {
+            p1 = w.getVertexes()[0];
+            p2 = w.getVertexes()[1];
+            p3 = w.getVertexes()[2];
+            p4 = w.getVertexes()[3];
+            if (point_polygon(point, p1, p2, p3, p4, wallsThreshold)) {
                 return true;
             }
         }

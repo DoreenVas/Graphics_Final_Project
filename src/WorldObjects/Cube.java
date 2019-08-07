@@ -27,6 +27,19 @@ public class Cube implements Collidable{
     private Vector[] arr = new Vector[8];
     private Type type;
 
+    public Cube(Vector v, float l) {
+        o = v;
+        length = l;
+        arr[0] = new Vector(o.getX(), o.getY(), o.getZ());
+        arr[1] = new Vector(o.getX()+length, o.getY(), o.getZ());
+        arr[2] = new Vector(o.getX()+length, o.getY()+length, o.getZ());
+        arr[3] = new Vector(o.getX(), o.getY()+length, o.getZ());
+        arr[4] = new Vector(o.getX(), o.getY(), o.getZ()-length);
+        arr[5] = new Vector(o.getX(), o.getY()+length, o.getZ()-length);
+        arr[6] = new Vector(o.getX()+length, o.getY()+length, o.getZ()-length);
+        arr[7] = new Vector(o.getX()+length, o.getY(), o.getZ()-length);
+    }
+
     public Cube(Vector v, float l, String texturePath, Type t) {
         try {
             type = t;
@@ -134,6 +147,10 @@ public class Cube implements Collidable{
         }
         o.setX(o.getX()+step);
         return step;
+    }
+
+    public Vector getOrigin() {
+        return o;
     }
 
     public float getLength() {

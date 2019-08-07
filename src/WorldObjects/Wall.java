@@ -68,6 +68,11 @@ public class Wall implements WorldObject, Collidable {
         return this.type;
     }
 
+    public Vector[] getVertexes() {
+        return vertexes;
+    }
+
+
     @Override
     public void activateMove(MovementEnum direction) {
 

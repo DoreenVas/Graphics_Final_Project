@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class World {
     // members
     private static ArrayList<Cube> itemsList;
-    private Wall[] walls;
+    private static Wall[] walls;
 
     public World() {
         itemsList = new ArrayList<>();
@@ -113,5 +113,9 @@ public class World {
 
     public static void removeFromList(Cube c) {
         itemsList.remove(c);
+    }
+
+    public static Wall[] getWalls() {
+        return walls;
     }
 }
