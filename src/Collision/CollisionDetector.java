@@ -3,6 +3,7 @@ package Collision;
 import Scene.Sounds;
 import Utils.Vector;
 import WorldObjects.Cube;
+import WorldObjects.Wall;
 import WorldObjects.World;
 import java.util.ArrayList;
 
@@ -133,5 +134,16 @@ public class CollisionDetector {
         return false;
     }
 
+    public static boolean cube_cube(Cube cube1, Cube cube2) {
+        Vector c1, c2, d;
+        float dist = (cube1.getLength()+cube2.getLength())/2;
+        c1 = cube1.getCenter();
+        c2 = cube2.getCenter();
+        d = c1.sub(c2);
+        if (d.getX() < dist && d.getY() < dist && d.getZ() < dist) {
+            return true;
+        }
+        return false;
+    }
 }
 
