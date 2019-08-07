@@ -27,6 +27,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
     private static GLU glu = new GLU();
     private World world;
+//    private MovingCube movingCube1;
 //    private Sphere sphere;
     private Player player;
     private float alpha = (float)Math.toRadians(5);
@@ -49,6 +50,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
                 up.getZ());
 
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
+//        movingCube1.draw(gl);
         world.draw(gl);
 //        sphere.draw(gl);
     }
@@ -68,9 +70,11 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         gl.glEnable(GL2.GL_TEXTURE_2D);
 
         Cube cube = new Cube(new Vector(-1,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.vanish);
-
+//        movingCube1 = new MovingCube(new Cube(new Vector(5, -1, -20), 2, "resources/pics/steel-box.jpg", Collidable.Type.stay));
+        MovingCube movingCube1 = new MovingCube(new Vector(5, -1, -20), 2, "resources/pics/steel-box.jpg", Collidable.Type.stay);
         world = new World();
         world.addToList(cube);
+        world.addToList(movingCube1);
         player = new Player();
 //        sphere = new Sphere(1, -5, 2, 0);
 

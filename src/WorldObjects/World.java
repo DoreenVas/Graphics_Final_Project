@@ -6,11 +6,7 @@
  */
 package WorldObjects;
 import Utils.Vector;
-import com.jogamp.opengl.util.texture.Texture;
-import com.jogamp.opengl.util.texture.TextureIO;
 import javax.media.opengl.GL2;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class World {
@@ -44,35 +40,35 @@ public class World {
     }
 
     private void createWalls() {
-        walls[0] = new Wall(new Vector(-20f,-1f,-75f),
-                new Vector(20f,-1f,-75f),
-                new Vector(20f,-1f,25f),
-                new Vector(-20f,-1f,25f),
+        walls[0] = new Wall(new Vector(-10f,-1f,-75f),
+                new Vector(10f,-1f,-75f),
+                new Vector(10f,-1f,25f),
+                new Vector(-10f,-1f,25f),
                 "resources/pics/floor.jpeg");
-        walls[1] = new Wall(new Vector(20f,10f,-75f),
-                new Vector(-20,10,-75),
-                new Vector(-20,10,25),
-                new Vector(20,10,25),
+        walls[1] = new Wall(new Vector(10f,10f,-75f),
+                new Vector(-10,10,-75),
+                new Vector(-10,10,25),
+                new Vector(10,10,25),
                 "resources/pics/cave.jpg");
-        walls[2] = new Wall(new Vector(20,10,25),
-                new Vector(-20,10,25),
-                new Vector(-20,-1,25),
-                new Vector(20,-1,25),
+        walls[2] = new Wall(new Vector(10,10,25),
+                new Vector(-10,10,25),
+                new Vector(-10,-1,25),
+                new Vector(10,-1,25),
                 "resources/pics/steel-box.jpg");
-        walls[3] = new Wall(new Vector(-20,10,-75),
-                new Vector(20,10,-75),
-                new Vector(20,-1,-75),
-                new Vector(-20,-1,-75),
+        walls[3] = new Wall(new Vector(-10,10,-75),
+                new Vector(10,10,-75),
+                new Vector(10,-1,-75),
+                new Vector(-10,-1,-75),
                 "resources/pics/steel-box.jpg");
-        walls[4] = new Wall(new Vector(20,10,-75),
-                new Vector(20,10,25),
-                new Vector(20,-1,25),
-                new Vector(20,-1,-75),
+        walls[4] = new Wall(new Vector(10,10,-75),
+                new Vector(10,10,25),
+                new Vector(10,-1,25),
+                new Vector(10,-1,-75),
                 "resources/pics/steel-box.jpg");
-        walls[5] = new Wall(new Vector(-20,10,25),
-                new Vector(-20,10,-75),
-                new Vector(-20,-1,-75),
-                new Vector(-20,-1,25),
+        walls[5] = new Wall(new Vector(-10,10,25),
+                new Vector(-10,10,-75),
+                new Vector(-10,-1,-75),
+                new Vector(-10,-1,25),
                 "resources/pics/steel-box.jpg");
     }
 

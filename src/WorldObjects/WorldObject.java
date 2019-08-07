@@ -20,5 +20,4 @@ public interface WorldObject {
     void activateRotate(SteerEnum rotateDirection);
     Vector getLocation();
     Coordination getCoordination();
-
 }

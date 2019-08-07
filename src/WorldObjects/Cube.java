@@ -36,7 +36,7 @@ public class Cube implements Collidable{
     private Texture cubeTexture;
     private Vector o; //left bottom corner close to view
     private float length;
-    float step = 0.1f;
+
     private Vector[] arr = new Vector[8];
     private Type type;
 
@@ -141,11 +141,12 @@ public class Cube implements Collidable{
         gl.glFlush();
     }
 
-    private void moveCube() {
-        if (o.getX() < -20 || o.getX() > 20) {
+    public float moveCube(float step) {
+        if (o.getX()-1 < -10 || o.getX()+length+1 > 10) {
             step = step * -1;
         }
         o.setX(o.getX()+step);
+        return step;
     }
 
     public float getLength() {
