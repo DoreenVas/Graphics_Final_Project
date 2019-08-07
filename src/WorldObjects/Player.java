@@ -10,14 +10,15 @@ import Utils.Vector;
 
 import static Enums.MovementEnum.*;
 
-public class Player implements HitListener{
+public class Player implements HitListener, Collidable {
     // members
-    private Vector pos;
+    private static Vector pos;
     private Vector direction;
     private Vector up;
     private Coordination coordination;
-    private float alpha = (float)Math.toRadians(5);
-    private static float step = 0.1f;
+//    private float alpha = (float)Math.toRadians(5);
+    private Type type = Type.player;
+    private static float step = 0.5f;
 
     public Player(){
         coordination = new Cartesian();
@@ -30,7 +31,7 @@ public class Player implements HitListener{
         return coordination;
     }
 
-    public Vector getPos() {
+    public static Vector getPos() {
         return pos;
     }
 
@@ -57,10 +58,11 @@ public class Player implements HitListener{
     }
 
     public void move(MovementEnum direction) {
-        boolean collide;
+        boolean itemsCollision, wallsCollision;
         Vector nextPos = checkNextPos(pos, direction);
-        collide = CollisionDetector.checkCollisions(nextPos);
-        if (!collide) {
+        itemsCollision = CollisionDetector.checkItemsCollisions(nextPos);
+        wallsCollision = CollisionDetector.checkCollisionWithWalls(nextPos);
+        if (!wallsCollision && !itemsCollision) {
             switch(direction) {
                 case FORWARD: // move forward
                     coordination.move(FORWARD, pos, step);
@@ -91,6 +93,11 @@ public class Player implements HitListener{
 
     @Override
     public void hitEvent(Collidable beingHit, Player hitter) {
+        return;
+    }
+
+    @Override
+    public void hit(Player hitter) {
         return;
     }
 }

@@ -69,17 +69,21 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
         gl.glEnable(GL2.GL_TEXTURE_2D);
 
-        Cube cube = new Cube(new Vector(-1,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.vanish);
+        Cube tnt1 = new Cube(new Vector(-9,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.vanish);
+        Cube tnt2 = new Cube(new Vector(-1,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.vanish);
+        Cube tnt3 = new Cube(new Vector(7,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.vanish);
 //        movingCube1 = new MovingCube(new Cube(new Vector(5, -1, -20), 2, "resources/pics/steel-box.jpg", Collidable.Type.stay));
-        MovingCube movingCube1 = new MovingCube(new Vector(-9, -1, -15), 2,
+        MovingCube movingCube1 = new MovingCube(new Vector(-9, -1, -10), 2,
                 "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f);
-        MovingCube movingCube2 = new MovingCube(new Vector(7, -1, -25), 2,
+        MovingCube movingCube2 = new MovingCube(new Vector(7, -1, -17), 2,
                 "resources/pics/moving_box.png", Collidable.Type.stay, -0.2f);
-        MovingCube movingCube3 = new MovingCube(new Vector(-9, -1, -35), 2,
+        MovingCube movingCube3 = new MovingCube(new Vector(-9, -1, -24), 2,
                 "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f);
 
         world = new World();
-        world.addToList(cube);
+        world.addToList(tnt1);
+        world.addToList(tnt2);
+        world.addToList(tnt3);
         world.addToList(movingCube1);
         world.addToList(movingCube2);
         world.addToList(movingCube3);
