@@ -125,6 +125,7 @@ public class CollisionDetector {
         for(Cube c : itemsList) {
             if(point_cube(point, c)) {
                 if(c.getType()== Collidable.Type.vanish) {
+                    c.makeSound();
                     World.removeFromList(c);
                 }
                 return true;

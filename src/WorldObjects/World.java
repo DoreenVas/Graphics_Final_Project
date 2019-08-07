@@ -53,7 +53,7 @@ public class World {
                 new Vector(-20,10,-75),
                 new Vector(-20,10,25),
                 new Vector(20,10,25),
-                "resources/pics/sky.jpg");
+                "resources/pics/cave.jpg");
         walls[2] = new Wall(new Vector(20,10,25),
                 new Vector(-20,10,25),
                 new Vector(-20,-1,25),

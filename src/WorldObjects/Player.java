@@ -57,7 +57,7 @@ public class Player implements HitListener{
     }
 
     public void move(MovementEnum direction) {
-        boolean collide = false;
+        boolean collide;
         Vector nextPos = checkNextPos(pos, direction);
         collide = CollisionDetector.checkCollisions(nextPos);
         if (!collide) {
