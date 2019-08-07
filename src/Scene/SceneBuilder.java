@@ -7,7 +7,6 @@
 package Scene;
 
 import Collision.Collidable;
-import Collision.CollisionDetector;
 import Enums.MovementEnum;
 import Enums.SteerEnum;
 import WorldObjects.*;
@@ -71,7 +70,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
         Cube cube = new Cube(new Vector(-1,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.vanish);
 //        movingCube1 = new MovingCube(new Cube(new Vector(5, -1, -20), 2, "resources/pics/steel-box.jpg", Collidable.Type.stay));
-        MovingCube movingCube1 = new MovingCube(new Vector(5, -1, -20), 2, "resources/pics/steel-box.jpg", Collidable.Type.stay);
+        MovingCube movingCube1 = new MovingCube(new Vector(5, -1, -20), 2, "resources/pics/moving_box.png", Collidable.Type.stay);
         world = new World();
         world.addToList(cube);
         world.addToList(movingCube1);
