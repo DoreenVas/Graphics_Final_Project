@@ -190,4 +190,9 @@ public class Cube implements Collidable{
             hl.hitEvent(this, hitter);
         }
     }
+
+    public Vector getCenter() {
+        Vector c = new Vector(o.getX() + length/2, o.getY() + length/2, o.getZ() - length/2);
+        return c;
+    }
 }

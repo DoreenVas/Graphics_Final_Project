@@ -92,4 +92,10 @@ public class Wall implements WorldObject, Collidable {
     public void hit(Player hitter) {
         return;
     }
+
+    public Vector getCenter() {
+        Vector c;
+        c = new Vector(vertexes[0].add(vertexes[2].multByScalar(0.5f)));
+        return c;
+    }
 }
