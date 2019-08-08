@@ -20,8 +20,8 @@ import com.jogamp.opengl.util.Animator;
 public class Main extends JFrame {
 
     public static void main(String[] args) {
-//        menu_window();
-        game_window();
+        menu_window();
+//        game_window();
     }
 
     public static void menu_window(){
@@ -42,7 +42,7 @@ public class Main extends JFrame {
         Image newimg = img.getScaledInstance( 150, 50,  java.awt.Image.SCALE_SMOOTH ) ;
         icon = new ImageIcon(newimg);
         JButton button = new JButton(icon);
-        button.setBounds(325, 300, 150, 50);
+        button.setBounds(325, 275, 150, 50);
 
         button.addActionListener(new ActionListener()
         {
