@@ -73,7 +73,7 @@ public class World {
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // left wall
-        walls.add(new BlockWall(new Vector(-10,-2,25),
+        walls.add(new BlockWall(new Vector(-11,-2,25),
                 1,13,100,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
@@ -135,7 +135,7 @@ public class World {
         return itemsList;
     }
 
-    public static void addToItemsList(Cube c) {
+    public void addToItemsList(Cube c) {
         itemsList.add(c);
     }
 

@@ -69,14 +69,14 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         Cube tnt3 = new Cube(new Vector(7,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.tnt);
 
 //        movingCube1 = new MovingCube(new Cube(new Vector(5, -1, -20), 2, "resources/pics/steel-box.jpg", Collidable.Type.stay));
-        MovingCube movingCube1 = new MovingCube(new Vector(-9, -1, -10), 2,
+        MovingCube movingCube1 = new MovingCube(new Vector(-9, -1, -30), 2,
                 "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.RIGHT);
-        MovingCube movingCube2 = new MovingCube(new Vector(7, -1, -10), 2,
+        MovingCube movingCube2 = new MovingCube(new Vector(7, -1, -30), 2,
                 "resources/pics/moving_box.png", Collidable.Type.stay, -0.2f, MovementEnum.LEFT);
-        MovingCube movingCube3 = new MovingCube(new Vector(-9, -1, -24), 2,
+        MovingCube movingCube3 = new MovingCube(new Vector(-9, -1, -20), 2,
                 "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.RIGHT);
-        MovingCube movingCube4 = new MovingCube(new Vector(-1, 7, -35), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.DOWN);
+        MovingCube movingCube4 = new MovingCube(new Vector(7, -1, -10), 2,
+                "resources/pics/moving_box.png", Collidable.Type.stay, -0.2f, MovementEnum.LEFT);
 
         world = new World();
         world.addToItemsList(tnt1);
@@ -86,6 +86,10 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         world.addToItemsList(movingCube2);
         world.addToItemsList(movingCube3);
         world.addToItemsList(movingCube4);
+        for (int i = -10; i < 8; i+=2) {
+            world.addToItemsList(new MovingCube(new Vector(i, 7, -45), 2,
+                    "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.DOWN));
+        }
 
         Vector p;
         for (int z = -65; z > -75; z-=2) {
@@ -166,6 +170,12 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         }
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             System.exit(0);
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_F1) {
+            System.out.println("ADD INSTRUCTIONS");
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_F2) {
+            System.out.println("SKIP LEVEL");
         }
     }
 
