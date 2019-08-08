@@ -48,6 +48,17 @@ public class MovingCube extends Cube implements Collidable {
                 break;
             }
         }
+        arr = null;
+        // move in the desired direction
+        //check collision with walls
+        List<BlockWall> walls = World.getWalls();
+        for (BlockWall w : walls) {
+            collide = CollisionDetector.cube_cube(w, this);
+            if (collide) {
+                this.changeStep();
+                break;
+            }
+        }
         switch (direction) {
             case DOWN:
             case UP:

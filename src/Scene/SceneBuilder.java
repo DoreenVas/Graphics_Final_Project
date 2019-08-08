@@ -70,13 +70,13 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
 //        movingCube1 = new MovingCube(new Cube(new Vector(5, -1, -20), 2, "resources/pics/steel-box.jpg", Collidable.Type.stay));
         MovingCube movingCube1 = new MovingCube(new Vector(-9, -1, -10), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, 0.02f, MovementEnum.RIGHT);
+                "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.RIGHT);
         MovingCube movingCube2 = new MovingCube(new Vector(7, -1, -10), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, -0.02f, MovementEnum.LEFT);
+                "resources/pics/moving_box.png", Collidable.Type.stay, -0.2f, MovementEnum.LEFT);
         MovingCube movingCube3 = new MovingCube(new Vector(-9, -1, -24), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, 0.02f, MovementEnum.RIGHT);
+                "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.RIGHT);
         MovingCube movingCube4 = new MovingCube(new Vector(-1, 7, -35), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, 0.02f, MovementEnum.DOWN);
+                "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.DOWN);
 
         world = new World();
         world.addToList(tnt1);
