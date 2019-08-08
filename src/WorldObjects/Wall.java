@@ -70,22 +70,7 @@ public class Wall implements WorldObject, Collidable {
     }
 
     @Override
-    public void activateMove(MovementEnum direction) {
-
-    }
-
-    @Override
-    public void activateRotate(SteerEnum rotateDirection) {
-
-    }
-
-    @Override
     public Vector getLocation() {
-        return null;
-    }
-
-    @Override
-    public Coordination getCoordination() {
         return null;
     }
 

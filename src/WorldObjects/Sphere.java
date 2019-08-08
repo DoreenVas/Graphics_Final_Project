@@ -52,22 +52,7 @@ public class Sphere implements WorldObject {
     }
 
     @Override
-    public void activateMove(MovementEnum direction) {
-
-    }
-
-    @Override
-    public void activateRotate(SteerEnum rotateDirection) {
-
-    }
-
-    @Override
     public Vector getLocation() {
         return position;
-    }
-
-    @Override
-    public Coordination getCoordination() {
-        return null;
     }
 }
