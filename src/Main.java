@@ -20,8 +20,8 @@ import com.jogamp.opengl.util.Animator;
 public class Main extends JFrame {
 
     public static void main(String[] args) {
-        menu_window();
-//        game_window();
+//        menu_window();
+        game_window();
     }
 
     public static void menu_window(){

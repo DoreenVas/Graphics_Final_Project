@@ -25,7 +25,7 @@ public class CollisionDetector {
             return true;
         }
         // check back
-        if (point_polygon(point, arr[4], arr[5], arr[6], arr[6], itemsThreshold)) {
+        if (point_polygon(point, arr[4], arr[5], arr[6], arr[7], itemsThreshold)) {
             System.out.println("Collision back wall");
             return true;
         }
@@ -110,7 +110,7 @@ public class CollisionDetector {
     public static boolean checkCollisionWithWalls(Vector point) {
 //        Wall walls[] = World.getWalls();
         ArrayList<BlockWall> walls = World.getWalls();
-//        for (Wall w : walls) {
+//        for (BlockWall w : walls) {
 //            Vector[] vertexes = w.getVertexes();
 //            if (point_polygon(point, vertexes[0], vertexes[1], vertexes[2], vertexes[3], wallsThreshold)) {
 //                return true;
@@ -124,13 +124,16 @@ public class CollisionDetector {
         return false;
     }
 
-    public static boolean cube_cube(Cube cube1, Cube cube2) {
+    public static boolean cube_cube(BlockWall block1, BlockWall block2) {
         Vector c1, c2, d;
-        float dist = (cube1.getLength()+cube2.getLength())/2;
-        c1 = cube1.getCenter();
-        c2 = cube2.getCenter();
+        float distX, distY, distZ;
+        distX = (block1.getWidth()+block2.getWidth())/2;
+        distY = (block1.getHeight()+block2.getHeight())/2;
+        distZ = (block1.getDepth()+block2.getDepth())/2;
+        c1 = block1.getCenter();
+        c2 = block2.getCenter();
         d = c1.sub(c2);
-        if (d.getX() < dist && d.getY() < dist && d.getZ() < dist) {
+        if (d.getX() < distX && d.getY() < distY && d.getZ() < distZ) {
             return true;
         }
         return false;
