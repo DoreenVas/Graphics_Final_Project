@@ -79,24 +79,23 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
                 "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.DOWN);
 
         world = new World();
-        world.addToList(tnt1);
-        world.addToList(tnt2);
-        world.addToList(tnt3);
-        world.addToList(movingCube1);
-        world.addToList(movingCube2);
-        world.addToList(movingCube3);
-        world.addToList(movingCube4);
+        world.addToItemsList(tnt1);
+        world.addToItemsList(tnt2);
+        world.addToItemsList(tnt3);
+        world.addToItemsList(movingCube1);
+        world.addToItemsList(movingCube2);
+        world.addToItemsList(movingCube3);
+        world.addToItemsList(movingCube4);
 
         Vector p;
         for (int z = -65; z > -75; z-=2) {
             for (int y = -1; y < 9; y+=2) {
                 p = new Vector(10, y, z);
-                world.addToList(new BreakableCube(p, 2, "resources/pics/box.jpg", Collidable.Type.breakable,3));
+                world.addToItemsList(new BreakableCube(p, 2, 3, "resources/pics/box.jpg", Collidable.Type.breakable));
             }
         }
 
         player = new Player();
-//        sphere = new Sphere(1, -5, 2, 0);
 
         gl.glEnable(GL2.GL_LIGHTING);
         if (drawable instanceof Window) {
@@ -110,7 +109,6 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
     @Override
     public void dispose(GLAutoDrawable glAutoDrawable) {
-
     }
 
     public void reshape(GLAutoDrawable drawable, int x,

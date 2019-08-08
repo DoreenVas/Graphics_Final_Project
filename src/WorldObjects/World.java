@@ -135,7 +135,7 @@ public class World {
         return itemsList;
     }
 
-    public static void addToList(Cube c) {
+    public static void addToItemsList(Cube c) {
         itemsList.add(c);
     }
 

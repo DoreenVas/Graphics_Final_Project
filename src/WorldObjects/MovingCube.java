@@ -20,7 +20,6 @@ public class MovingCube extends Cube implements Collidable {
     }
 
     public void draw(GL2 gl) {
-
         this.step = moveCube(this.step, this.direction);
         super.draw(gl);
     }
@@ -30,35 +29,15 @@ public class MovingCube extends Cube implements Collidable {
         boolean collide = false;
         Vector nextPos = checkNextPos(step, super.getOrigin());
         // check collision with player
-//        collide = CollisionDetector.point_cube(Player.getPos(), this);
-//        if(collide) {
-//            // game over!
-//            System.out.println("GAME OVER!");
-//        }
-        // check collision with other boxes
-        List<Cube> arr = World.getItemsList();
-        for (Cube c : arr) {
-            if (c == this) { continue;}
-            collide = CollisionDetector.cube_cube(this, c);
-            if (collide) {
-                this.changeStep();
-                if (c instanceof MovingCube) {
-                    ((MovingCube) c).changeStep();
-                }
-                break;
-            }
+        collide = CollisionDetector.point_cube(Player.getPos(), this);
+        if(collide) {
+            // game over!
+            System.out.println("GAME OVER!");
         }
-        arr = null;
-        // move in the desired direction
-        //check collision with walls
-        List<BlockWall> walls = World.getWalls();
-        for (BlockWall w : walls) {
-            collide = CollisionDetector.cube_cube(w, this);
-            if (collide) {
-                this.changeStep();
-                break;
-            }
-        }
+
+        collisionWithBoxes();
+//        collisionWithWalls();
+
         switch (direction) {
             case DOWN:
             case UP:
@@ -82,10 +61,36 @@ public class MovingCube extends Cube implements Collidable {
                 o.setZ(o.getZ()+step);
                 break;
         }
-
         return step;
     }
 
+    private void collisionWithWalls() {
+        boolean collide;
+        List<BlockWall> walls = World.getWalls();
+        for (BlockWall w : walls) {
+            collide = CollisionDetector.cube_cube(w, this);
+            if (collide) {
+                this.changeStep();
+//                break;
+            }
+        }
+    }
+
+    private void collisionWithBoxes() {
+        boolean collide;
+        List<Cube> arr = World.getItemsList();
+        for (Cube c : arr) {
+            if (c == this) { continue;}
+            collide = CollisionDetector.cube_cube(this, c);
+            if (collide) {
+                this.changeStep();
+                if (c instanceof MovingCube) {
+                    ((MovingCube) c).changeStep();
+                }
+//                break;
+            }
+        }
+    }
 
     private Vector checkNextPos(float step, Vector pos) {
         Vector newPos = new Vector(pos);

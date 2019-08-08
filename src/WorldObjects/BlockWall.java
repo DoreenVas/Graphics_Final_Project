@@ -26,10 +26,7 @@ public class BlockWall implements WorldObject, Collidable {
     protected Type type;
 
     public BlockWall(Vector leftBottomFront, float width, float height, float depth) {
-        this.p = leftBottomFront;
-        this.width = width;
-        this.height = height;
-        this.depth = depth;
+        this(leftBottomFront, width, height, depth,null,null);
     }
 
     public BlockWall(Vector leftBottomFront, float width, float height, float depth, String texture, Type t) {
@@ -149,7 +146,6 @@ public class BlockWall implements WorldObject, Collidable {
         }
         return false;
     }
-
 
     public Vector getCenter() {
         Vector c = new Vector(p.getX() + width/2, p.getY() + height/2, p.getZ() - depth/2);

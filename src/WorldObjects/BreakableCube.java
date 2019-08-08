@@ -9,11 +9,10 @@ public class BreakableCube extends Cube{
     private int hp;
 
     public BreakableCube(Vector v, float l, int lives) {
-        super(v, l);
-        this.hp = lives;
+        this(v,l,lives,null,null);
     }
 
-    public BreakableCube(Vector v, float l, String texturePath, Type t, int lives) {
+    public BreakableCube(Vector v, float l, int lives, String texturePath, Type t) {
         super(v, l, texturePath, t);
         this.hp = lives;
     }
