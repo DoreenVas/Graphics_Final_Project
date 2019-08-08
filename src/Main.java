@@ -18,6 +18,7 @@ import Scene.Sounds;
 import com.jogamp.opengl.util.Animator;
 
 public class Main extends JFrame {
+    static Boolean soundOn = true;
 
     public static void main(String[] args) {
 //        menu_window();
@@ -44,16 +45,18 @@ public class Main extends JFrame {
         JButton button = new JButton(icon);
         button.setBounds(325, 275, 150, 50);
 
+
         button.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
+                soundOn = false;
                 game_window();
             }
         });
 
         frame.add(button);
-        Sounds.makeSound("resources/sounds/intro.wav");
+        Sounds.makeLoopSound("resources/sounds/intro.wav");
         frame.validate();
         frame.setLayout(null);
         frame.setVisible(true);
