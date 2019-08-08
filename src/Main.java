@@ -26,18 +26,18 @@ public class Main extends JFrame {
 
     public static void menu_window(){
         JFrame frame = new JFrame();
-        //Create Image and set the window dimension
-        BufferedImage myImage = CreateImage.createImage("resources/pics/temple1.jpg");
-        Dimension dim = new Dimension(myImage.getWidth(),myImage.getHeight());
-        frame.setSize(dim);
+        frame.setSize(800, 600);
+
+        //Create Image and set in the given frame
+        CreateImage.createImage("resources/pics/temple1.jpg", frame);
 
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Game");
         frame.setResizable(false);
-        frame.setContentPane(new ImagePanel(myImage));
 
-        JButton button = new JButton("START PLAYING");
+        Button button = new Button("START PLAYING");
+        button.setBounds(400, 200, 20, 20);
         button.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -47,8 +47,9 @@ public class Main extends JFrame {
         });
 
         frame.add(button);
-        frame.getContentPane().add(button);
         Sounds.makeSound("resources/sounds/intro.wav");
+        frame.validate();
+        frame.setLayout(null);
         frame.setVisible(true);
     }
 
@@ -86,13 +87,17 @@ public class Main extends JFrame {
      */
     static class ImagePanel extends JComponent {
         private Image image;
-        public ImagePanel(Image image) {
+        private int width;
+        private int height;
+        public ImagePanel(Image image, int width, int height) {
             this.image = image;
+            this.width = width;
+            this.height = height;
         }
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            g.drawImage(image, 0, 0, this);
+            g.drawImage(image, 0, 0,width, height, this);
         }
     }
 
@@ -100,10 +105,11 @@ public class Main extends JFrame {
      * Creating the image based on the given path.
      */
     static class CreateImage{
-        private static  BufferedImage createImage(String path){
+        private static  BufferedImage createImage(String path, JFrame frame){
             BufferedImage myImage = null;
             try {
                 myImage = ImageIO.read(new File(path));
+                frame.setContentPane(new ImagePanel(myImage, frame.getWidth(), frame.getHeight()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
