@@ -6,6 +6,7 @@ import Enums.MovementEnum;
 import Utils.Vector;
 
 import javax.media.opengl.GL2;
+import java.util.List;
 
 public class MovingCube extends Cube implements Collidable {
     // members
@@ -34,18 +35,34 @@ public class MovingCube extends Cube implements Collidable {
 //    }
 
     public void draw(GL2 gl) {
-        boolean collide;
-//        Vector nextPos = checkNextPos(step, super.getOrigin());
-//        collide = CollisionDetector.cube_cube(this);
-//        if (collide) {
-//            step = step * -1;
-//        }
+
         this.step = moveCube(this.step, this.direction);
         super.draw(gl);
     }
 
 
     public float moveCube(float step, MovementEnum direction) {
+        boolean collide = false;
+        Vector nextPos = checkNextPos(step, super.getOrigin());
+        // check collision with player
+//        collide = CollisionDetector.point_cube(Player.getPos(), this);
+//        if(collide) {
+//            // game over!
+//            System.out.println("GAME OVER!");
+//        }
+//        // check collision with other boxes
+        List<Cube> arr = World.getItemsList();
+        for (Cube c : arr) {
+            if (c == this) { continue;}
+            collide = CollisionDetector.cube_cube(this, c);
+            if (collide) {
+                this.changeStep();
+                if (c instanceof MovingCube) {
+                    ((MovingCube) c).changeStep();
+                }
+                break;
+            }
+        }
         switch (direction) {
             case DOWN:
             case UP:
@@ -78,6 +95,10 @@ public class MovingCube extends Cube implements Collidable {
         Vector newPos = new Vector(pos);
         newPos.setX(newPos.getX() + step);
         return newPos;
+    }
+
+    public void changeStep() {
+        this.step = this.step * -1;
     }
 
     @Override

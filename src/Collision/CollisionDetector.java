@@ -132,7 +132,7 @@ public class CollisionDetector {
         distZ = (block1.getDepth()+block2.getDepth())/2;
         c1 = block1.getCenter();
         c2 = block2.getCenter();
-        d = c1.sub(c2);
+        d = new Vector(Math.abs(c1.getX() - c2.getX()), Math.abs(c1.getY() - c2.getY()), Math.abs(c1.getZ() - c2.getZ()));
         if (d.getX() < distX && d.getY() < distY && d.getZ() < distZ) {
             return true;
         }
