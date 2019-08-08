@@ -2,6 +2,7 @@ package WorldObjects;
 
 import Collision.Collidable;
 import Collision.CollisionDetector;
+import Enums.MovementEnum;
 import Utils.Vector;
 
 import javax.media.opengl.GL2;
@@ -11,10 +12,12 @@ public class MovingCube extends Cube implements Collidable {
 //    private Cube cube;
     private float step;
     private Type type = Type.stay;
+    private MovementEnum direction;
 
-    public MovingCube(Vector v, float l, String texturePath, Type t, float s) {
+    public MovingCube(Vector v, float l, String texturePath, Type t, float s, MovementEnum dir) {
         super(v, l, texturePath, t);
         this.step = s;
+        this.direction = dir;
     }
 
 //    public MovingCube(Cube c) {
@@ -37,8 +40,37 @@ public class MovingCube extends Cube implements Collidable {
 //        if (collide) {
 //            step = step * -1;
 //        }
-        this.step = super.moveCube(this.step);
+        this.step = moveCube(this.step, this.direction);
         super.draw(gl);
+    }
+
+
+    public float moveCube(float step, MovementEnum direction) {
+        switch (direction) {
+            case DOWN:
+            case UP:
+                if (o.getY()-1 < -1 || o.getY()+length+1 > 10) {
+                    step = step * -1;
+                }
+                o.setY(o.getY()+step);
+                break;
+            case LEFT:
+            case RIGHT:
+                if (o.getX()-1 < -10 || o.getX()+length+1 > 10) {
+                    step = step * -1;
+                }
+                o.setX(o.getX()+step);
+                break;
+            case FORWARD:
+            case BACKWARD:
+                if (o.getZ()-1 < -10 || o.getZ()+length+1 > 10) {
+                    step = step * -1;
+                }
+                o.setZ(o.getZ()+step);
+                break;
+        }
+
+        return step;
     }
 
 
