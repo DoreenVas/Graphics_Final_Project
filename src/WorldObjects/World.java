@@ -52,42 +52,6 @@ public class World {
     }
 
     private void createWalls() {
-//        walls[0] = new Wall(new Vector(-10f,-1f,-75f),
-//                new Vector(10f,-1f,-75f),
-//                new Vector(10f,-1f,25f),
-//                new Vector(-10f,-1f,25f),
-//                "resources/pics/floor.jpeg",
-//                Collidable.Type.stay);
-//        walls[1] = new Wall(new Vector(10f,10f,-75f),
-//                new Vector(-10,10,-75),
-//                new Vector(-10,10,25),
-//                new Vector(10,10,25),
-//                "resources/pics/cave.jpg",
-//                Collidable.Type.stay);
-//        walls[2] = new Wall(new Vector(10,10,25),
-//                new Vector(-10,10,25),
-//                new Vector(-10,-1,25),
-//                new Vector(10,-1,25),
-//                "resources/pics/steel-box.jpg",
-//                Collidable.Type.stay);
-//        walls[3] = new Wall(new Vector(-10,10,-75),
-//                new Vector(10,10,-75),
-//                new Vector(10,-1,-75),
-//                new Vector(-10,-1,-75),
-//                "resources/pics/steel-box.jpg",
-//                Collidable.Type.stay);
-//        walls[4] = new Wall(new Vector(10,10,-75),
-//                new Vector(10,10,25),
-//                new Vector(10,-1,25),
-//                new Vector(10,-1,-75),
-//                "resources/pics/steel-box.jpg",
-//                Collidable.Type.stay);
-//        walls[5] = new Wall(new Vector(-10,10,25),
-//                new Vector(-10,10,-75),
-//                new Vector(-10,-1,-75),
-//                new Vector(-10,-1,25),
-//                "resources/pics/steel-box.jpg",
-//                Collidable.Type.stay);
         // floor
         walls.add(new BlockWall(new Vector(-11f,-2f,25f),
                 22,1,100,
@@ -126,7 +90,7 @@ public class World {
                 "resources/pics/floor.jpeg",
                 Collidable.Type.stay));
         // ceiling
-        walls.add(new BlockWall(new Vector(10f,10f,-65f),
+        walls.add(new BlockWall(new Vector(10f,11f,-65f),
                 40,1,20,
                 "resources/pics/cave.jpg",
                 Collidable.Type.stay));

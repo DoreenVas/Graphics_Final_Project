@@ -61,7 +61,7 @@ public class Player implements HitListener, Collidable {
     public void move(MovementEnum direction) {
         boolean itemsCollision, wallsCollision;
         Vector nextPos = checkNextPos(pos, direction);
-        itemsCollision = CollisionDetector.checkItemsCollisions(nextPos);
+        itemsCollision = CollisionDetector.checkPlayerItemsCollisions(nextPos);
         wallsCollision = CollisionDetector.checkCollisionWithWalls(nextPos);
         if (!wallsCollision && !itemsCollision) {
             switch(direction) {

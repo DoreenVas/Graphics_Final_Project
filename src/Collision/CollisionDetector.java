@@ -83,7 +83,7 @@ public class CollisionDetector {
         return angles;
     }
 
-    public static boolean checkItemsCollisions(Vector point) {
+    public static boolean checkPlayerItemsCollisions(Vector point) {
         ArrayList<Cube> itemsList = World.getItemsList();
         for(Cube c : itemsList) {
             if(point_cube(point, c)) {
