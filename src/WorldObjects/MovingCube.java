@@ -4,13 +4,11 @@ import Collision.Collidable;
 import Collision.CollisionDetector;
 import Enums.MovementEnum;
 import Utils.Vector;
-
 import javax.media.opengl.GL2;
 import java.util.List;
 
 public class MovingCube extends Cube implements Collidable {
     // members
-//    private Cube cube;
     private float step;
     private Type type = Type.stay;
     private MovementEnum direction;
@@ -20,19 +18,6 @@ public class MovingCube extends Cube implements Collidable {
         this.step = s;
         this.direction = dir;
     }
-
-//    public MovingCube(Cube c) {
-//        this.cube = c;
-//    }
-//
-//    public void draw(GL2 gl) {
-//        this.step = this.cube.moveCube(this.step);
-//        this.cube.draw(gl);
-//    }
-//
-//    public Cube getCube() {
-//        return this.cube;
-//    }
 
     public void draw(GL2 gl) {
 
@@ -50,7 +35,7 @@ public class MovingCube extends Cube implements Collidable {
 //            // game over!
 //            System.out.println("GAME OVER!");
 //        }
-//        // check collision with other boxes
+        // check collision with other boxes
         List<Cube> arr = World.getItemsList();
         for (Cube c : arr) {
             if (c == this) { continue;}

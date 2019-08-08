@@ -6,12 +6,8 @@
  */
 package WorldObjects;
 
-import Coordinations.Coordination;
-import Enums.MovementEnum;
-import Enums.SteerEnum;
 import Utils.Vector;
 import com.jogamp.opengl.util.gl2.GLUT;
-
 import javax.media.opengl.GL2;
 
 public class Sphere implements WorldObject {

@@ -8,7 +8,6 @@ package WorldObjects;
 
 import Collision.Collidable;
 import Collision.HitListener;
-import Enums.MovementEnum;
 import Utils.Vector;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
@@ -73,75 +72,6 @@ public class Cube extends BlockWall implements Collidable{
     }
 
     public void draw(GL2 gl) {
-        // update position
-        //moveCube();
-//
-//        gl.glPushMatrix();
-//
-//        cubeTexture.bind(gl);
-//        gl.glEnable(GL2.GL_TEXTURE_2D);
-//
-//        gl.glBegin(GL2.GL_QUADS);
-//        // Front Face
-//        gl.glTexCoord2f(0.0f, 0.0f);
-//        gl.glVertex3f(o.getX(), o.getY(), o.getZ());
-//        gl.glTexCoord2f(1f, 0.0f);
-//        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ());
-//        gl.glTexCoord2f(1f, 1.0f);
-//        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ());
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ());
-//        // Back Face
-//        gl.glTexCoord2f(1.0f, 0.0f);
-//        gl.glVertex3f(o.getX(), o.getY(), o.getZ()-length);
-//        gl.glTexCoord2f(1.0f, 1.0f);
-//        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ()-length);
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ()-length);
-//        gl.glTexCoord2f(0.0f, 0.0f);
-//        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ()-length);
-//        // Top Face
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ()-length);
-//        gl.glTexCoord2f(0.0f, 0.0f);
-//        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ());
-//        gl.glTexCoord2f(1.0f, 0.0f);
-//        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ());
-//        gl.glTexCoord2f(1.0f, 1.0f);
-//        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ()-length);
-//        // Bottom Face
-//        gl.glTexCoord2f(1.0f, 1.0f);
-//        gl.glVertex3f(o.getX(), o.getY(), o.getZ()-length);
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ()-length);
-//        gl.glTexCoord2f(0.0f, 0.0f);
-//        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ());
-//        gl.glTexCoord2f(1.0f, 0.0f);
-//        gl.glVertex3f(o.getX(), o.getY(), o.getZ());
-//        // Right face
-//        gl.glTexCoord2f(1.0f, 0.0f);
-//        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ()-length);
-//        gl.glTexCoord2f(1.0f, 1.0f);
-//        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ()-length);
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ());
-//        gl.glTexCoord2f(0.0f, 0.0f);
-//        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ());
-//        // Left Face
-//        gl.glTexCoord2f(0.0f, 0.0f);
-//        gl.glVertex3f(o.getX(), o.getY(), o.getZ()-length);
-//        gl.glTexCoord2f(1.0f, 0.0f);
-//        gl.glVertex3f(o.getX(), o.getY(), o.getZ());
-//        gl.glTexCoord2f(1.0f, 1.0f);
-//        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ());
-//        gl.glTexCoord2f(0.0f, 1.0f);
-//        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ()-length);
-//
-//        gl.glEnd();
-//        gl.glDisable(GL2.GL_TEXTURE_2D);
-//
-//        gl.glPopMatrix();
-//        gl.glFlush();
         super.draw(gl);
     }
 

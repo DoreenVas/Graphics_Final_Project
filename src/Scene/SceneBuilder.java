@@ -7,7 +7,6 @@
 package Scene;
 
 import Collision.Collidable;
-import Collision.CollisionDetector;
 import Enums.MovementEnum;
 import Enums.SteerEnum;
 import WorldObjects.*;
@@ -27,8 +26,6 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
     private static GLU glu = new GLU();
     private World world;
-//    private MovingCube movingCube1;
-//    private Sphere sphere;
     private Player player;
     private float alpha = (float)Math.toRadians(5);
     private static float step = 0.1f;
@@ -50,9 +47,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
                 up.getZ());
 
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
-//        movingCube1.draw(gl);
         world.draw(gl);
-//        sphere.draw(gl);
     }
 
     public void displayChanged(GLAutoDrawable gLDrawable, boolean modeChanged, boolean deviceChanged) {
@@ -75,13 +70,13 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
 //        movingCube1 = new MovingCube(new Cube(new Vector(5, -1, -20), 2, "resources/pics/steel-box.jpg", Collidable.Type.stay));
         MovingCube movingCube1 = new MovingCube(new Vector(-9, -1, -10), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.RIGHT);
+                "resources/pics/moving_box.png", Collidable.Type.stay, 0.02f, MovementEnum.RIGHT);
         MovingCube movingCube2 = new MovingCube(new Vector(7, -1, -10), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, -0.2f, MovementEnum.LEFT);
+                "resources/pics/moving_box.png", Collidable.Type.stay, -0.02f, MovementEnum.LEFT);
         MovingCube movingCube3 = new MovingCube(new Vector(-9, -1, -24), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.RIGHT);
+                "resources/pics/moving_box.png", Collidable.Type.stay, 0.02f, MovementEnum.RIGHT);
         MovingCube movingCube4 = new MovingCube(new Vector(-1, 7, -35), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.DOWN);
+                "resources/pics/moving_box.png", Collidable.Type.stay, 0.02f, MovementEnum.DOWN);
 
         world = new World();
         world.addToList(tnt1);

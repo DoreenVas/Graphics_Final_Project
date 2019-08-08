@@ -13,13 +13,11 @@ import java.util.ArrayList;
 public class World {
     // members
     private static ArrayList<Cube> itemsList;
-//    private static Wall[] walls;
     private static ArrayList<BlockWall> walls;
     private static ArrayList<BreakableCube> breakWall;
 
     public World() {
         itemsList = new ArrayList<>();
-//        walls = new Wall[6];
         walls = new ArrayList<>();
         breakWall = new ArrayList<>();
         createWalls();
@@ -35,9 +33,6 @@ public class World {
         float mat_ambient[] = {1f, 1f, 1f, 1.0f};
         gl.glMaterialfv(GL2.GL_FRONT, GL2.GL_AMBIENT, mat_ambient, 0);
 
-//        for (Wall w : walls) {
-//            w.draw(gl);
-//        }
         for (BlockWall w : walls) {
             w.draw(gl);
         }
@@ -147,10 +142,6 @@ public class World {
     public static void removeFromList(Cube c) {
         itemsList.remove(c);
     }
-
-//    public static Wall[] getWalls() {
-//        return walls;
-//    }
 
     public static ArrayList<BlockWall> getWalls() {
         return walls;

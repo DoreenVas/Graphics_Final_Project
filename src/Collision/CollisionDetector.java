@@ -3,13 +3,11 @@ package Collision;
 import Scene.Sounds;
 import Utils.Vector;
 import WorldObjects.*;
-
 import java.util.ArrayList;
 
 public class CollisionDetector {
     // memebers
     private static float itemsThreshold = 130.0f;
-    private static float wallsThreshold = 1.5f;
 
     /*****
      * Check collision between a cube and a point.
@@ -108,14 +106,7 @@ public class CollisionDetector {
     }
 
     public static boolean checkCollisionWithWalls(Vector point) {
-//        Wall walls[] = World.getWalls();
         ArrayList<BlockWall> walls = World.getWalls();
-//        for (BlockWall w : walls) {
-//            Vector[] vertexes = w.getVertexes();
-//            if (point_polygon(point, vertexes[0], vertexes[1], vertexes[2], vertexes[3], wallsThreshold)) {
-//                return true;
-//            }
-//        }
         for (BlockWall w : walls) {
             if (w.checkInside(point)) {
                 return true;
