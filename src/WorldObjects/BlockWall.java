@@ -20,30 +20,17 @@ import java.io.IOException;
 
 public class BlockWall implements WorldObject, Collidable {
     // members
-    private Texture wallTexture;
-//    private Vector[] vertexes;
-    private Vector p;
-    private float width, height, depth;
-    private Type type;
+    protected Texture wallTexture;
+    protected Vector p;
+    protected float width, height, depth;
+    protected Type type;
 
-//    public BlockWall(Vector p1, Vector p2, Vector p3, Vector p4, Vector p5, Vector p6, Vector p7, Vector p8, String texture, Type t) {
-//        try {
-//            vertexes = new Vector[8];
-//            vertexes[0] = p1;
-//            vertexes[1] = p2;
-//            vertexes[2] = p3;
-//            vertexes[3] = p4;
-//            vertexes[4] = p5;
-//            vertexes[5] = p6;
-//            vertexes[6] = p7;
-//            vertexes[7] = p8;
-//            wallTexture= TextureIO.newTexture(new File( texture ),true);
-//            type = t;
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            throw new RuntimeException(e);
-//        }
-//    }
+    public BlockWall(Vector leftBottomFront, float width, float height, float depth) {
+        this.p = leftBottomFront;
+        this.width = width;
+        this.height = height;
+        this.depth = depth;
+    }
 
     public BlockWall(Vector leftBottomFront, float width, float height, float depth, String texture, Type t) {
         this.p = leftBottomFront;
@@ -132,41 +119,15 @@ public class BlockWall implements WorldObject, Collidable {
         return this.type;
     }
 
-//    public Vector[] getVertexes() {
-//        return vertexes;
-//    }
-
-    @Override
-    public void activateMove(MovementEnum direction) {
-
-    }
-
-    @Override
-    public void activateRotate(SteerEnum rotateDirection) {
-
-    }
-
     @Override
     public Vector getLocation() {
-        return null;
-    }
-
-    @Override
-    public Coordination getCoordination() {
-        return null;
+        return this.p;
     }
 
     @Override
     public void hit(Player hitter) {
         return;
     }
-
-//    public Vector getCenter() {
-//        Vector c;
-//        c = new Vector(vertexes[0].add(vertexes[2].multByScalar(0.5f)));
-//        return c;
-//    }
-
 
     public float getWidth() {
         return width;
@@ -187,5 +148,11 @@ public class BlockWall implements WorldObject, Collidable {
             return true;
         }
         return false;
+    }
+
+
+    public Vector getCenter() {
+        Vector c = new Vector(p.getX() + width/2, p.getY() + height/2, p.getZ() - depth/2);
+        return c;
     }
 }

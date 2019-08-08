@@ -36,7 +36,7 @@ public class MovingCube extends Cube implements Collidable {
     public void draw(GL2 gl) {
         boolean collide;
 //        Vector nextPos = checkNextPos(step, super.getOrigin());
-//        collide = CollisionDetector.checkItemsCollisions(nextPos);
+//        collide = CollisionDetector.cube_cube(this);
 //        if (collide) {
 //            step = step * -1;
 //        }

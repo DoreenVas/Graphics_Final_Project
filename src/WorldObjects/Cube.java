@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cube implements Collidable{
+public class Cube extends BlockWall implements Collidable{
     // members
     private List<HitListener> hitListeners;
     protected Texture cubeTexture;
@@ -29,6 +29,7 @@ public class Cube implements Collidable{
     private Vector[] arr = new Vector[8];
 
     public Cube(Vector v, float l) {
+        super(v, l, l, l);
         o = v;
         length = l;
         arr[0] = new Vector(o.getX(), o.getY(), o.getZ());
@@ -42,6 +43,7 @@ public class Cube implements Collidable{
     }
 
     public Cube(Vector v, float l, String texturePath, Type t) {
+        super(v, l, l, l, texturePath, t);
         try {
             type = t;
             o = v;
@@ -73,73 +75,74 @@ public class Cube implements Collidable{
     public void draw(GL2 gl) {
         // update position
         //moveCube();
-
-        gl.glPushMatrix();
-
-        cubeTexture.bind(gl);
-        gl.glEnable(GL2.GL_TEXTURE_2D);
-
-        gl.glBegin(GL2.GL_QUADS);
-        // Front Face
-        gl.glTexCoord2f(0.0f, 0.0f);
-        gl.glVertex3f(o.getX(), o.getY(), o.getZ());
-        gl.glTexCoord2f(1f, 0.0f);
-        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ());
-        gl.glTexCoord2f(1f, 1.0f);
-        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ());
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ());
-        // Back Face
-        gl.glTexCoord2f(1.0f, 0.0f);
-        gl.glVertex3f(o.getX(), o.getY(), o.getZ()-length);
-        gl.glTexCoord2f(1.0f, 1.0f);
-        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ()-length);
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ()-length);
-        gl.glTexCoord2f(0.0f, 0.0f);
-        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ()-length);
-        // Top Face
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ()-length);
-        gl.glTexCoord2f(0.0f, 0.0f);
-        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ());
-        gl.glTexCoord2f(1.0f, 0.0f);
-        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ());
-        gl.glTexCoord2f(1.0f, 1.0f);
-        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ()-length);
-        // Bottom Face
-        gl.glTexCoord2f(1.0f, 1.0f);
-        gl.glVertex3f(o.getX(), o.getY(), o.getZ()-length);
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ()-length);
-        gl.glTexCoord2f(0.0f, 0.0f);
-        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ());
-        gl.glTexCoord2f(1.0f, 0.0f);
-        gl.glVertex3f(o.getX(), o.getY(), o.getZ());
-        // Right face
-        gl.glTexCoord2f(1.0f, 0.0f);
-        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ()-length);
-        gl.glTexCoord2f(1.0f, 1.0f);
-        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ()-length);
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ());
-        gl.glTexCoord2f(0.0f, 0.0f);
-        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ());
-        // Left Face
-        gl.glTexCoord2f(0.0f, 0.0f);
-        gl.glVertex3f(o.getX(), o.getY(), o.getZ()-length);
-        gl.glTexCoord2f(1.0f, 0.0f);
-        gl.glVertex3f(o.getX(), o.getY(), o.getZ());
-        gl.glTexCoord2f(1.0f, 1.0f);
-        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ());
-        gl.glTexCoord2f(0.0f, 1.0f);
-        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ()-length);
-
-        gl.glEnd();
-        gl.glDisable(GL2.GL_TEXTURE_2D);
-
-        gl.glPopMatrix();
-        gl.glFlush();
+//
+//        gl.glPushMatrix();
+//
+//        cubeTexture.bind(gl);
+//        gl.glEnable(GL2.GL_TEXTURE_2D);
+//
+//        gl.glBegin(GL2.GL_QUADS);
+//        // Front Face
+//        gl.glTexCoord2f(0.0f, 0.0f);
+//        gl.glVertex3f(o.getX(), o.getY(), o.getZ());
+//        gl.glTexCoord2f(1f, 0.0f);
+//        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ());
+//        gl.glTexCoord2f(1f, 1.0f);
+//        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ());
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ());
+//        // Back Face
+//        gl.glTexCoord2f(1.0f, 0.0f);
+//        gl.glVertex3f(o.getX(), o.getY(), o.getZ()-length);
+//        gl.glTexCoord2f(1.0f, 1.0f);
+//        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ()-length);
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ()-length);
+//        gl.glTexCoord2f(0.0f, 0.0f);
+//        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ()-length);
+//        // Top Face
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ()-length);
+//        gl.glTexCoord2f(0.0f, 0.0f);
+//        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ());
+//        gl.glTexCoord2f(1.0f, 0.0f);
+//        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ());
+//        gl.glTexCoord2f(1.0f, 1.0f);
+//        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ()-length);
+//        // Bottom Face
+//        gl.glTexCoord2f(1.0f, 1.0f);
+//        gl.glVertex3f(o.getX(), o.getY(), o.getZ()-length);
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ()-length);
+//        gl.glTexCoord2f(0.0f, 0.0f);
+//        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ());
+//        gl.glTexCoord2f(1.0f, 0.0f);
+//        gl.glVertex3f(o.getX(), o.getY(), o.getZ());
+//        // Right face
+//        gl.glTexCoord2f(1.0f, 0.0f);
+//        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ()-length);
+//        gl.glTexCoord2f(1.0f, 1.0f);
+//        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ()-length);
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(o.getX()+length, o.getY()+length, o.getZ());
+//        gl.glTexCoord2f(0.0f, 0.0f);
+//        gl.glVertex3f(o.getX()+length, o.getY(), o.getZ());
+//        // Left Face
+//        gl.glTexCoord2f(0.0f, 0.0f);
+//        gl.glVertex3f(o.getX(), o.getY(), o.getZ()-length);
+//        gl.glTexCoord2f(1.0f, 0.0f);
+//        gl.glVertex3f(o.getX(), o.getY(), o.getZ());
+//        gl.glTexCoord2f(1.0f, 1.0f);
+//        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ());
+//        gl.glTexCoord2f(0.0f, 1.0f);
+//        gl.glVertex3f(o.getX(), o.getY()+length, o.getZ()-length);
+//
+//        gl.glEnd();
+//        gl.glDisable(GL2.GL_TEXTURE_2D);
+//
+//        gl.glPopMatrix();
+//        gl.glFlush();
+        super.draw(gl);
     }
 
 
@@ -167,10 +170,5 @@ public class Cube implements Collidable{
         for (HitListener hl : listeners) {
             hl.hitEvent(this, hitter);
         }
-    }
-
-    public Vector getCenter() {
-        Vector c = new Vector(o.getX() + length/2, o.getY() + length/2, o.getZ() - length/2);
-        return c;
     }
 }

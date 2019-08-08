@@ -16,8 +16,5 @@ import java.util.ArrayList;
 
 public interface WorldObject {
     void draw(GL2 gl);
-    void activateMove(MovementEnum direction);
-    void activateRotate(SteerEnum rotateDirection);
     Vector getLocation();
-    Coordination getCoordination();
 }
