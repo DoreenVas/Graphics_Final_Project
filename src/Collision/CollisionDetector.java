@@ -87,7 +87,7 @@ public class CollisionDetector {
         ArrayList<Cube> itemsList = World.getItemsList();
         for(Cube c : itemsList) {
             if(point_cube(point, c)) {
-                if(c.getType()== Collidable.Type.vanish) {
+                if(c.getType()== Collidable.Type.tnt) {
                     Sounds.makeSound("resources/sounds/Evil_Laugh.wav");
                     World.removeFromList(c);
                 }

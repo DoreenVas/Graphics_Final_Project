@@ -5,7 +5,7 @@ import WorldObjects.Player;
 public interface Collidable {
 
     enum Type {
-        vanish, stay, player
+        tnt, stay, player, breakable
     };
     void hit(Player hitter);
 }

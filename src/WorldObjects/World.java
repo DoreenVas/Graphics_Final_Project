@@ -15,11 +15,13 @@ public class World {
     private static ArrayList<Cube> itemsList;
 //    private static Wall[] walls;
     private static ArrayList<BlockWall> walls;
+    private static ArrayList<BreakableCube> breakWall;
 
     public World() {
         itemsList = new ArrayList<>();
 //        walls = new Wall[6];
         walls = new ArrayList<>();
+        breakWall = new ArrayList<>();
         createWalls();
     }
 
@@ -38,6 +40,10 @@ public class World {
 //        }
         for (BlockWall w : walls) {
             w.draw(gl);
+        }
+
+        for (BreakableCube b : breakWall) {
+            b.draw(gl);
         }
 
         for (Cube c : itemsList) {
@@ -104,7 +110,7 @@ public class World {
                 Collidable.Type.stay));
         // right wall
         walls.add(new BlockWall(new Vector(10,-2,25),
-                1,13,80,
+                1,13,100,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // left wall
@@ -115,22 +121,22 @@ public class World {
 
         // after turn
         // floor
-        walls.add(new BlockWall(new Vector(10f,-2f,-55f),
+        walls.add(new BlockWall(new Vector(10f,-2f,-65f),
                 40,1,20,
                 "resources/pics/floor.jpeg",
                 Collidable.Type.stay));
         // ceiling
-        walls.add(new BlockWall(new Vector(10f,10f,-55f),
+        walls.add(new BlockWall(new Vector(10f,10f,-65f),
                 40,1,20,
                 "resources/pics/cave.jpg",
                 Collidable.Type.stay));
         // back wall
-        walls.add(new BlockWall(new Vector(50,-2,-55),
+        walls.add(new BlockWall(new Vector(50,-2,-65),
                 1,13,20,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // right wall
-        walls.add(new BlockWall(new Vector(10,-2,-55),
+        walls.add(new BlockWall(new Vector(10,-2,-65),
                 40,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
