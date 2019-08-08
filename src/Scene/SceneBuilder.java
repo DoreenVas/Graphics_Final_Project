@@ -69,16 +69,19 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
         gl.glEnable(GL2.GL_TEXTURE_2D);
 
-        Cube tnt1 = new Cube(new Vector(-9,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.vanish);
-        Cube tnt2 = new Cube(new Vector(-1,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.vanish);
-        Cube tnt3 = new Cube(new Vector(7,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.vanish);
+        Cube tnt1 = new Cube(new Vector(-9,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.tnt);
+        Cube tnt2 = new Cube(new Vector(-1,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.tnt);
+        Cube tnt3 = new Cube(new Vector(7,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.tnt);
+
 //        movingCube1 = new MovingCube(new Cube(new Vector(5, -1, -20), 2, "resources/pics/steel-box.jpg", Collidable.Type.stay));
         MovingCube movingCube1 = new MovingCube(new Vector(-9, -1, -10), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f);
+                "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.RIGHT);
         MovingCube movingCube2 = new MovingCube(new Vector(7, -1, -17), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, -0.2f);
+                "resources/pics/moving_box.png", Collidable.Type.stay, -0.2f, MovementEnum.LEFT);
         MovingCube movingCube3 = new MovingCube(new Vector(-9, -1, -24), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f);
+                "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.RIGHT);
+        MovingCube movingCube4 = new MovingCube(new Vector(-1, 8, -35), 2,
+                "resources/pics/moving_box.png", Collidable.Type.stay, 0.2f, MovementEnum.DOWN);
 
         world = new World();
         world.addToList(tnt1);
@@ -87,6 +90,16 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         world.addToList(movingCube1);
         world.addToList(movingCube2);
         world.addToList(movingCube3);
+        world.addToList(movingCube4);
+
+        Vector p;
+        for (int z = -65; z > -75; z-=2) {
+            for (int y = -1; y < 9; y+=2) {
+                p = new Vector(10, y, z);
+                world.addToList(new BreakableCube(p, 2, "resources/pics/box.jpg", Collidable.Type.breakable,3));
+            }
+        }
+
         player = new Player();
 //        sphere = new Sphere(1, -5, 2, 0);
 

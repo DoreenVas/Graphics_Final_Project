@@ -8,6 +8,7 @@ package WorldObjects;
 
 import Collision.Collidable;
 import Collision.HitListener;
+import Enums.MovementEnum;
 import Utils.Vector;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
@@ -20,12 +21,12 @@ import java.util.List;
 public class Cube implements Collidable{
     // members
     private List<HitListener> hitListeners;
-    private Texture cubeTexture;
-    private Vector o; //left bottom corner close to view
-    private float length;
+    protected Texture cubeTexture;
+    protected Vector o; //left bottom corner close to view
+    protected float length;
+    protected Type type;
 
     private Vector[] arr = new Vector[8];
-    private Type type;
 
     public Cube(Vector v, float l) {
         o = v;
@@ -141,13 +142,6 @@ public class Cube implements Collidable{
         gl.glFlush();
     }
 
-    public float moveCube(float step) {
-        if (o.getX()-1 < -10 || o.getX()+length+1 > 10) {
-            step = step * -1;
-        }
-        o.setX(o.getX()+step);
-        return step;
-    }
 
     public Vector getOrigin() {
         return o;
