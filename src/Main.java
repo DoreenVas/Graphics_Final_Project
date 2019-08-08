@@ -36,8 +36,14 @@ public class Main extends JFrame {
         frame.setTitle("Game");
         frame.setResizable(false);
 
-        Button button = new Button("START PLAYING");
-        button.setBounds(400, 200, 100, 20);
+        //setting button with icon
+        ImageIcon icon = new ImageIcon("resources/pics/start.png");
+        Image img = icon.getImage() ;
+        Image newimg = img.getScaledInstance( 150, 50,  java.awt.Image.SCALE_SMOOTH ) ;
+        icon = new ImageIcon(newimg);
+        JButton button = new JButton(icon);
+        button.setBounds(325, 300, 150, 50);
+
         button.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
