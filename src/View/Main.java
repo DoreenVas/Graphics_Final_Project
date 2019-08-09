@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.imageio.ImageIO;
 import javax.media.opengl.awt.GLCanvas;
 import javax.swing.*;
@@ -19,9 +20,9 @@ import com.jogamp.opengl.util.Animator;
 
 public class Main extends JFrame {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, SQLException {
         Menu menu = new Menu();
-        menu.menu_window();
+        menu.menu_window("resources/pics/temple.jpg","Can you escape the temple of doom?");
 //        Game game = new Game();
 //        game.game_window();
     }

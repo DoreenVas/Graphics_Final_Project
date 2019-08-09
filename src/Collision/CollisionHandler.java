@@ -14,7 +14,7 @@ public class CollisionHandler {
     public static void lose(){
         try {
             ViewManager manager = ViewManager.getInstance();
-            manager.closeGameFrame();
+            manager.lose();
         } catch (Exception e) {
             e.printStackTrace();
         }

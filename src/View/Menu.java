@@ -5,20 +5,33 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class Menu {
 
-    public static void menu_window(){
+    public static void menu_window(String picPath, String labelText) throws IOException, SQLException {
         JFrame frame = new JFrame();
+        ViewManager manager = ViewManager.getInstance();
+        manager.setMenuFrame(frame);
+
         frame.setSize(800, 600);
 
         //Create Image and set in the given frame
-        Main.CreateImage.createImage("resources/pics/temple.jpg", frame);
+        Main.CreateImage.createImage(picPath, frame);
 
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Game");
         frame.setResizable(false);
+
+        //setting label
+        JLabel label = new JLabel();
+        label.setText(labelText);
+        label.setBounds(125,100,550,50);
+        label.setForeground(Color.BLACK);
+        label.setFont(new java.awt.Font("Arial", Font.BOLD, 30));
+        frame.add(label);
 
         //setting button with icon
         ImageIcon icon = new ImageIcon("resources/pics/start.png");
@@ -26,15 +39,17 @@ public class Menu {
         Image newimg = img.getScaledInstance( 150, 50,  java.awt.Image.SCALE_SMOOTH ) ;
         icon = new ImageIcon(newimg);
         JButton button = new JButton(icon);
-        button.setBounds(325, 275, 150, 50);
-
+        button.setBounds(325, 400, 150, 50);
 
         button.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                Game game = new Game();
-                game.game_window();
+                try {
+                    manager.startGame();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
             }
         });
 

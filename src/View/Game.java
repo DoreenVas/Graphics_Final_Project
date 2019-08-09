@@ -13,15 +13,10 @@ public class Game {
     /***
      * Setting the game window
      */
-    protected static void game_window() {
+    protected static void game_window() throws IOException, SQLException {
         JFrame game_frame = new JFrame();
-
-        try {
-            ViewManager manager = ViewManager.getInstance();
-            manager.setGameFrame(game_frame);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ViewManager manager = ViewManager.getInstance();
+        manager.setGameFrame(game_frame);
 
         GLCanvas canvas = new GLCanvas();
         Animator animator = new Animator(canvas);
@@ -44,6 +39,5 @@ public class Game {
         game_frame.setVisible(true);
         animator.start();
         canvas.requestFocus();
-//        frame.dispose();
     }
 }
