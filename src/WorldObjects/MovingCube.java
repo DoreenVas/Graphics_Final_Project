@@ -27,9 +27,9 @@ public class MovingCube extends Cube implements Collidable {
 
     public float moveCube(float step, MovementEnum direction) {
         boolean collide = false;
-        Vector nextPos = checkNextPos(step, super.getOrigin());
+        Vector nextPos = checkNextPos(step, super.getOrigin(), direction);
         // check collision with player
-        collide = CollisionDetector.point_cube(Player.getPos(), this);
+        collide = CollisionDetector.point_cube(Player.getPos(), new Cube(nextPos, length));
         if(collide) {
             // game over!
             System.out.println("GAME OVER!");
@@ -92,9 +92,28 @@ public class MovingCube extends Cube implements Collidable {
         }
     }
 
-    private Vector checkNextPos(float step, Vector pos) {
+    private Vector checkNextPos(float step, Vector pos, MovementEnum direction) {
         Vector newPos = new Vector(pos);
-        newPos.setX(newPos.getX() + step);
+        switch (direction) {
+            case FORWARD:
+                newPos.setZ(newPos.getZ() - step);
+                break;
+            case BACKWARD:
+                newPos.setZ(newPos.getZ() + step);
+                break;
+            case UP:
+                newPos.setY(newPos.getY() + step);
+                break;
+            case DOWN:
+                newPos.setY(newPos.getY() - step);
+                break;
+            case RIGHT:
+                newPos.setX(newPos.getX() + step);
+                break;
+            case LEFT:
+                newPos.setX(newPos.getX() - step);
+                break;
+        }
         return newPos;
     }
 

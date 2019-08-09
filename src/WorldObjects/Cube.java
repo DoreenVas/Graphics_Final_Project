@@ -38,7 +38,9 @@ public class Cube extends BlockWall implements Collidable{
             o = v;
             length = l;
             String cubeTextureFile = texturePath; // the FileName to open
-            cubeTexture= TextureIO.newTexture(new File( cubeTextureFile ),true);
+            if (cubeTextureFile != null) {
+                cubeTexture = TextureIO.newTexture(new File(cubeTextureFile), true);
+            }
             arr[0] = new Vector(o.getX(), o.getY(), o.getZ());
             arr[1] = new Vector(o.getX()+length, o.getY(), o.getZ());
             arr[2] = new Vector(o.getX()+length, o.getY()+length, o.getZ());

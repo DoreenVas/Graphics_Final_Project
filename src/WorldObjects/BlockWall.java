@@ -35,10 +35,12 @@ public class BlockWall implements WorldObject, Collidable {
         this.height = height;
         this.depth = depth;
         this.type = t;
-        try {
-            wallTexture= TextureIO.newTexture(new File( texture ),true);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (texture != null) {
+            try {
+                wallTexture = TextureIO.newTexture(new File(texture), true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
