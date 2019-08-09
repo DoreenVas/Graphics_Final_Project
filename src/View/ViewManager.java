@@ -41,7 +41,7 @@ public class ViewManager {
     }
 
     public void lose() throws IOException, SQLException {
-        showWindow("resources/pics/win.jpg", "The temple remains unbeatable");
+        showWindow("resources/pics/lose.jpg", "The temple remains unbeatable");
     }
 
     public void win() throws IOException, SQLException {
