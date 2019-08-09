@@ -41,19 +41,20 @@ public class ViewManager {
     }
 
     public void lose() throws IOException, SQLException {
-        Menu menu = new Menu();
-        menu.menu_window("resources/pics/win.jpg","The temple remains unbeatable");
-        if(game_frame != null){
-            game_frame.dispose();
-        }
-        else {
-            System.out.println("game_frame is null");
-        }
+        showWindow("resources/pics/win.jpg", "The temple remains unbeatable");
     }
 
     public void win() throws IOException, SQLException {
+        showWindow("resources/pics/win.jpg", "Winner, Great Job!");
+    }
+
+    public void mainMenu() throws IOException, SQLException {
+        showWindow("resources/pics/temple.jpg","Can you escape the temple of doom?");
+    }
+
+    private void showWindow(String picPath, String labelText) throws IOException, SQLException {
         Menu menu = new Menu();
-        menu.menu_window("resources/pics/win.jpg","Winner, nice job!");
+        menu.menu_window(picPath,labelText);
         if(game_frame != null){
             game_frame.dispose();
         }
@@ -62,7 +63,7 @@ public class ViewManager {
         }
     }
 
-    public void startGame() throws IOException, SQLException {
+    protected void startGame() throws IOException, SQLException {
         Game game = new Game();
         game.game_window();
         if(menu_frame != null){

@@ -21,8 +21,8 @@ import com.jogamp.opengl.util.Animator;
 public class Main extends JFrame {
 
     public static void main(String[] args) throws IOException, SQLException {
-        Menu menu = new Menu();
-        menu.menu_window("resources/pics/temple.jpg","Can you escape the temple of doom?");
+        ViewManager manager = ViewManager.getInstance();
+        manager.mainMenu();
 //        Game game = new Game();
 //        game.game_window();
     }
