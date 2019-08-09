@@ -1,4 +1,5 @@
 package Collision;
+import View.ViewManager;
 
 public class CollisionHandler {
 
@@ -10,7 +11,12 @@ public class CollisionHandler {
 
     }
 
-    public void lose() {
-
+    public static void lose(){
+        try {
+            ViewManager manager = ViewManager.getInstance();
+            manager.closeGameFrame();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

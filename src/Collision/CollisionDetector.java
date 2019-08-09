@@ -6,7 +6,7 @@ import WorldObjects.*;
 import java.util.ArrayList;
 
 public class CollisionDetector {
-    // memebers
+    // members
     private static float itemsThreshold = 130.0f;
 
     /*****
@@ -86,7 +86,8 @@ public class CollisionDetector {
         for(Cube c : itemsList) {
             if(point_cube(point, c)) {
                 if(c.getType()== Collidable.Type.tnt) {
-                    Sounds.makeSound("resources/sounds/Evil_Laugh.wav");
+                    Sounds.makeSound("resources/sounds/explosion.wav");
+                    CollisionHandler.lose();
                     World.removeFromList(c);
                 }
                 return true;
