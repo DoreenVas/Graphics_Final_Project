@@ -7,6 +7,7 @@ import Coordinations.Cartesian;
 import Coordinations.Coordination;
 import Enums.MovementEnum;
 import Utils.Vector;
+import View.ViewManager;
 
 import static Enums.MovementEnum.*;
 
@@ -26,6 +27,12 @@ public class Player implements HitListener, Collidable {
         up = getUp();
         direction = getDirection();
         lives = 2;
+        try {
+            ViewManager manager = ViewManager.getInstance();
+            manager.drawLivesLabel();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static boolean isAlive() {
@@ -35,6 +42,10 @@ public class Player implements HitListener, Collidable {
         else {
             return false;
         }
+    }
+
+    public static int getLives() {
+        return lives;
     }
 
     public static void decreaseLives() {

@@ -1,5 +1,6 @@
 package View;
 
+import WorldObjects.Player;
 import com.jogamp.opengl.util.Animator;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ public class ViewManager {
     private JFrame game_frame;
     private JFrame menu_frame;
     private Animator animator;
+    private JLabel LivesLabel;
 
     /**
      * Returns the classes instance.
@@ -78,7 +80,15 @@ public class ViewManager {
         }
     }
 
-    public void setAnimator(Animator animator) {
+    protected void setAnimator(Animator animator) {
         this.animator = animator;
+    }
+
+    public void setLivesLabel(JLabel label) {
+        this.LivesLabel = label;
+    }
+
+    public void drawLivesLabel(){
+        this.LivesLabel.setText("Lives: " + Player.getLives());
     }
 }

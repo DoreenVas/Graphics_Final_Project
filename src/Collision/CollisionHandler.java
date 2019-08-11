@@ -14,13 +14,16 @@ public class CollisionHandler {
 
     public static void lose(){
         Player.decreaseLives();
-        if (!Player.isAlive()) {
-            try {
-                ViewManager manager = ViewManager.getInstance();
+        try {
+            ViewManager manager = ViewManager.getInstance();
+            if (!Player.isAlive()) {
                 manager.lose();
-            } catch (Exception e) {
-                e.printStackTrace();
             }
+            else {
+                manager.drawLivesLabel();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

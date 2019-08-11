@@ -1,6 +1,7 @@
 package View;
 
 import Scene.SceneBuilder;
+import WorldObjects.Player;
 import com.jogamp.opengl.util.Animator;
 import javax.media.opengl.awt.GLCanvas;
 import javax.swing.*;
@@ -17,6 +18,15 @@ public class Game {
         JFrame game_frame = new JFrame();
         ViewManager manager = ViewManager.getInstance();
         manager.setGameFrame(game_frame);
+
+        //setting lives label
+        JLabel label = new JLabel();
+        label.setText("Lives: " + Player.getLives());
+        label.setBounds(10,10,120,50);
+        label.setForeground(Color.BLACK);
+        label.setFont(new java.awt.Font("Arial", Font.BOLD, 30));
+        game_frame.add(label);
+        manager.setLivesLabel(label);
 
         GLCanvas canvas = new GLCanvas();
         Animator animator = new Animator(canvas);
