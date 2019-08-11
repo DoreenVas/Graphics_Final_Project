@@ -44,7 +44,6 @@ public class World {
         for (int i = 0; i<itemsList.size(); i++){
             itemsList.get(i).draw(gl);
         }
-//
     }
 
     private void createWalls() {
@@ -75,7 +74,7 @@ public class World {
                 Collidable.Type.stay));
         // left wall
         walls.add(new BlockWall(new Vector(-11,-2,25),
-                1,13,100,
+                1,13,80,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
 

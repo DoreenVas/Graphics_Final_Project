@@ -123,7 +123,7 @@ public class Player implements HitListener, Collidable {
         weaponUse = use;
     }
 
-    public static boolean isWeaponUse() {
+    public static boolean isWeaponUsed() {
         return weaponUse;
     }
 
