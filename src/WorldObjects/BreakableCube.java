@@ -21,6 +21,10 @@ public class BreakableCube extends Cube{
         return this.hp;
     }
 
+    public void decreaseHp() {
+        this.hp--;
+    }
+
     public void draw(GL2 gl) {
         super.draw(gl);
     }

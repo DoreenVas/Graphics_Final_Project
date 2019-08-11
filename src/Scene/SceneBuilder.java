@@ -7,6 +7,7 @@
 package Scene;
 
 import Collision.Collidable;
+import Collision.CollisionDetector;
 import Enums.MovementEnum;
 import Enums.SteerEnum;
 import WorldObjects.*;
@@ -177,6 +178,12 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         }
         else if(e.getKeyCode() == KeyEvent.VK_F2) {
             System.out.println("SKIP LEVEL");
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+            System.out.println("HIT DEM BOXZ!");
+            Player.useWeapon(true);
+            CollisionDetector.checkPlayerItemsCollisions(Player.getPos());
+            Player.useWeapon(false);
         }
     }
 

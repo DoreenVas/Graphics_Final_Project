@@ -1,6 +1,8 @@
 package Collision;
 import View.ViewManager;
+import WorldObjects.BreakableCube;
 import WorldObjects.Player;
+import WorldObjects.World;
 
 public class CollisionHandler {
 
@@ -8,8 +10,12 @@ public class CollisionHandler {
 
     }
 
-    public void vanish() {
-
+    public static void vanish(BreakableCube c) {
+        if (c.getHp() > 0) {
+            c.decreaseHp();
+        } else {
+            World.removeFromList(c);
+        }
     }
 
     public static void lose(){
