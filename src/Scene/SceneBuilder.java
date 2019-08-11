@@ -182,7 +182,10 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
             System.out.println("HIT DEM BOXZ!");
             Player.useWeapon(true);
-            CollisionDetector.checkPlayerItemsCollisions(Player.getPos());
+            Vector nextPos = new Vector(Player.getPos());
+            nextPos.setX(Player.getPos().getX() + player.getStep());
+            CollisionDetector.checkPlayerItemsCollisions(nextPos);
+            Player.useWeapon(false);
         }
     }
 

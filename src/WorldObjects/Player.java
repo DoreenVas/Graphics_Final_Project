@@ -73,6 +73,10 @@ public class Player implements HitListener, Collidable {
         return up;
     }
 
+    public float getStep() {
+        return step;
+    }
+
     public void setPos(Vector new_pos) {
         pos = new_pos;
     }

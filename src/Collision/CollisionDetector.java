@@ -85,8 +85,6 @@ public class CollisionDetector {
         ArrayList<Cube> itemsList = World.getItemsList();
         for(Cube c : itemsList) {
             if(c.checkInside(point)) {
-                System.out.println("used weapon: " + Player.isWeaponUsed());
-                System.out.println("collision with Cube type: " + c.getType());
                 if(c.getType()== Collidable.Type.tnt) {
                     Sounds.makeSound("resources/sounds/explosion.wav");
                     World.removeFromList(c);
