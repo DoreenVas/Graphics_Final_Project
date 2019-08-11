@@ -89,6 +89,9 @@ public class ViewManager {
     }
 
     public void drawLivesLabel(){
+        if (!this.LivesLabel.isVisible()) {
+            this.LivesLabel.setVisible(true);
+        }
         this.LivesLabel.setText("Lives: " + Player.getLives());
     }
 }

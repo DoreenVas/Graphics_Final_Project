@@ -25,6 +25,7 @@ public class Game {
         label.setBounds(10,10,120,50);
         label.setForeground(Color.BLACK);
         label.setFont(new java.awt.Font("Arial", Font.BOLD, 30));
+        label.setVisible(false);
         game_frame.add(label);
         manager.setLivesLabel(label);
 
