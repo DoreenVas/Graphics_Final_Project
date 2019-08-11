@@ -20,6 +20,7 @@ public class Game {
 
         GLCanvas canvas = new GLCanvas();
         Animator animator = new Animator(canvas);
+        manager.setAnimator(animator);
         canvas.addGLEventListener(new SceneBuilder());
         game_frame.add(canvas);
         game_frame.setUndecorated(true);

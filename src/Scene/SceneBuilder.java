@@ -47,7 +47,9 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
                 up.getZ());
 
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
-        world.draw(gl);
+        if(Player.isAlive()) {
+            world.draw(gl);
+        }
     }
 
     public void displayChanged(GLAutoDrawable gLDrawable, boolean modeChanged, boolean deviceChanged) {

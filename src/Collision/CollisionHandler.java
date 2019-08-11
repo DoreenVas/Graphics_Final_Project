@@ -1,5 +1,6 @@
 package Collision;
 import View.ViewManager;
+import WorldObjects.Player;
 
 public class CollisionHandler {
 
@@ -12,11 +13,14 @@ public class CollisionHandler {
     }
 
     public static void lose(){
-        try {
-            ViewManager manager = ViewManager.getInstance();
-            manager.lose();
-        } catch (Exception e) {
-            e.printStackTrace();
+        Player.decreaseLives();
+        if (!Player.isAlive()) {
+            try {
+                ViewManager manager = ViewManager.getInstance();
+                manager.lose();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

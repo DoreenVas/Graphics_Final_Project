@@ -64,7 +64,9 @@ public class Cube extends BlockWall implements Collidable{
     }
 
     public void draw(GL2 gl) {
-        super.draw(gl);
+        if(Player.isAlive()) {
+            super.draw(gl);
+        }
     }
 
     public Vector getOrigin() {

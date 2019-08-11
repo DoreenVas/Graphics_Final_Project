@@ -18,12 +18,27 @@ public class Player implements HitListener, Collidable {
     private Coordination coordination;
     private Type type = Type.player;
     private static float step = 0.5f;
+    private static int lives;
 
     public Player(){
         coordination = new Cartesian();
         pos = new Vector(0.0f, 1.0f, 10.0f);
         up = getUp();
         direction = getDirection();
+        lives = 2;
+    }
+
+    public static boolean isAlive() {
+        if (lives > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public static void decreaseLives() {
+        lives = lives -1;
     }
 
     public Coordination getCoordination() {

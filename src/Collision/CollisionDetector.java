@@ -87,8 +87,8 @@ public class CollisionDetector {
             if(point_cube(point, c)) {
                 if(c.getType()== Collidable.Type.tnt) {
                     Sounds.makeSound("resources/sounds/explosion.wav");
-                    CollisionHandler.lose();
                     World.removeFromList(c);
+                    CollisionHandler.lose();
                 }
                 return true;
             }

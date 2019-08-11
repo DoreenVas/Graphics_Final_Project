@@ -2,6 +2,7 @@ package WorldObjects;
 
 import Collision.Collidable;
 import Collision.CollisionDetector;
+import Collision.CollisionHandler;
 import Enums.MovementEnum;
 import Utils.Vector;
 import javax.media.opengl.GL2;
@@ -32,7 +33,8 @@ public class MovingCube extends Cube implements Collidable {
         collide = CollisionDetector.point_cube(Player.getPos(), new Cube(nextPos, length));
         if(collide) {
             // game over!
-            System.out.println("GAME OVER!");
+            World.removeFromList(this);
+            CollisionHandler.lose();
         }
 
         collisionWithBoxes();

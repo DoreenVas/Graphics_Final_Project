@@ -1,5 +1,7 @@
 package View;
 
+import com.jogamp.opengl.util.Animator;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -11,6 +13,7 @@ public class ViewManager {
     private static ViewManager viewManager;
     private JFrame game_frame;
     private JFrame menu_frame;
+    private Animator animator;
 
     /**
      * Returns the classes instance.
@@ -56,6 +59,7 @@ public class ViewManager {
         Menu menu = new Menu();
         menu.menu_window(picPath,labelText);
         if(game_frame != null){
+            animator.stop();
             game_frame.dispose();
         }
         else {
@@ -72,5 +76,9 @@ public class ViewManager {
         else {
             System.out.println("menu_frame is null");
         }
+    }
+
+    public void setAnimator(Animator animator) {
+        this.animator = animator;
     }
 }
