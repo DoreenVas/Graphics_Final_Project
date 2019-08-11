@@ -58,13 +58,13 @@ public class World {
                 "resources/pics/cave.jpg",
                 Collidable.Type.stay));
         // front wall
-        walls.add(new BlockWall(new Vector(-10,-2,25),
-                20,13,1,
+        walls.add(new BlockWall(new Vector(-11,-2,25),
+                22,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // back wall
-        walls.add(new BlockWall(new Vector(-10,-2,-75),
-                20,13,1,
+        walls.add(new BlockWall(new Vector(-11,-2,-75),
+                22,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // right wall

@@ -108,7 +108,9 @@ public class Player implements HitListener, Collidable {
                     coordination.move(UP, pos, step);
                     break;
                 case DOWN: // move down
-                    coordination.move(DOWN, pos, step);
+                    if(nextPos.getY() > 0) {
+                        coordination.move(DOWN, pos, step);
+                    }
                     break;
             }
         }
