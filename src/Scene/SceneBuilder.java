@@ -183,7 +183,6 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
             System.out.println("HIT DEM BOXZ!");
             Player.useWeapon(true);
             CollisionDetector.checkPlayerItemsCollisions(Player.getPos());
-            Player.useWeapon(false);
         }
     }
 

@@ -85,6 +85,8 @@ public class CollisionDetector {
         ArrayList<Cube> itemsList = World.getItemsList();
         for(Cube c : itemsList) {
             if(point_cube(point, c)) {
+                System.out.println("used weapon: " + Player.isWeaponUsed());
+                System.out.println("collision with Cube type: " + c.getType());
                 if(c.getType()== Collidable.Type.tnt) {
                     Sounds.makeSound("resources/sounds/explosion.wav");
                     World.removeFromList(c);
@@ -93,6 +95,7 @@ public class CollisionDetector {
                 else if(c.getType() == Collidable.Type.breakable && Player.isWeaponUsed()) {
                     Sounds.makeSound("resources/sounds/box_crush.wav");
                     CollisionHandler.vanish((BreakableCube)c);
+                    Player.useWeapon(false);
                 }
                 return true;
             }
