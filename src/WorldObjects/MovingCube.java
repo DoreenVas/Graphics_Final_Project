@@ -32,9 +32,9 @@ public class MovingCube extends Cube implements Collidable {
         // check collision with player
         collide = CollisionDetector.point_cube(Player.getPos(), new Cube(nextPos, length));
         if(collide) {
-            // game over!
             World.removeFromList(this);
             CollisionHandler.lose();
+            return step;
         }
 
         collisionWithBoxes();

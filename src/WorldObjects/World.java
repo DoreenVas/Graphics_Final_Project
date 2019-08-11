@@ -41,9 +41,10 @@ public class World {
             b.draw(gl);
         }
 
-        for (Cube c : itemsList) {
-            c.draw(gl);
+        for (int i = 0; i<itemsList.size(); i++){
+            itemsList.get(i).draw(gl);
         }
+//
     }
 
     private void createWalls() {
