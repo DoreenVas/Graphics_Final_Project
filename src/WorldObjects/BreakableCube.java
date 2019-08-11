@@ -22,7 +22,7 @@ public class BreakableCube extends Cube{
     }
 
     public void decreaseHp() {
-        this.hp--;
+        this.hp = this.hp - 1;
     }
 
     public void draw(GL2 gl) {
