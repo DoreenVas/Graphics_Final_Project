@@ -180,10 +180,9 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
             System.out.println("SKIP LEVEL");
         }
         else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-            System.out.println("HIT DEM BOXZ!");
             Player.useWeapon(true);
             Vector nextPos = new Vector(Player.getPos());
-            nextPos.setX(Player.getPos().getX() + player.getStep());
+            nextPos.setX(Player.getPos().getX() + 3f);
             CollisionDetector.checkPlayerItemsCollisions(nextPos);
             Player.useWeapon(false);
         }

@@ -91,8 +91,8 @@ public class World {
                 Collidable.Type.stay));
         // back wall
         walls.add(new BlockWall(new Vector(50,-2,-65),
-                1,13,10,
-                "resources/pics/steel-box.jpg",
+                1,13,11,
+                "resources/pics/portal3.jpg",
                 Collidable.Type.stay));
         // right wall
         walls.add(new BlockWall(new Vector(10,-2,-65),

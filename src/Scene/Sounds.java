@@ -27,7 +27,6 @@ public class Sounds {
                 e.printStackTrace();
             }
         }
-        System.out.println(url);
         AudioClip clip = Applet.newAudioClip(url);
         clip.play();
         return clip;
