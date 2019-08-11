@@ -19,6 +19,7 @@ public class Player implements HitListener, Collidable {
     private Type type = Type.player;
     private static float step = 0.5f;
     private static int lives;
+    private static boolean weaponUse = false;
 
     public Player(){
         coordination = new Cartesian();
@@ -105,6 +106,14 @@ public class Player implements HitListener, Collidable {
     private Vector checkNextPos(Vector pos, MovementEnum direction) {
         Vector nextPos = coordination.move(direction, new Vector(pos), step);
         return nextPos;
+    }
+
+    public static void useWeapon(boolean use) {
+        weaponUse = use;
+    }
+
+    public static boolean isWeaponUse() {
+        return weaponUse;
     }
 
     @Override

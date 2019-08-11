@@ -90,6 +90,10 @@ public class CollisionDetector {
                     World.removeFromList(c);
                     CollisionHandler.lose();
                 }
+                else if(c.getType() == Collidable.Type.breakable) {
+                    Sounds.makeSound("resources/sounds/box_crush.wav");
+                    CollisionHandler.vanish((BreakableCube)c);
+                }
                 return true;
             }
         }
