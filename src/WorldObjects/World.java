@@ -244,7 +244,7 @@ public class World {
     }
 
     public void moveToLevel2() {
-        Player.setPos(new Vector(0f, 0.5f, -85f));
-        Player.resetCoordiantions();
+        Player.setPos(new Vector(0f, 1.5f, -85f));
+        Player.resetCoordinations();
     }
 }

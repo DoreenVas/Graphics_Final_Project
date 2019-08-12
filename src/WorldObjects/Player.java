@@ -72,7 +72,7 @@ public class Player implements HitListener, Collidable {
         return pos;
     }
 
-    public static void resetCoordiantions() {
+    public static void resetCoordinations() {
         coordination = new Cartesian();
     }
 
