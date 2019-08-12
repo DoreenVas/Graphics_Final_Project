@@ -1,4 +1,4 @@
-package Scene;
+package Scene.Shimon;
 /**
  * * __ __|_ ___________________________________________________________________________ ___|__ __
  * * // /\ _ /\ \\
@@ -18,8 +18,7 @@ package Scene;
  * *
  **/
 
-import Coordinations.Cartesian;
-import Coordinations.Coordination;
+import Scene.WavefrontObjectLoader_DisplayList;
 import Utils.Vector;
 
 import java.io.*;

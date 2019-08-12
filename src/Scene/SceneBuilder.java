@@ -6,10 +6,11 @@
  */
 package Scene;
 
-import Collision.Collidable;
 import Collision.CollisionDetector;
 import Enums.MovementEnum;
 import Enums.SteerEnum;
+import Scene.Shimon.ObjectDisplayer;
+import Scene.Shimon.ObjectLoader;
 import WorldObjects.*;
 import com.jogamp.newt.Window;
 import com.jogamp.newt.event.KeyAdapter;

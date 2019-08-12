@@ -1,4 +1,4 @@
-package Scene;
+package Scene.Shimon;
 
 import java.util.HashMap;
 import java.util.Map;

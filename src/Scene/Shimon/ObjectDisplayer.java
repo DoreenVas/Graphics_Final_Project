@@ -1,4 +1,4 @@
-package Scene;
+package Scene.Shimon;
 
 import Utils.Vector;
 import com.jogamp.common.nio.Buffers;
