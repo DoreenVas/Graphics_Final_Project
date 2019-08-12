@@ -10,6 +10,7 @@ import Enums.MovementEnum;
 import Utils.Vector;
 import View.ViewManager;
 import javax.media.opengl.GL2;
+import javax.media.opengl.GLContext;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class World {
         walls = new ArrayList<>();
         breakWall = new ArrayList<>();
         createLevel1();
+        createLevel2();
     }
 
     public void draw(GL2 gl) {
@@ -168,39 +170,38 @@ public class World {
     }
 
     private void createLevel2() {
-        cleanUp();
         createWallsLevel2();
     }
 
     private void createWallsLevel2() {
-        Player.setPos(new Vector(0f, 0.5f, 10f));
+
         // floor
-        walls.add(new BlockWall(new Vector(-16f,-2f,25f),
+        walls.add(new BlockWall(new Vector(-16f,-2f,-80f),
                 32,1,70,
                 "resources/pics/floor.jpeg",
                 Collidable.Type.stay));
         // ceiling
-        walls.add(new BlockWall(new Vector(-16f,10f,25f),
+        walls.add(new BlockWall(new Vector(-16f,10f,-80f),
                 32,1,70,
                 "resources/pics/cave.jpg",
                 Collidable.Type.stay));
         // front wall
-        walls.add(new BlockWall(new Vector(-16,-2,25),
+        walls.add(new BlockWall(new Vector(-16,-2,-80f),
                 32,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // back wall
-        walls.add(new BlockWall(new Vector(-16,-2,-55),
+        walls.add(new BlockWall(new Vector(-16,-2,-135),
                 32,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // right wall
-        walls.add(new BlockWall(new Vector(15,-2,25),
+        walls.add(new BlockWall(new Vector(15,-2,-80),
                 1,13,55,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // left wall
-        walls.add(new BlockWall(new Vector(-15,-2,25),
+        walls.add(new BlockWall(new Vector(-15,-2,-80),
                 1,13,55,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
@@ -250,6 +251,6 @@ public class World {
     }
 
     public void moveToLevel2() {
-        createLevel2();
+        Player.setPos(new Vector(0f, 0.5f, -85f));
     }
 }
