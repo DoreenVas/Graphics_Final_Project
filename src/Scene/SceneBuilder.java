@@ -24,6 +24,11 @@ import javax.media.opengl.GLProfile;
 import javax.media.opengl.glu.GLU;
 
 import Utils.Vector;
+import com.jogamp.opengl.util.texture.Texture;
+import com.jogamp.opengl.util.texture.TextureIO;
+
+import java.io.File;
+import java.io.IOException;
 
 public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
@@ -32,9 +37,9 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
     private Player player;
     private float alpha = (float)Math.toRadians(5);
     private static float step = 0.1f;
-//    private WavefrontObjectLoader_DisplayList axe;
-    private ObjectLoader objectLoader;
-    private ObjectDisplayer objectDisplayer;
+    private WavefrontObjectLoader_DisplayList axe;
+//    private ObjectLoader objectLoader;
+//    private ObjectDisplayer objectDisplayer;
 
     public void display(GLAutoDrawable gLDrawable) {
         Vector direction = player.getDirection();
@@ -53,10 +58,9 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
                 up.getZ());
 
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
-
         world.draw(gl);
-//        axe.drawModel(gl);
-        this.objectDisplayer.draw(glu, gLDrawable);
+        axe.drawModel(gl);
+//        this.objectDisplayer.draw(glu, gLDrawable);
     }
 
     public void displayChanged(GLAutoDrawable gLDrawable, boolean modeChanged, boolean deviceChanged) {
@@ -84,9 +88,9 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
             java.awt.Component comp = (java.awt.Component) drawable;
             new AWTKeyAdapter(this, drawable).addTo(comp);
         }
-//        this.axe = new WavefrontObjectLoader_DisplayList("resources/obj/axe.obj");
-        this.objectLoader = new ObjectLoader();
-        this.objectDisplayer = this.objectLoader.LoadModel("resources/obj/axe.obj", new Vector(0f, 0.5f, 10f), 1,1,1);
+        this.axe = new WavefrontObjectLoader_DisplayList("resources/obj/zombie_normal.obj");
+//        this.objectLoader = new ObjectLoader();
+//        this.objectDisplayer = this.objectLoader.LoadModel("resources/obj/axe.obj", new Vector(0f, 0.5f, 10f), 1,1,1);
 
     }
 
