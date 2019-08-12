@@ -111,22 +111,22 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
     public void keyPressed(KeyEvent e) {
         switch(e.getKeyChar()) {
             case 'i': // rotate up (x axis)
-                player.getCoordination().rotate(SteerEnum.UP_X, -alpha);
+                player.getCoordinates().rotate(SteerEnum.UP_X, -alpha);
                 break;
             case 'k': // rotate down (x axis)
-                player.getCoordination().rotate(SteerEnum.DOWN_X, alpha);
+                player.getCoordinates().rotate(SteerEnum.DOWN_X, alpha);
                 break;
             case 'l': // rotate right (y axis)
-                player.getCoordination().rotate(SteerEnum.RIGHT_Y, -alpha);
+                player.getCoordinates().rotate(SteerEnum.RIGHT_Y, -alpha);
                 break;
             case 'j': // rotate left (y axis)
-                player.getCoordination().rotate(SteerEnum.LEFT_Y, alpha);
+                player.getCoordinates().rotate(SteerEnum.LEFT_Y, alpha);
                 break;
             case 'o': // rotate right (z axis)
-                player.getCoordination().rotate(SteerEnum.RIGHT_Z, alpha);
+                player.getCoordinates().rotate(SteerEnum.RIGHT_Z, alpha);
                 break;
             case 'u': // rotate left (z axis)
-                player.getCoordination().rotate(SteerEnum.LEFT_Z, -alpha);
+                player.getCoordinates().rotate(SteerEnum.LEFT_Z, -alpha);
                 break;
             case 'w': // move forward
                 player.move(MovementEnum.FORWARD);

@@ -7,9 +7,6 @@
 package WorldObjects;
 
 import Collision.Collidable;
-import Coordinations.Coordination;
-import Enums.MovementEnum;
-import Enums.SteerEnum;
 import Utils.Vector;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;

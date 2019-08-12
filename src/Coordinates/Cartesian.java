@@ -4,13 +4,13 @@
  * Student name: Nadav Spitzer
  * Student ID: 302228275
  */
-package Coordinations;
+package Coordinates;
 
 import Enums.MovementEnum;
 import Enums.SteerEnum;
 import Utils.Vector;
 
-public class Cartesian implements Coordination {
+public class Cartesian implements Coordinates {
 
     private Vector xAxis;
     private Vector yAxis;

@@ -6,13 +6,9 @@
  */
 package WorldObjects;
 
-import Coordinations.Coordination;
-import Enums.MovementEnum;
-import Enums.SteerEnum;
 import Utils.Vector;
 
 import javax.media.opengl.GL2;
-import java.util.ArrayList;
 
 public interface WorldObject {
     void draw(GL2 gl);

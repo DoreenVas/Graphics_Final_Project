@@ -3,8 +3,8 @@ package WorldObjects;
 import Collision.Collidable;
 import Collision.CollisionDetector;
 import Collision.HitListener;
-import Coordinations.Cartesian;
-import Coordinations.Coordination;
+import Coordinates.Cartesian;
+import Coordinates.Coordinates;
 import Enums.LevelEnum;
 import Enums.MovementEnum;
 import Utils.Vector;
@@ -17,7 +17,7 @@ public class Player implements HitListener, Collidable {
     private static Vector pos;
     private Vector direction;
     private Vector up;
-    private static Coordination coordination;
+    private static Coordinates Coordinates;
     private Type type = Type.player;
     private static float step = 0.5f;
     private static int lives;
@@ -25,7 +25,7 @@ public class Player implements HitListener, Collidable {
     private static LevelEnum level;
 
     public Player(){
-        coordination = new Cartesian();
+        Coordinates = new Cartesian();
         pos = new Vector(0f, 0.5f, 10f);
         up = getUp();
         direction = getDirection();
@@ -64,26 +64,26 @@ public class Player implements HitListener, Collidable {
         lives = lives -1;
     }
 
-    public Coordination getCoordination() {
-        return coordination;
+    public Coordinates getCoordinates() {
+        return Coordinates;
     }
 
     public static Vector getPos() {
         return pos;
     }
 
-    public static void resetCoordinations() {
-        coordination = new Cartesian();
+    public static void resetCoordinates() {
+        Coordinates = new Cartesian();
     }
 
     public Vector getDirection() {
-        Vector zAxis = coordination.getzAxis();
+        Vector zAxis = Coordinates.getzAxis();
         direction = new Vector(zAxis.getX(), zAxis.getY(), zAxis.getZ());
         return direction;
     }
 
     public Vector getUp() {
-        Vector yAxis = coordination.getyAxis();
+        Vector yAxis = Coordinates.getyAxis();
         up = new Vector(yAxis.getX(), yAxis.getY(), yAxis.getZ());
         return up;
     }
@@ -112,29 +112,29 @@ public class Player implements HitListener, Collidable {
         if (!wallsCollision && !itemsCollision) {
             switch(direction) {
                 case FORWARD: // move forward
-                    coordination.move(FORWARD, pos, step);
+                    Coordinates.move(FORWARD, pos, step);
                     break;
                 case BACKWARD: // move backward
-                    coordination.move(BACKWARD, pos, step);
+                    Coordinates.move(BACKWARD, pos, step);
                     break;
                 case RIGHT: // move right
-                    coordination.move(RIGHT, pos, step);
+                    Coordinates.move(RIGHT, pos, step);
                     break;
                 case LEFT: // move left
-                    coordination.move(LEFT, pos, step);
+                    Coordinates.move(LEFT, pos, step);
                     break;
                 case UP: // move up
-                    coordination.move(UP, pos, step);
+                    Coordinates.move(UP, pos, step);
                     break;
                 case DOWN: // move down
-                    coordination.move(DOWN, pos, step);
+                    Coordinates.move(DOWN, pos, step);
                     break;
             }
         }
     }
 
     private Vector checkNextPos(Vector pos, MovementEnum direction) {
-        Vector nextPos = coordination.move(direction, new Vector(pos), step);
+        Vector nextPos = Coordinates.move(direction, new Vector(pos), step);
         return nextPos;
     }
 
