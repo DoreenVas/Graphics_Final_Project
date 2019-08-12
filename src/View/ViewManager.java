@@ -64,9 +64,6 @@ public class ViewManager {
             animator.stop();
             game_frame.dispose();
         }
-        else {
-            System.out.println("game_frame is null");
-        }
     }
 
     protected void startGame() throws IOException, SQLException {
@@ -74,9 +71,6 @@ public class ViewManager {
         game.game_window();
         if(menu_frame != null){
             menu_frame.dispose();
-        }
-        else {
-            System.out.println("menu_frame is null");
         }
     }
 
