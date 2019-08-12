@@ -5,6 +5,7 @@ import Collision.CollisionDetector;
 import Collision.HitListener;
 import Coordinations.Cartesian;
 import Coordinations.Coordination;
+import Enums.LevelEnum;
 import Enums.MovementEnum;
 import Utils.Vector;
 import View.ViewManager;
@@ -22,18 +23,25 @@ public class Player implements HitListener, Collidable {
     private static int lives;
     private static boolean weaponUse = false;
 
+    private static LevelEnum level;
+
     public Player(){
         coordination = new Cartesian();
         pos = new Vector(0.0f, 0.5f, 10.0f);
         up = getUp();
         direction = getDirection();
         lives = 2;
+        level = LevelEnum.LEVEL_1;
         try {
             ViewManager manager = ViewManager.getInstance();
             manager.drawLivesLabel();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static LevelEnum getLevel() {
+        return level;
     }
 
     public static boolean isAlive() {

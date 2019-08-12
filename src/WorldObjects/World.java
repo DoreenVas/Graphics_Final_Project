@@ -20,7 +20,7 @@ public class World {
         itemsList = new ArrayList<>();
         walls = new ArrayList<>();
         breakWall = new ArrayList<>();
-        createWalls();
+        createLevel1();
     }
 
     public void draw(GL2 gl) {
@@ -46,7 +46,11 @@ public class World {
         }
     }
 
-    private void createWalls() {
+    private void createLevel1() {
+        createWallsLevel1();
+    }
+
+    private void createWallsLevel1() {
         // floor
         walls.add(new BlockWall(new Vector(-11f,-2f,25f),
                 22,1,100,
@@ -104,6 +108,9 @@ public class World {
                 40,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
+    }
+
+    private void createWallsLevel2() {
 
     }
 
