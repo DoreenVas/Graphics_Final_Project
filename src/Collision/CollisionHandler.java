@@ -1,5 +1,6 @@
 package Collision;
 import Enums.LevelEnum;
+import Scene.Sounds;
 import View.ViewManager;
 import WorldObjects.BreakableCube;
 import WorldObjects.Player;
@@ -20,6 +21,7 @@ public class CollisionHandler {
     }
 
     public static void nextLevel(){
+        Sounds.makeSound("resources/sounds/portal.wav");
         Player.setLevel(LevelEnum.LEVEL_2);
         try{
             ViewManager.getInstance().drawBar();
