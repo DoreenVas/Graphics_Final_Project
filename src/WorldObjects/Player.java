@@ -88,7 +88,7 @@ public class Player implements HitListener, Collidable {
         return step;
     }
 
-    public void setPos(Vector new_pos) {
+    public static void setPos(Vector new_pos) {
         pos = new_pos;
     }
 

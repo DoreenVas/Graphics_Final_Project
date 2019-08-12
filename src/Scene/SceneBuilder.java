@@ -71,40 +71,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
         gl.glEnable(GL2.GL_TEXTURE_2D);
 
-        Cube tnt1 = new Cube(new Vector(-9,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.tnt);
-        Cube tnt2 = new Cube(new Vector(-1,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.tnt);
-        Cube tnt3 = new Cube(new Vector(7,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.tnt);
-
-        MovingCube movingCube1 = new MovingCube(new Vector(-9, -1, -30), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, 0.1f, MovementEnum.RIGHT);
-        MovingCube movingCube2 = new MovingCube(new Vector(7, -1, -30), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, -0.1f, MovementEnum.LEFT);
-        MovingCube movingCube3 = new MovingCube(new Vector(-9, -1, -20), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, 0.1f, MovementEnum.RIGHT);
-        MovingCube movingCube4 = new MovingCube(new Vector(7, -1, -10), 2,
-                "resources/pics/moving_box.png", Collidable.Type.stay, -0.1f, MovementEnum.LEFT);
-
         world  = World.getInstance();
-        world.addToItemsList(tnt1);
-        world.addToItemsList(tnt2);
-        world.addToItemsList(tnt3);
-        world.addToItemsList(movingCube1);
-        world.addToItemsList(movingCube2);
-        world.addToItemsList(movingCube3);
-        world.addToItemsList(movingCube4);
-        for (int i = -10; i < 10; i+=2) {
-            world.addToItemsList(new MovingCube(new Vector(i, 7, -45), 2,
-                    "resources/pics/moving_box.png", Collidable.Type.stay, 0.05f, MovementEnum.DOWN));
-        }
-
-        Vector p;
-        for (int z = -65; z > -75; z-=2) {
-            for (int y = -1; y < 9; y+=2) {
-                p = new Vector(10, y, z);
-                world.addToItemsList(new BreakableCube(p, 2, 3, "resources/pics/box.jpg", Collidable.Type.breakable));
-            }
-        }
-
         player = new Player();
 
         gl.glEnable(GL2.GL_LIGHTING);
