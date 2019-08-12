@@ -187,22 +187,22 @@ public class World {
         // front wall
         walls.add(new BlockWall(new Vector(-55,-2,-80f),
                 110,72,1,
-                "resources/pics/wall2.jpg",
+                "resources/pics/fire_texture.jpg",
                 Collidable.Type.stay));
         // back wall
         walls.add(new BlockWall(new Vector(-55,-2,-180),
                 110,72,1,
-                "resources/pics/wall2.jpg",
+                "resources/pics/fire_texture.jpg",
                 Collidable.Type.stay));
         // right wall
         walls.add(new BlockWall(new Vector(54,-2,-80),
                 1,72,100,
-                "resources/pics/wall2.jpg",
+                "resources/pics/fire_texture.jpg",
                 Collidable.Type.stay));
         // left wall
         walls.add(new BlockWall(new Vector(-54,-2,-80),
                 1,72,100,
-                "resources/pics/wall2.jpg",
+                "resources/pics/fire_texture.jpg",
                 Collidable.Type.stay));
 
     }
