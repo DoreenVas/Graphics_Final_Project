@@ -21,8 +21,8 @@ public class Game {
 
         //setting lives label
         JLabel label = new JLabel();
-        label.setText("Lives: " + Player.getLives());
-        label.setBounds(10,10,120,50);
+        label.setText("Level: 1, Lives: " + Player.getLives());
+        label.setBounds(10,10,250,50);
         label.setForeground(Color.BLACK);
         label.setFont(new java.awt.Font("Arial", Font.BOLD, 30));
         label.setVisible(false);

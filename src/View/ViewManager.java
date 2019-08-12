@@ -92,6 +92,6 @@ public class ViewManager {
         if (!this.LivesLabel.isVisible()) {
             this.LivesLabel.setVisible(true);
         }
-        this.LivesLabel.setText("Lives: " + Player.getLives());
+        this.LivesLabel.setText("Level: 1, Lives: " + Player.getLives());
     }
 }
