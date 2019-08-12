@@ -30,6 +30,9 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
     private Player player;
     private float alpha = (float)Math.toRadians(5);
     private static float step = 0.1f;
+//    private WavefrontObjectLoader_DisplayList axe;
+    private ObjectLoader objectLoader;
+    private ObjectDisplayer objectDisplayer;
 
     public void display(GLAutoDrawable gLDrawable) {
         Vector direction = player.getDirection();
@@ -50,6 +53,8 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
 
         world.draw(gl);
+//        axe.drawModel(gl);
+        this.objectDisplayer.draw(glu, gLDrawable);
     }
 
     public void displayChanged(GLAutoDrawable gLDrawable, boolean modeChanged, boolean deviceChanged) {
@@ -58,7 +63,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
     public void init(GLAutoDrawable drawable) {
         final GL2 gl = drawable.getGL().getGL2();
         gl.glShadeModel(GL2.GL_SMOOTH);              // Enable Smooth Shading
-        gl.glClearColor(1.0f, 1.0f, 1.0f, 0.5f);    // White Background
+        gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);    // Black Background
         gl.glClearDepth(1.0f);                      // Depth Buffer Setup
         gl.glEnable(GL2.GL_DEPTH_TEST);              // Enables Depth Testing
         gl.glDepthFunc(GL2.GL_LEQUAL);               // The Type Of Depth Testing To Do
@@ -70,7 +75,6 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         Cube tnt2 = new Cube(new Vector(-1,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.tnt);
         Cube tnt3 = new Cube(new Vector(7,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.tnt);
 
-//        movingCube1 = new MovingCube(new Cube(new Vector(5, -1, -20), 2, "resources/pics/steel-box.jpg", Collidable.Type.stay));
         MovingCube movingCube1 = new MovingCube(new Vector(-9, -1, -30), 2,
                 "resources/pics/moving_box.png", Collidable.Type.stay, 0.1f, MovementEnum.RIGHT);
         MovingCube movingCube2 = new MovingCube(new Vector(7, -1, -30), 2,
@@ -111,6 +115,10 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
             java.awt.Component comp = (java.awt.Component) drawable;
             new AWTKeyAdapter(this, drawable).addTo(comp);
         }
+//        this.axe = new WavefrontObjectLoader_DisplayList("resources/obj/axe.obj");
+        this.objectLoader = new ObjectLoader();
+        this.objectDisplayer = this.objectLoader.LoadModel("resources/obj/axe.obj", new Vector(0f, 0.5f, 10f), 1,1,1);
+
     }
 
     @Override

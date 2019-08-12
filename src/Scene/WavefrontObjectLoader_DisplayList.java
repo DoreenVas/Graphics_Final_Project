@@ -70,8 +70,9 @@ public class WavefrontObjectLoader_DisplayList {
 				}
 			} else {
 				Object obj = new Object();
-				InputStream myis = this.getClass().getResourceAsStream(
-						ModelPath);
+//				InputStream myis = this.getClass().getResourceAsStream(
+//						ModelPath);
+				InputStream myis = new FileInputStream(ModelPath);
 				InputStreamReader isr = new InputStreamReader(myis);
 				br = new BufferedReader(isr);
 			}
