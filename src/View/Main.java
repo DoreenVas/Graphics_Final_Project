@@ -16,10 +16,10 @@ import javax.swing.*;
 public class Main extends JFrame {
 
     public static void main(String[] args) throws IOException, SQLException {
-//        ViewManager manager = ViewManager.getInstance();
-//        manager.mainMenu();
-        Game game = new Game();
-        game.game_window();
+        ViewManager manager = ViewManager.getInstance();
+        manager.mainMenu();
+//        Game game = new Game();
+//        game.game_window();
     }
 
     /***

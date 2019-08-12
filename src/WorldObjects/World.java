@@ -185,7 +185,7 @@ public class World {
         // floor
         walls.add(new BlockWall(new Vector(-55,-2f,-80f),
                 110,1,100,
-                "resources/pics/dark_floor.jpg",
+                "resources/pics/floor2.jpg",
                 Collidable.Type.stay));
         // ceiling
         walls.add(new BlockWall(new Vector(-55,70,-80f),
@@ -195,22 +195,22 @@ public class World {
         // front wall
         walls.add(new BlockWall(new Vector(-55,-2,-80f),
                 110,72,1,
-                "resources/pics/fire_texture.jpg",
+                "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
         // back wall
         walls.add(new BlockWall(new Vector(-55,-2,-180),
                 110,72,1,
-                "resources/pics/fire_texture.jpg",
+                "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
         // right wall
         walls.add(new BlockWall(new Vector(54,-2,-80),
                 1,72,100,
-                "resources/pics/fire_texture.jpg",
+                "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
         // left wall
         walls.add(new BlockWall(new Vector(-54,-2,-80),
                 1,72,100,
-                "resources/pics/fire_texture.jpg",
+                "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
 
     }

@@ -1,6 +1,7 @@
 package View;
 
 import Scene.SceneBuilder;
+import Scene.Sounds;
 import WorldObjects.Player;
 import com.jogamp.opengl.util.Animator;
 import javax.media.opengl.awt.GLCanvas;
@@ -48,6 +49,9 @@ public class Game {
                 }).start();
             }
         });
+
+        Sounds.makeLoopSound("resources/sounds/game_song.wav");
+        game_frame.validate();
         game_frame.setVisible(true);
         animator.start();
         canvas.requestFocus();
