@@ -32,10 +32,10 @@ public class Sphere implements WorldObject {
 
         GLUT glut = new GLUT();
 
-        float no_mat[] = {0.0f, 1.0f, 0.0f, 1.0f};
+        float no_mat[] = {1.0f, 0.2f, 0.2f, 1.0f};
         float mat_diffuse[] = {0.1f, 0.5f, 0.8f, 1.0f};
         float high_shininess[] = {80.0f};
-        float mat_specular[] = {0.8f, 0.8f, 0.8f, 1.0f};
+        float mat_specular[] = {0.8f, 0.2f, 0.2f, 1.0f};
         gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, no_mat, 0);
         gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_DIFFUSE, mat_diffuse, 0);
         gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, mat_specular, 0);
