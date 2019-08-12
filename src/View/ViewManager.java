@@ -88,10 +88,10 @@ public class ViewManager {
         this.LivesLabel = label;
     }
 
-    public void drawLivesLabel(){
+    public void drawBar(){
         if (!this.LivesLabel.isVisible()) {
             this.LivesLabel.setVisible(true);
         }
-        this.LivesLabel.setText("Level: 1, Lives: " + Player.getLives());
+        this.LivesLabel.setText("Level: "+Player.getLevel()+", Lives: " + Player.getLives());
     }
 }

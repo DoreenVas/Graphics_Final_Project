@@ -7,16 +7,36 @@
 package WorldObjects;
 import Collision.Collidable;
 import Utils.Vector;
+import View.ViewManager;
 import javax.media.opengl.GL2;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+/***
+ * singleton
+ */
 public class World {
     // members
+    private static World world;
     private static ArrayList<Cube> itemsList;
     private static ArrayList<BlockWall> walls;
     private static ArrayList<BreakableCube> breakWall;
 
-    public World() {
+    /**
+     * Returns the classes instance.
+     * @return the classes current instance
+     * @throws IOException thrown from inner function
+     * @throws SQLException thrown from inner function
+     */
+    public static World getInstance(){
+        if(world == null) {
+            world = new World();
+        }
+        return world;
+    }
+
+    private World() {
         itemsList = new ArrayList<>();
         walls = new ArrayList<>();
         breakWall = new ArrayList<>();
@@ -97,7 +117,7 @@ public class World {
         walls.add(new BlockWall(new Vector(50,-2,-65),
                 1,13,11,
                 "resources/pics/portal3.jpg",
-                Collidable.Type.stay));
+                Collidable.Type.portal));
         // right wall
         walls.add(new BlockWall(new Vector(10,-2,-65),
                 40,13,1,
@@ -111,7 +131,9 @@ public class World {
     }
 
     private void createWallsLevel2() {
-
+        itemsList.clear();
+        walls.clear();
+        breakWall.clear();
     }
 
     private void addLightLevel1(GL2 gl) {
@@ -152,5 +174,9 @@ public class World {
 
     public static ArrayList<BlockWall> getWalls() {
         return walls;
+    }
+
+    public void moveToLevel2() {
+        createWallsLevel2();
     }
 }

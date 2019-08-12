@@ -1,5 +1,6 @@
 package Collision;
 
+import Enums.LevelEnum;
 import Scene.Sounds;
 import Utils.Vector;
 import WorldObjects.*;
@@ -115,6 +116,9 @@ public class CollisionDetector {
         ArrayList<BlockWall> walls = World.getWalls();
         for (BlockWall w : walls) {
             if (w.checkInside(point)) {
+                if(w.getType()== Collidable.Type.portal){
+                    CollisionHandler.nextLevel();
+                }
                 return true;
             }
         }

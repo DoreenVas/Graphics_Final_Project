@@ -1,4 +1,5 @@
 package Collision;
+import Enums.LevelEnum;
 import View.ViewManager;
 import WorldObjects.BreakableCube;
 import WorldObjects.Player;
@@ -18,6 +19,16 @@ public class CollisionHandler {
         }
     }
 
+    public static void nextLevel(){
+        Player.setLevel(LevelEnum.LEVEL_2);
+        try{
+            ViewManager.getInstance().drawBar();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        World.getInstance().moveToLevel2();
+    }
+
     public static void lose(){
         Player.decreaseLives();
         try {
@@ -26,7 +37,7 @@ public class CollisionHandler {
                 manager.lose();
             }
             else {
-                manager.drawLivesLabel();
+                manager.drawBar();
             }
         } catch (Exception e) {
             e.printStackTrace();

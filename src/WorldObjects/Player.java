@@ -22,7 +22,6 @@ public class Player implements HitListener, Collidable {
     private static float step = 0.5f;
     private static int lives;
     private static boolean weaponUse = false;
-
     private static LevelEnum level;
 
     public Player(){
@@ -34,14 +33,18 @@ public class Player implements HitListener, Collidable {
         level = LevelEnum.LEVEL_1;
         try {
             ViewManager manager = ViewManager.getInstance();
-            manager.drawLivesLabel();
+            manager.drawBar();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static LevelEnum getLevel() {
-        return level;
+    public static int getLevel() {
+        return level.ordinal()+1;
+    }
+
+    public static void setLevel(LevelEnum level) {
+        Player.level = level;
     }
 
     public static boolean isAlive() {
