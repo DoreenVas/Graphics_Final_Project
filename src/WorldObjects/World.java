@@ -120,7 +120,7 @@ public class World {
         // back wall
         walls.add(new BlockWall(new Vector(50,-2,-65),
                 1,13,11,
-                "resources/pics/portal3.jpg",
+                "resources/pics/portal.jpg",
                 Collidable.Type.portal));
         // right wall
         walls.add(new BlockWall(new Vector(10,-2,-65),
