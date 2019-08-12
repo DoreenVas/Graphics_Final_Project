@@ -146,15 +146,15 @@ public class World {
         MovingCube movingCube4 = new MovingCube(new Vector(7, -1, -10), 2,
                 "resources/pics/moving_box.png", Collidable.Type.stay, -0.1f, MovementEnum.LEFT);
 
-        addToItemsList(tnt1);
-        addToItemsList(tnt2);
-        addToItemsList(tnt3);
-        addToItemsList(movingCube1);
-        addToItemsList(movingCube2);
-        addToItemsList(movingCube3);
-        addToItemsList(movingCube4);
+        itemsList.add(tnt1);
+        itemsList.add(tnt2);
+        itemsList.add(tnt3);
+        itemsList.add(movingCube1);
+        itemsList.add(movingCube2);
+        itemsList.add(movingCube3);
+        itemsList.add(movingCube4);
         for (int i = -10; i < 10; i+=2) {
-            addToItemsList(new MovingCube(new Vector(i, 7, -45), 2,
+            itemsList.add(new MovingCube(new Vector(i, 7, -45), 2,
                     "resources/pics/moving_box.png", Collidable.Type.stay, 0.05f, MovementEnum.DOWN));
         }
 
@@ -162,7 +162,7 @@ public class World {
         for (int z = -65; z > -75; z-=2) {
             for (int y = -1; y < 9; y+=2) {
                 p = new Vector(10, y, z);
-                addToItemsList(new BreakableCube(p, 2, 3, "resources/pics/box.jpg", Collidable.Type.breakable));
+                itemsList.add(new BreakableCube(p, 2, 3, "resources/pics/box.jpg", Collidable.Type.breakable));
             }
         }
     }
@@ -233,10 +233,6 @@ public class World {
 
     public static ArrayList<Cube> getItemsList() {
         return itemsList;
-    }
-
-    public void addToItemsList(Cube c) {
-        itemsList.add(c);
     }
 
     public static void removeFromList(Cube c) {
