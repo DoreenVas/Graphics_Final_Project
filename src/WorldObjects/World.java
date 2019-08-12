@@ -26,7 +26,7 @@ public class World {
     public void draw(GL2 gl) {
         gl.glPushMatrix();
 
-        addLight(gl);
+        addLightLevel1(gl);
         gl.glTexParameteri ( GL2.GL_TEXTURE_2D,GL2.GL_TEXTURE_WRAP_T, GL2.GL_REPEAT );
         gl.glTexParameteri( GL2.GL_TEXTURE_2D,GL2.GL_TEXTURE_WRAP_S, GL2.GL_REPEAT );
 
@@ -107,7 +107,7 @@ public class World {
 
     }
 
-    private void addLight(GL2 gl) {
+    private void addLightLevel1(GL2 gl) {
 
         // define diffusive purple light
         float diffuse0[] = {1f, 0f, 1f,1.0f};
