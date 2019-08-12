@@ -7,6 +7,7 @@
 package Scene;
 
 import Collision.CollisionDetector;
+import Collision.CollisionHandler;
 import Enums.MovementEnum;
 import Enums.SteerEnum;
 import Scene.Shimon.ObjectDisplayer;
@@ -154,6 +155,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         }
         else if(e.getKeyCode() == KeyEvent.VK_F2) {
             System.out.println("SKIP LEVEL");
+            CollisionHandler.nextLevel();
         }
         else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
             Player.useWeapon(true);

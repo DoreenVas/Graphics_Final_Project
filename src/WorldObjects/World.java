@@ -71,7 +71,7 @@ public class World {
 
     private void createLevel1() {
         createWallsLevel1();
-//        createItemsLevel1();
+        createItemsLevel1();
     }
 
     private void createWallsLevel1() {

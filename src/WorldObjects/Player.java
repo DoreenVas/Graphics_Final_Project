@@ -26,7 +26,7 @@ public class Player implements HitListener, Collidable {
 
     public Player(){
         coordination = new Cartesian();
-        pos = new Vector(0f, 0.5f, -85f);
+        pos = new Vector(0f, 0.5f, 10f);
         up = getUp();
         direction = getDirection();
         lives = 2;
