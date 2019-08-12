@@ -154,7 +154,6 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
             System.out.println("ADD INSTRUCTIONS");
         }
         else if(e.getKeyCode() == KeyEvent.VK_F2) {
-            System.out.println("SKIP LEVEL");
             CollisionHandler.nextLevel();
         }
         else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
