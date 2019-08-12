@@ -17,7 +17,7 @@ public class Player implements HitListener, Collidable {
     private static Vector pos;
     private Vector direction;
     private Vector up;
-    private Coordination coordination;
+    private static Coordination coordination;
     private Type type = Type.player;
     private static float step = 0.5f;
     private static int lives;
@@ -26,7 +26,7 @@ public class Player implements HitListener, Collidable {
 
     public Player(){
         coordination = new Cartesian();
-        pos = new Vector(0.0f, 0.5f, 10.0f);
+        pos = new Vector(0f, 0.5f, -85f);
         up = getUp();
         direction = getDirection();
         lives = 2;
@@ -70,6 +70,10 @@ public class Player implements HitListener, Collidable {
 
     public static Vector getPos() {
         return pos;
+    }
+
+    public static void resetCoordiantions() {
+        coordination = new Cartesian();
     }
 
     public Vector getDirection() {

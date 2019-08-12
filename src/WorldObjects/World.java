@@ -71,7 +71,7 @@ public class World {
 
     private void createLevel1() {
         createWallsLevel1();
-        createItemsLevel1();
+//        createItemsLevel1();
     }
 
     private void createWallsLevel1() {
@@ -174,36 +174,35 @@ public class World {
     }
 
     private void createWallsLevel2() {
-
         // floor
-        walls.add(new BlockWall(new Vector(-16f,-2f,-80f),
-                32,1,70,
-                "resources/pics/floor.jpeg",
+        walls.add(new BlockWall(new Vector(-45,-2f,-80f),
+                90,1,90,
+                "resources/pics/dark_floor.jpg",
                 Collidable.Type.stay));
         // ceiling
-        walls.add(new BlockWall(new Vector(-16f,10f,-80f),
-                32,1,70,
-                "resources/pics/cave.jpg",
+        walls.add(new BlockWall(new Vector(-45,50,-80f),
+                90,1,90,
+                "resources/pics/stars.jpg",
                 Collidable.Type.stay));
         // front wall
-        walls.add(new BlockWall(new Vector(-16,-2,-80f),
-                32,13,1,
-                "resources/pics/steel-box.jpg",
+        walls.add(new BlockWall(new Vector(-45,-2,-80f),
+                90,52,1,
+                "resources/pics/fire_texture.jpg",
                 Collidable.Type.stay));
         // back wall
-        walls.add(new BlockWall(new Vector(-16,-2,-135),
-                32,13,1,
-                "resources/pics/steel-box.jpg",
+        walls.add(new BlockWall(new Vector(-45,-2,-170),
+                90,52,1,
+                "resources/pics/fire_texture.jpg",
                 Collidable.Type.stay));
         // right wall
-        walls.add(new BlockWall(new Vector(15,-2,-80),
-                1,13,55,
-                "resources/pics/steel-box.jpg",
+        walls.add(new BlockWall(new Vector(44,-2,-80),
+                1,52,90,
+                "resources/pics/fire_texture.jpg",
                 Collidable.Type.stay));
         // left wall
-        walls.add(new BlockWall(new Vector(-15,-2,-80),
-                1,13,55,
-                "resources/pics/steel-box.jpg",
+        walls.add(new BlockWall(new Vector(-44,-2,-80),
+                1,52,90,
+                "resources/pics/fire_texture.jpg",
                 Collidable.Type.stay));
 
     }
@@ -246,5 +245,6 @@ public class World {
 
     public void moveToLevel2() {
         Player.setPos(new Vector(0f, 0.5f, -85f));
+        Player.resetCoordiantions();
     }
 }
