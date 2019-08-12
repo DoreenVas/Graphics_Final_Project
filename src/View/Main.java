@@ -1,22 +1,17 @@
-package View; /******
+package View;
+/******
  * Student name: Doreen Vaserman
  * Student ID: 308223627
  * Student name: Nadav Spitzer
  * Student ID: 302228275
  */
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.imageio.ImageIO;
-import javax.media.opengl.awt.GLCanvas;
 import javax.swing.*;
-import Scene.SceneBuilder;
-import Scene.Sounds;
-import com.jogamp.opengl.util.Animator;
 
 public class Main extends JFrame {
 

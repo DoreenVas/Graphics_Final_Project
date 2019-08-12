@@ -46,6 +46,14 @@ public class World {
         createLevel2();
     }
 
+    public void resetWorld(){
+        itemsList = new ArrayList<>();
+        walls = new ArrayList<>();
+        breakWall = new ArrayList<>();
+        createLevel1();
+        createLevel2();
+    }
+
     public void draw(GL2 gl) {
         gl.glPushMatrix();
 

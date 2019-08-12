@@ -46,11 +46,11 @@ public class ViewManager {
     }
 
     public void lose() throws IOException, SQLException {
-        showWindow("resources/pics/lose.jpg", "The temple remains unbeatable");
+        showWindow("resources/pics/lose.jpg", "");
     }
 
     public void win() throws IOException, SQLException {
-        showWindow("resources/pics/win.jpg", "Winner, Great Job!");
+        showWindow("resources/pics/win.jpg", "                 Winner, Great Job!");
     }
 
     public void mainMenu() throws IOException, SQLException {

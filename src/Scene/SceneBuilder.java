@@ -37,7 +37,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
     private Player player;
     private float alpha = (float)Math.toRadians(5);
     private static float step = 0.1f;
-    private WavefrontObjectLoader_DisplayList axe;
+//    private WavefrontObjectLoader_DisplayList axe;
 //    private ObjectLoader objectLoader;
 //    private ObjectDisplayer objectDisplayer;
 
@@ -59,16 +59,16 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
         world.draw(gl);
-        Texture t = null;
-        try {
-            t = TextureIO.newTexture(new File("resources/obj/zombie_light.png"), true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        gl.glTranslated(3, 0, 2);
-        gl.glScaled(2,2,2);
-        t.bind(gl);
-        axe.drawModel(gl);
+//        Texture t = null;
+//        try {
+//            t = TextureIO.newTexture(new File("resources/obj/zombie_light.png"), true);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        gl.glTranslated(3, 0, 2);
+//        gl.glScaled(2,2,2);
+//        t.bind(gl);
+//        axe.drawModel(gl);
 //        this.objectDisplayer.draw(glu, gLDrawable);
     }
 
@@ -87,6 +87,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         gl.glEnable(GL2.GL_TEXTURE_2D);
 
         world  = World.getInstance();
+        world.resetWorld();
         player = new Player();
 
         gl.glEnable(GL2.GL_LIGHTING);
@@ -97,7 +98,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
             java.awt.Component comp = (java.awt.Component) drawable;
             new AWTKeyAdapter(this, drawable).addTo(comp);
         }
-        this.axe = new WavefrontObjectLoader_DisplayList("resources/obj/zombie_normal.obj");
+//        this.axe = new WavefrontObjectLoader_DisplayList("resources/obj/zombie_normal.obj");
 //        this.objectLoader = new ObjectLoader();
 //        this.objectDisplayer = this.objectLoader.LoadModel("resources/obj/axe.obj", new Vector(0f, 0.5f, 10f), 1,1,1);
 
