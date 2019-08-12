@@ -175,33 +175,33 @@ public class World {
 
     private void createWallsLevel2() {
         // floor
-        walls.add(new BlockWall(new Vector(-45,-2f,-80f),
-                90,1,90,
+        walls.add(new BlockWall(new Vector(-55,-2f,-80f),
+                110,1,100,
                 "resources/pics/dark_floor.jpg",
                 Collidable.Type.stay));
         // ceiling
-        walls.add(new BlockWall(new Vector(-45,50,-80f),
-                90,1,90,
+        walls.add(new BlockWall(new Vector(-55,50,-80f),
+                110,1,100,
                 "resources/pics/stars.jpg",
                 Collidable.Type.stay));
         // front wall
-        walls.add(new BlockWall(new Vector(-45,-2,-80f),
-                90,52,1,
+        walls.add(new BlockWall(new Vector(-55,-2,-80f),
+                110,52,1,
                 "resources/pics/fire_texture.jpg",
                 Collidable.Type.stay));
         // back wall
-        walls.add(new BlockWall(new Vector(-45,-2,-170),
-                90,52,1,
+        walls.add(new BlockWall(new Vector(-55,-2,-180),
+                110,52,1,
                 "resources/pics/fire_texture.jpg",
                 Collidable.Type.stay));
         // right wall
-        walls.add(new BlockWall(new Vector(44,-2,-80),
-                1,52,90,
+        walls.add(new BlockWall(new Vector(54,-2,-80),
+                1,52,100,
                 "resources/pics/fire_texture.jpg",
                 Collidable.Type.stay));
         // left wall
-        walls.add(new BlockWall(new Vector(-44,-2,-80),
-                1,52,90,
+        walls.add(new BlockWall(new Vector(-54,-2,-80),
+                1,52,100,
                 "resources/pics/fire_texture.jpg",
                 Collidable.Type.stay));
 
