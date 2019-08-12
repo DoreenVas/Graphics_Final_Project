@@ -244,12 +244,6 @@ public class World {
         return walls;
     }
 
-    private void cleanUp() {
-        itemsList = new ArrayList<>();
-        walls = new ArrayList<>();
-        breakWall = new ArrayList<>();
-    }
-
     public void moveToLevel2() {
         Player.setPos(new Vector(0f, 0.5f, -85f));
     }
