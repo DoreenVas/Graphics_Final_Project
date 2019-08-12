@@ -177,7 +177,7 @@ public class World {
         // floor
         walls.add(new BlockWall(new Vector(-55,-2f,-80f),
                 110,1,100,
-                "resources/pics/floor2.jpg",
+                "resources/pics/dark_floor.jpg",
                 Collidable.Type.stay));
         // ceiling
         walls.add(new BlockWall(new Vector(-55,70,-80f),

@@ -59,6 +59,15 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
         world.draw(gl);
+        Texture t = null;
+        try {
+            t = TextureIO.newTexture(new File("resources/obj/zombie_light.png"), true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        gl.glTranslated(3, 0, 2);
+        gl.glScaled(2,2,2);
+        t.bind(gl);
         axe.drawModel(gl);
 //        this.objectDisplayer.draw(glu, gLDrawable);
     }
