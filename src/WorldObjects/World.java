@@ -85,6 +85,7 @@ public class World {
         for (int i = 0; i < bullets.size(); i++) {
             bullets.get(i).draw(gl);
         }
+
         this.boss.draw(gl);
 
     }
@@ -282,7 +283,9 @@ public class World {
         Player.resetCoordinates();
     }
 
-    public void createBullet(Coordinates c) {
-        bullets.add(new Bullet(Player.getPos(), 0.5f, 0.5f, 0.5f, "resources/pics/stars.jpg", Collidable.Type.bullet,c));
+    public void createBullet(Vector dir) {
+        bullets.add(new Bullet(new Vector(Player.getPos()),
+                dir, 0.1f, 0.1f, 0.1f,
+                "resources/pics/stars.jpg", Collidable.Type.bullet));
     }
 }

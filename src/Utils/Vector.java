@@ -106,6 +106,11 @@ public class Vector {
         return (float)Math.sqrt(dist);
     }
 
+    public float getAngleWithVector(Vector other) {
+        float angle = this.dotProduct(other) / (this.getVectorSize() * other.getVectorSize());
+        return (float) Math.acos(angle);
+    }
+
     public void setX(float x) {
         this.x = x;
     }

@@ -31,24 +31,25 @@ public class Monster implements WorldObject {
         }
 
         float maxHeight, maxWidth, maxDepth;
-        maxWidth = 108 / this.model.getMaxCord()[0] - this.model.getMinCord()[0];
-        maxHeight = 35 / this.model.getMaxCord()[1] - this.model.getMinCord()[1];
-        maxDepth = 100 / this.model.getMaxCord()[2] - this.model.getMinCord()[2];
+        maxWidth = 108 / (this.model.getMaxCord()[0] - this.model.getMinCord()[0]);
+        maxHeight = 35 / (this.model.getMaxCord()[1] - this.model.getMinCord()[1]);
+        maxDepth = 100 / (this.model.getMaxCord()[2] - this.model.getMinCord()[2]);
         this.AABB = new BlockWall(p, maxWidth, maxHeight, maxDepth, null, ty);
 
     }
 
     @Override
     public void draw(GL2 gl) {
-
+        gl.glPushMatrix();
         gl.glTranslated(this.pos.getX(), this.pos.getY(), this.pos.getZ());
         gl.glRotated(-90f, 1.0f, 0.0f, 0.0f); // for fire guy
         gl.glScaled(0.5,0.5,0.5); // for fire guy
 
-        move();
+//        move();
 
         this.texture.bind(gl);
         this.model.drawModel(gl);
+        gl.glPopMatrix();
     }
 
     private void move() {

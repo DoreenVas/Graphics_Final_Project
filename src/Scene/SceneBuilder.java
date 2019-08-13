@@ -185,7 +185,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
                 CollisionDetector.checkPlayerItemsCollisions(nextPos);
                 Player.useWeapon(false);
             } else {
-                world.createBullet(player.getCoordinates());
+                world.createBullet(player.getDirection());
             }
         }
     }
