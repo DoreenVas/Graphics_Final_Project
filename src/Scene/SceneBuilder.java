@@ -8,6 +8,7 @@ package Scene;
 
 import Collision.CollisionDetector;
 import Collision.CollisionHandler;
+import Enums.LevelEnum;
 import Enums.MovementEnum;
 import Enums.SteerEnum;
 import Scene.Shimon.ObjectDisplayer;
@@ -36,10 +37,10 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
     private World world;
     private Player player;
     private float alpha = (float)Math.toRadians(5);
+//    private Texture t;
+//    private WavefrontObjectLoader_DisplayList axe;
+
     private static float step = 0.1f;
-    private WavefrontObjectLoader_DisplayList axe;
-//    private ObjectLoader objectLoader;
-//    private ObjectDisplayer objectDisplayer;
 
     public void display(GLAutoDrawable gLDrawable) {
         Vector direction = player.getDirection();
@@ -58,19 +59,19 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
                 up.getZ());
 
         gl.glColor4f(1f, 1f, 1f, 1f); //NEEDS to be white before drawing, else stuff will tint.
+        gl.glTexParameteri ( GL2.GL_TEXTURE_2D,GL2.GL_TEXTURE_WRAP_T, GL2.GL_REPEAT );
+        gl.glTexParameteri( GL2.GL_TEXTURE_2D,GL2.GL_TEXTURE_WRAP_S, GL2.GL_REPEAT );
+
         world.draw(gl);
-        Texture t = null;
-        try {
-            t = TextureIO.newTexture(new File("resources/obj/zombie_light.png"), true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-//        gl.glTranslated(-pos.getX(), -pos.getY(), -pos.getZ());
-        gl.glTranslated(0, 2, -90);
-        gl.glScaled(2,2,2);
-        t.bind(gl);
-        axe.drawModel(gl);
+
+        gl.glTranslated(0, 0.5, -120);
+        gl.glRotated(-90f, 0.0f, 0.0f, 1.0f);
+        gl.glScaled(5,5,5);
+
+//        t.bind(gl);
+//        this.model.drawModel(gl);
 //        this.objectDisplayer.draw(glu, gLDrawable);
+
     }
 
     public void displayChanged(GLAutoDrawable gLDrawable, boolean modeChanged, boolean deviceChanged) {
@@ -79,13 +80,22 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
     public void init(GLAutoDrawable drawable) {
         final GL2 gl = drawable.getGL().getGL2();
         gl.glShadeModel(GL2.GL_SMOOTH);              // Enable Smooth Shading
-        gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);    // Black Background
+        gl.glClearColor(0.0f, 0.0f, 0.0f, 0.5f);    // Black Background
         gl.glClearDepth(1.0f);                      // Depth Buffer Setup
         gl.glEnable(GL2.GL_DEPTH_TEST);              // Enables Depth Testing
         gl.glDepthFunc(GL2.GL_LEQUAL);               // The Type Of Depth Testing To Do
         // Really Nice Perspective Calculations
         gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
+
         gl.glEnable(GL2.GL_TEXTURE_2D);
+//        try {
+//            t = TextureIO.newTexture(new File("resources/obj/zombie_light.png"), true);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        gl.glTexParameteri(GL2.GL_TEXTURE_2D, GL2.GL_TEXTURE_MIN_FILTER, GL2.GL_LINEAR);
+        gl.glTexParameteri(GL2.GL_TEXTURE_2D, GL2.GL_TEXTURE_MAG_FILTER, GL2.GL_LINEAR);
+//        this.axe = new WavefrontObjectLoader_DisplayList("resources/obj/zombie_normal.obj");
 
         world  = World.getInstance();
         world.resetWorld();
@@ -99,10 +109,6 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
             java.awt.Component comp = (java.awt.Component) drawable;
             new AWTKeyAdapter(this, drawable).addTo(comp);
         }
-        this.axe = new WavefrontObjectLoader_DisplayList("resources/obj/zombie_normal.obj");
-//        this.objectLoader = new ObjectLoader();
-//        this.objectDisplayer = this.objectLoader.LoadModel("resources/obj/axe.obj", new Vector(0f, 0.5f, 10f), 1,1,1);
-
     }
 
     @Override
@@ -172,11 +178,15 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
             CollisionHandler.nextLevel();
         }
         else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-            Player.useWeapon(true);
-            Vector nextPos = new Vector(Player.getPos());
-            nextPos.setX(Player.getPos().getX() + 3f);
-            CollisionDetector.checkPlayerItemsCollisions(nextPos);
-            Player.useWeapon(false);
+            if (Player.getLevel() == LevelEnum.LEVEL_1.ordinal() + 1) {
+                Player.useWeapon(true);
+                Vector nextPos = new Vector(Player.getPos());
+                nextPos.setX(Player.getPos().getX() + 3f);
+                CollisionDetector.checkPlayerItemsCollisions(nextPos);
+                Player.useWeapon(false);
+            } else {
+                world.createBullet(player.getCoordinates());
+            }
         }
     }
 

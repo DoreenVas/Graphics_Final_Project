@@ -15,7 +15,7 @@ public class Game {
     /***
      * Setting the game window
      */
-    protected static void game_window() throws IOException, SQLException {
+    protected void game_window() throws IOException, SQLException {
         JFrame game_frame = new JFrame();
         ViewManager manager = ViewManager.getInstance();
         manager.setGameFrame(game_frame);
@@ -50,7 +50,7 @@ public class Game {
             }
         });
 
-        Sounds.makeLoopSound("resources/sounds/game_song.wav");
+        Sounds.makeLoopSound("resources/sounds/game_music.wav");
         game_frame.validate();
         game_frame.setVisible(true);
         animator.start();

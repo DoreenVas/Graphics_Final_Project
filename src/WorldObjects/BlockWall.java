@@ -43,10 +43,10 @@ public class BlockWall implements WorldObject, Collidable {
 
     @Override
     public void draw(GL2 gl) {
-        gl.glPushMatrix();
+//        gl.glPushMatrix();
 
         wallTexture.bind(gl);
-        gl.glEnable(GL2.GL_TEXTURE_2D);
+//        gl.glEnable(GL2.GL_TEXTURE_2D);
 
         gl.glBegin(GL2.GL_QUADS);
         // Front Face
@@ -105,10 +105,10 @@ public class BlockWall implements WorldObject, Collidable {
         gl.glVertex3f(p.getX(), p.getY()+height, p.getZ()-depth);
 
         gl.glEnd();
-        gl.glDisable(GL2.GL_TEXTURE_2D);
+//        gl.glDisable(GL2.GL_TEXTURE_2D);
 
-        gl.glPopMatrix();
-        gl.glFlush();
+//        gl.glPopMatrix();
+//        gl.glFlush();
     }
 
     public Type getType() {

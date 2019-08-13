@@ -6,11 +6,10 @@
  */
 package WorldObjects;
 import Collision.Collidable;
+import Coordinates.Coordinates;
 import Enums.MovementEnum;
 import Utils.Vector;
-import View.ViewManager;
 import javax.media.opengl.GL2;
-import javax.media.opengl.GLContext;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,6 +23,8 @@ public class World {
     private static ArrayList<Cube> itemsList;
     private static ArrayList<BlockWall> walls;
     private static ArrayList<BreakableCube> breakWall;
+    private ArrayList<Bullet> bullets;
+    private Monster boss;
 
     /**
      * Returns the classes instance.
@@ -42,6 +43,7 @@ public class World {
         itemsList = new ArrayList<>();
         walls = new ArrayList<>();
         breakWall = new ArrayList<>();
+        bullets = new ArrayList<>();
         createLevel1();
         createLevel2();
     }
@@ -55,11 +57,8 @@ public class World {
     }
 
     public void draw(GL2 gl) {
-        gl.glPushMatrix();
 
         addLightLevel1(gl);
-        gl.glTexParameteri ( GL2.GL_TEXTURE_2D,GL2.GL_TEXTURE_WRAP_T, GL2.GL_REPEAT );
-        gl.glTexParameteri( GL2.GL_TEXTURE_2D,GL2.GL_TEXTURE_WRAP_S, GL2.GL_REPEAT );
 
         float mat_ambient[] = {1f, 1f, 1f, 1.0f};
         gl.glMaterialfv(GL2.GL_FRONT, GL2.GL_AMBIENT, mat_ambient, 0);
@@ -75,6 +74,12 @@ public class World {
         for (int i = 0; i<itemsList.size(); i++){
             itemsList.get(i).draw(gl);
         }
+
+        for (int i = 0; i < bullets.size(); i++) {
+            bullets.get(i).draw(gl);
+        }
+        this.boss.draw(gl);
+
     }
 
     private void createLevel1() {
@@ -179,6 +184,10 @@ public class World {
 
     private void createLevel2() {
         createWallsLevel2();
+        this.boss = new Monster(new Vector(0, 1, -120),
+                "resources/obj/zombie_normal.obj",
+                "resources/obj/zombie_light.png",
+                  Collidable.Type.boss);
     }
 
     private void createWallsLevel2() {
@@ -254,5 +263,9 @@ public class World {
     public void moveToLevel2() {
         Player.setPos(new Vector(0f, 1.5f, -85f));
         Player.resetCoordinates();
+    }
+
+    public void createBullet(Coordinates c) {
+        bullets.add(new Bullet(Player.getPos(), 0.5f, 0.5f, 0.5f, "resources/pics/stars.jpg", Collidable.Type.bullet,c));
     }
 }
