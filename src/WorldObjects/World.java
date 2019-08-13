@@ -21,7 +21,8 @@ public class World {
     // members
     private static World world;
     private static ArrayList<Cube> itemsList;
-    private static ArrayList<BlockWall> walls;
+    private static ArrayList<BlockWall> wallsLevel1;
+    private static ArrayList<BlockWall> wallsLevel2;
     private static ArrayList<BreakableCube> breakWall;
     private ArrayList<Bullet> bullets;
     private Monster boss;
@@ -41,7 +42,8 @@ public class World {
 
     private World() {
         itemsList = new ArrayList<>();
-        walls = new ArrayList<>();
+        wallsLevel1 = new ArrayList<>();
+        wallsLevel2 = new ArrayList<>();
         breakWall = new ArrayList<>();
         bullets = new ArrayList<>();
         createLevel1();
@@ -50,7 +52,8 @@ public class World {
 
     public void resetWorld(){
         itemsList = new ArrayList<>();
-        walls = new ArrayList<>();
+        wallsLevel1 = new ArrayList<>();
+        wallsLevel2 = new ArrayList<>();
         breakWall = new ArrayList<>();
         createLevel1();
         createLevel2();
@@ -63,7 +66,11 @@ public class World {
         float mat_ambient[] = {1f, 1f, 1f, 1.0f};
         gl.glMaterialfv(GL2.GL_FRONT, GL2.GL_AMBIENT, mat_ambient, 0);
 
-        for (BlockWall w : walls) {
+        for (BlockWall w : wallsLevel1) {
+            w.draw(gl);
+        }
+
+        for (BlockWall w : wallsLevel2) {
             w.draw(gl);
         }
 
@@ -89,59 +96,59 @@ public class World {
 
     private void createWallsLevel1() {
         // floor
-        walls.add(new BlockWall(new Vector(-11f,-2f,25f),
+        wallsLevel1.add(new BlockWall(new Vector(-11f,-2f,25f),
                 22,1,100,
                 "resources/pics/floor.jpeg",
                 Collidable.Type.stay));
         // ceiling
-        walls.add(new BlockWall(new Vector(-11f,10f,25f),
+        wallsLevel1.add(new BlockWall(new Vector(-11f,10f,25f),
                 22,1,100,
                 "resources/pics/cave.jpg",
                 Collidable.Type.stay));
         // front wall
-        walls.add(new BlockWall(new Vector(-11,-2,25),
+        wallsLevel1.add(new BlockWall(new Vector(-11,-2,25),
                 22,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // back wall
-        walls.add(new BlockWall(new Vector(-11,-2,-75),
+        wallsLevel1.add(new BlockWall(new Vector(-11,-2,-75),
                 22,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // right wall
-        walls.add(new BlockWall(new Vector(10,-2,25),
+        wallsLevel1.add(new BlockWall(new Vector(10,-2,25),
                 1,13,90,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // left wall
-        walls.add(new BlockWall(new Vector(-11,-2,25),
+        wallsLevel1.add(new BlockWall(new Vector(-11,-2,25),
                 1,13,100,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
 
         // after turn
         // floor
-        walls.add(new BlockWall(new Vector(10f,-2f,-65f),
+        wallsLevel1.add(new BlockWall(new Vector(10f,-2f,-65f),
                 40,1,20,
                 "resources/pics/floor.jpeg",
                 Collidable.Type.stay));
         // ceiling
-        walls.add(new BlockWall(new Vector(10f,11f,-65f),
+        wallsLevel1.add(new BlockWall(new Vector(10f,11f,-65f),
                 40,1,10,
                 "resources/pics/cave.jpg",
                 Collidable.Type.stay));
         // back wall
-        walls.add(new BlockWall(new Vector(50,-2,-65),
+        wallsLevel1.add(new BlockWall(new Vector(50,-2,-65),
                 1,13,11,
                 "resources/pics/portal.jpg",
                 Collidable.Type.portal));
         // right wall
-        walls.add(new BlockWall(new Vector(10,-2,-65),
+        wallsLevel1.add(new BlockWall(new Vector(10,-2,-65),
                 40,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // left wall
-        walls.add(new BlockWall(new Vector(10,-2,-75),
+        wallsLevel1.add(new BlockWall(new Vector(10,-2,-75),
                 40,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
@@ -184,40 +191,40 @@ public class World {
 
     private void createLevel2() {
         createWallsLevel2();
-        this.boss = new Monster(new Vector(0, 1, -120),
-                "resources/obj/zombie_normal.obj",
-                "resources/obj/zombie_light.png",
+        this.boss = new Monster(new Vector(0, -0.9f, -150),
+                "resources/obj/fire_guy/fire_guy.obj",
+                "resources/obj/fire_guy/fire_guy_texture.png",
                   Collidable.Type.boss);
     }
 
     private void createWallsLevel2() {
         // floor
-        walls.add(new BlockWall(new Vector(-55,-2f,-80f),
+        wallsLevel2.add(new BlockWall(new Vector(-55,-2f,-80f),
                 110,1,100,
                 "resources/pics/floor2.jpg",
                 Collidable.Type.stay));
         // ceiling
-        walls.add(new BlockWall(new Vector(-55,70,-80f),
+        wallsLevel2.add(new BlockWall(new Vector(-55,70,-80f),
                 110,1,100,
                 "resources/pics/stars.jpg",
                 Collidable.Type.stay));
         // front wall
-        walls.add(new BlockWall(new Vector(-55,-2,-80f),
+        wallsLevel2.add(new BlockWall(new Vector(-55,-2,-80f),
                 110,72,1,
                 "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
         // back wall
-        walls.add(new BlockWall(new Vector(-55,-2,-180),
+        wallsLevel2.add(new BlockWall(new Vector(-55,-2,-180),
                 110,72,1,
                 "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
         // right wall
-        walls.add(new BlockWall(new Vector(54,-2,-80),
+        wallsLevel2.add(new BlockWall(new Vector(54,-2,-80),
                 1,72,100,
                 "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
         // left wall
-        walls.add(new BlockWall(new Vector(-54,-2,-80),
+        wallsLevel2.add(new BlockWall(new Vector(-54,-2,-80),
                 1,72,100,
                 "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
@@ -257,7 +264,17 @@ public class World {
     }
 
     public static ArrayList<BlockWall> getWalls() {
+        ArrayList<BlockWall> walls = new ArrayList<>(wallsLevel1);
+        walls.addAll(wallsLevel2);
         return walls;
+    }
+
+    public static ArrayList<BlockWall> getWallsLevel1() {
+        return wallsLevel1;
+    }
+
+    public static ArrayList<BlockWall> getWallsLevel2() {
+        return wallsLevel2;
     }
 
     public void moveToLevel2() {
