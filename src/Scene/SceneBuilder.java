@@ -13,6 +13,7 @@ import Enums.MovementEnum;
 import Enums.SteerEnum;
 import Scene.Shimon.ObjectDisplayer;
 import Scene.Shimon.ObjectLoader;
+import View.ViewManager;
 import WorldObjects.*;
 import com.jogamp.newt.Window;
 import com.jogamp.newt.event.KeyAdapter;
@@ -30,6 +31,7 @@ import com.jogamp.opengl.util.texture.TextureIO;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
@@ -172,7 +174,12 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
             System.exit(0);
         }
         else if(e.getKeyCode() == KeyEvent.VK_F1) {
-            System.out.println("ADD INSTRUCTIONS");
+            try {
+                ViewManager manager = ViewManager.getInstance();
+                manager.showInstructions();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
         else if(e.getKeyCode() == KeyEvent.VK_F2) {
             CollisionHandler.nextLevel();

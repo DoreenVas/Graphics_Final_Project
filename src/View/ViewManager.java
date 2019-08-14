@@ -66,6 +66,11 @@ public class ViewManager {
         }
     }
 
+    public void showInstructions() {
+        Instructions instructions = new Instructions();
+        instructions.instructions();
+    }
+
     protected void startGame() throws IOException, SQLException {
         Game game = new Game();
         game.game_window();
