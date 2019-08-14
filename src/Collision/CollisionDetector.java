@@ -139,5 +139,16 @@ public class CollisionDetector {
         }
         return false;
     }
+
+    public static boolean AABB_walls(BlockWall aabb) {
+        ArrayList<BlockWall> walls = World.getWalls();
+        for (BlockWall wall : walls) {
+            boolean collision = CollisionDetector.AABB_AABB(aabb, wall);
+            if (collision) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 

@@ -21,8 +21,7 @@ public class World {
     // members
     private static World world;
     private static ArrayList<Cube> itemsList;
-    private static ArrayList<BlockWall> wallsLevel1;
-    private static ArrayList<BlockWall> wallsLevel2;
+    private static ArrayList<BlockWall> walls;
     private static ArrayList<BreakableCube> breakWall;
     private ArrayList<Bullet> bullets;
     private Boss boss;
@@ -42,8 +41,7 @@ public class World {
 
     private World() {
         itemsList = new ArrayList<>();
-        wallsLevel1 = new ArrayList<>();
-        wallsLevel2 = new ArrayList<>();
+        walls = new ArrayList<>();
         breakWall = new ArrayList<>();
         bullets = new ArrayList<>();
         createLevel1();
@@ -52,8 +50,7 @@ public class World {
 
     public void resetWorld(){
         itemsList = new ArrayList<>();
-        wallsLevel1 = new ArrayList<>();
-        wallsLevel2 = new ArrayList<>();
+        walls = new ArrayList<>();
         breakWall = new ArrayList<>();
         createLevel1();
         createLevel2();
@@ -68,11 +65,7 @@ public class World {
 
         this.boss.draw(gl);
 
-        for (BlockWall w : wallsLevel1) {
-            w.draw(gl);
-        }
-
-        for (BlockWall w : wallsLevel2) {
+        for (BlockWall w : walls) {
             w.draw(gl);
         }
 
@@ -97,59 +90,59 @@ public class World {
 
     private void createWallsLevel1() {
         // floor
-        wallsLevel1.add(new BlockWall(new Vector(-11f,-2f,25f),
+        walls.add(new BlockWall(new Vector(-11f,-2f,25f),
                 22,1,100,
                 "resources/pics/floor.jpeg",
                 Collidable.Type.stay));
         // ceiling
-        wallsLevel1.add(new BlockWall(new Vector(-11f,10f,25f),
+        walls.add(new BlockWall(new Vector(-11f,10f,25f),
                 22,1,100,
                 "resources/pics/cave.jpg",
                 Collidable.Type.stay));
         // front wall
-        wallsLevel1.add(new BlockWall(new Vector(-11,-2,25),
+        walls.add(new BlockWall(new Vector(-11,-2,25),
                 22,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // back wall
-        wallsLevel1.add(new BlockWall(new Vector(-11,-2,-75),
+        walls.add(new BlockWall(new Vector(-11,-2,-75),
                 22,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // right wall
-        wallsLevel1.add(new BlockWall(new Vector(10,-2,25),
+        walls.add(new BlockWall(new Vector(10,-2,25),
                 1,13,90,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // left wall
-        wallsLevel1.add(new BlockWall(new Vector(-11,-2,25),
+        walls.add(new BlockWall(new Vector(-11,-2,25),
                 1,13,100,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
 
         // after turn
         // floor
-        wallsLevel1.add(new BlockWall(new Vector(10f,-2f,-65f),
+        walls.add(new BlockWall(new Vector(10f,-2f,-65f),
                 40,1,20,
                 "resources/pics/floor.jpeg",
                 Collidable.Type.stay));
         // ceiling
-        wallsLevel1.add(new BlockWall(new Vector(10f,11f,-65f),
+        walls.add(new BlockWall(new Vector(10f,11f,-65f),
                 40,1,10,
                 "resources/pics/cave.jpg",
                 Collidable.Type.stay));
         // back wall
-        wallsLevel1.add(new BlockWall(new Vector(50,-2,-65),
+        walls.add(new BlockWall(new Vector(50,-2,-65),
                 1,13,11,
                 "resources/pics/portal.jpg",
                 Collidable.Type.portal));
         // right wall
-        wallsLevel1.add(new BlockWall(new Vector(10,-2,-65),
+        walls.add(new BlockWall(new Vector(10,-2,-65),
                 40,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
         // left wall
-        wallsLevel1.add(new BlockWall(new Vector(10,-2,-75),
+        walls.add(new BlockWall(new Vector(10,-2,-75),
                 40,13,1,
                 "resources/pics/steel-box.jpg",
                 Collidable.Type.stay));
@@ -200,32 +193,32 @@ public class World {
 
     private void createWallsLevel2() {
         // floor
-        wallsLevel2.add(new BlockWall(new Vector(-55,-2f,-80f),
+        walls.add(new BlockWall(new Vector(-55,-2f,-80f),
                 110,1,100,
                 "resources/pics/floor2.jpg",
                 Collidable.Type.stay));
         // ceiling
-        wallsLevel2.add(new BlockWall(new Vector(-55,70,-80f),
+        walls.add(new BlockWall(new Vector(-55,70,-80f),
                 110,1,100,
                 "resources/pics/stars.jpg",
                 Collidable.Type.stay));
         // front wall
-        wallsLevel2.add(new BlockWall(new Vector(-55,-2,-80f),
+        walls.add(new BlockWall(new Vector(-55,-2,-80f),
                 110,72,1,
                 "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
         // back wall
-        wallsLevel2.add(new BlockWall(new Vector(-55,-2,-180),
+        walls.add(new BlockWall(new Vector(-55,-2,-180),
                 110,72,1,
                 "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
         // right wall
-        wallsLevel2.add(new BlockWall(new Vector(54,-2,-80),
+        walls.add(new BlockWall(new Vector(54,-2,-80),
                 1,72,100,
                 "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
         // left wall
-        wallsLevel2.add(new BlockWall(new Vector(-54,-2,-80),
+        walls.add(new BlockWall(new Vector(-54,-2,-80),
                 1,72,100,
                 "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
@@ -265,18 +258,9 @@ public class World {
     }
 
     public static ArrayList<BlockWall> getWalls() {
-        ArrayList<BlockWall> walls = new ArrayList<>(wallsLevel1);
-        walls.addAll(wallsLevel2);
         return walls;
     }
 
-    public static ArrayList<BlockWall> getWallsLevel1() {
-        return wallsLevel1;
-    }
-
-    public static ArrayList<BlockWall> getWallsLevel2() {
-        return wallsLevel2;
-    }
 
     public void moveToLevel2() {
         Player.setPos(new Vector(0f, 4f, -85f));

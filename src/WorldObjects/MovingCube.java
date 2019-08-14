@@ -37,7 +37,9 @@ public class MovingCube extends Cube implements Collidable {
         }
 
         collisionWithBoxes();
-        collisionWithWalls();
+        if(CollisionDetector.AABB_walls(this)){
+            changeStep();
+        }
 
         switch (direction) {
             case DOWN:
@@ -54,17 +56,6 @@ public class MovingCube extends Cube implements Collidable {
                 break;
         }
         return step;
-    }
-
-    private void collisionWithWalls() {
-        boolean collide;
-        List<BlockWall> walls = World.getWalls();
-        for (BlockWall w : walls) {
-            collide = CollisionDetector.AABB_AABB(w, this);
-            if (collide) {
-                this.changeStep();
-            }
-        }
     }
 
     private void collisionWithBoxes() {

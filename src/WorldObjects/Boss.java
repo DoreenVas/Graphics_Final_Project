@@ -55,12 +55,8 @@ public class Boss implements WorldObject {
     }
 
     private void move() {
-        ArrayList<BlockWall> walls = World.getWallsLevel2();
-        for(BlockWall wall : walls) {
-            boolean collision = CollisionDetector.AABB_AABB(this.AABB, wall);
-            if (collision) {
-                this.step = this.step * -1;
-            }
+        if (CollisionDetector.AABB_walls(this.AABB)){
+            this.step = this.step * -1;
         }
         this.pos.setX(this.pos.getX() + this.step);
         this.AABB.p.setX(this.AABB.p.getX() + this.step*this.AABB.width);
