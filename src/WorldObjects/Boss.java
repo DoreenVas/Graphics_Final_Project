@@ -36,7 +36,10 @@ public class Boss implements WorldObject {
         height = (this.model.getMaxCord()[1]  - this.model.getMinCord()[1]);
         depth = (this.model.getMaxCord()[2]  - this.model.getMinCord()[2]);
         System.out.println("width: "+width+" height: "+height+" depth: "+depth);
-        this.AABB = new BlockWall(new Vector(0, 0, 0),
+        this.AABB = new BlockWall(new Vector(
+                this.pos.getX() - width/2,
+                this.pos.getY(),
+                this.pos.getZ() + depth/2),
                 width, height, depth, texturePath, type);
     }
 
@@ -53,9 +56,10 @@ public class Boss implements WorldObject {
         this.model.drawModel(gl);
 
         // return gl to origin
-        gl.glTranslated(-this.pos.getX(), -this.pos.getY(), -this.pos.getZ());
-        gl.glRotated(90f, 1.0f, 0.0f, 0.0f);
         gl.glScaled(1.4,1.4,1.4);
+        gl.glRotated(90f, 1.0f, 0.0f, 0.0f);
+        gl.glTranslated(-this.pos.getX(), -this.pos.getY(), -this.pos.getZ());
+
         this.AABB.draw(gl);
         gl.glPopMatrix();
     }
