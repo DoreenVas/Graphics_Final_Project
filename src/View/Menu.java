@@ -51,11 +51,30 @@ public class Menu {
             }
         });
 
+        removeButtonKeyBounds(button);
+
         frame.add(button);
         Sounds.makeLoopSound("resources/sounds/intro.wav");
         frame.validate();
         frame.setLayout(null);
         frame.setVisible(true);
+    }
+
+    /***
+     * This function is meant to remove the "space" key from the button key bounds.
+     * If not called - when pressing "space" in the boss level and winning the "start" button
+     * may be clicked and we move directly to the game again.
+     * @param button
+     */
+    private void removeButtonKeyBounds(JButton button) {
+        Action blankAction = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        };
+        ActionMap am = button.getActionMap();
+        am.put("pressed", blankAction);
+        am.put("released", blankAction);
     }
 
 }
