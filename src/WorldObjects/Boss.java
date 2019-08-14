@@ -17,8 +17,8 @@ public class Boss implements WorldObject {
     private BlockWall AABB;
     private Texture texture;
     private WavefrontObjectLoader_DisplayList model;
-    private Collidable.Type type;
     private float step = 0.2f;
+    private int hitPoints = 7;
 
     public Boss(Vector p, String modelPath, String texturePath, Collidable.Type type) {
         this.pos = p;
@@ -33,7 +33,11 @@ public class Boss implements WorldObject {
         maxWidth = 108 / (this.model.getMaxCord()[0]- this.model.getMinCord()[0]);
         maxHeight = 35 / (this.model.getMaxCord()[1]  - this.model.getMinCord()[1]);
         maxDepth = 100 / (this.model.getMaxCord()[2]  - this.model.getMinCord()[2]);
-        this.AABB = new BlockWall(this.pos, maxWidth+15, maxHeight, maxDepth, null, type);
+        this.AABB = new BlockWall(new Vector(
+                this.pos.getX() - maxWidth/2,
+                this.pos.getY(),
+                this.pos.getZ() + maxDepth/2),
+                maxWidth, maxHeight, maxDepth, null, type);
     }
 
     @Override
@@ -56,10 +60,10 @@ public class Boss implements WorldObject {
             boolean collision = CollisionDetector.AABB_AABB(this.AABB, wall);
             if (collision) {
                 this.step = this.step * -1;
-                break;
             }
         }
         this.pos.setX(this.pos.getX() + this.step);
+        this.AABB.p.setX(this.AABB.p.getX() + this.step*this.AABB.width);
     }
 
     @Override

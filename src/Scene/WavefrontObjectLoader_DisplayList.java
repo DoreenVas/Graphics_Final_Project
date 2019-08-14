@@ -20,7 +20,6 @@ package Scene;
  **/
 
 import com.jogamp.common.nio.Buffers;
-
 import javax.media.opengl.GL2;
 import java.io.*;
 import java.nio.FloatBuffer;
@@ -78,9 +77,7 @@ public class WavefrontObjectLoader_DisplayList {
 			}
 			String line = null;
 			while ((line = br.readLine()) != null) {
-				if (line.startsWith("#")) { // read any descriptor data in the
-											// file
-					// Zzzz ...
+				if (line.startsWith("#")) {
 				} else if (line.equals("")) {
 					// Ignore whitespace data
 				} else if (line.startsWith("v ")) { // read in vertex data

@@ -11,7 +11,6 @@ import java.util.List;
 public class MovingCube extends Cube implements Collidable {
     // members
     private float step;
-    private Type type = Type.stay;
     private MovementEnum direction;
 
     public MovingCube(Vector v, float l, String texturePath, Type t, float s, MovementEnum dir) {
