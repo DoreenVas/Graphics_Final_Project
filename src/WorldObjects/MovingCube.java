@@ -20,6 +20,13 @@ public class MovingCube extends Cube implements Collidable {
     }
 
     public void draw(GL2 gl) {
+        float high_shininess[] = {80.0f};
+        float mat_specular[] = {0.8f, 0.2f, 0.2f, 1.0f};
+        float mat_diffuse[] = {0.2f, 0.0f, 0.0f, 1.0f};
+        gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_DIFFUSE, mat_diffuse, 0);
+        gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, mat_specular, 0);
+        gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SHININESS, high_shininess, 0);
+
         this.step = moveCube(this.direction);
         super.draw(gl);
     }

@@ -61,7 +61,7 @@ public class World {
 
         addLightLevel(gl);
 
-        float mat_ambient[] = {1f, 1f, 1f, 1.0f};
+        float mat_ambient[] = {0.6f, 0.6f, 0.6f, 1.0f};
         gl.glMaterialfv(GL2.GL_FRONT, GL2.GL_AMBIENT, mat_ambient, 0);
 
         this.boss.draw(gl);
@@ -229,34 +229,34 @@ public class World {
     private void addLightLevel(GL2 gl) {
 
         // define diffusive purple light
-        float diffuse0[] = {1f, 0f, 1f,1.0f};
+        float diffuse0[] = {0.2f, 0f, 0.2f,1.0f};
         float position0[] = {0f, 3f, 3f, 1.0f};
         float direction0[] = {0f, -1f, 1f, 1.0f};
+        gl.glEnable(GL2.GL_LIGHT0);
         gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_POSITION, position0, 0);
         gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_DIFFUSE, diffuse0, 0);
         gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_SPECULAR, diffuse0, 0);
         gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_SPOT_DIRECTION, direction0, 0);
-        gl.glEnable(GL2.GL_LIGHT0);
 
         // define specular red light
-        float specular1[] = {1f, 0f, 0f,1.0f};
-        float position1[] = {0f, 50f, -170f, 1.0f};
-        float direction1[] = {0f, -1f, -1f, 1.0f};
-        gl.glLightfv(GL2.GL_LIGHT1, GL2.GL_POSITION, position1, 0);
+        float specular1[] = {0.6f, 0.0f, 0.0f, 1.0f};
+        float position1[] = {0.0f, 0.5f, 2f, 1.0f};
+        float direction1[] = {0.0f, 0.0f, -1.0f, 1.0f};
+        gl.glEnable(GL2.GL_LIGHT1);
         gl.glLightfv(GL2.GL_LIGHT1, GL2.GL_SPECULAR, specular1, 0);
         gl.glLightfv(GL2.GL_LIGHT1, GL2.GL_SPOT_DIRECTION, direction1, 0);
-        gl.glEnable(GL2.GL_LIGHT1);
+        gl.glLightfv(GL2.GL_LIGHT1, GL2.GL_POSITION, position1, 0);
 
         // define ambient white light
-        float ambient2[] = {0.6f, .6f, 0.6f,1.0f};
+        float ambient2[] = {0.8f, 0.8f, 0.8f, 1.0f};
         float position2[] = {0f, 200f, 0f, 1.0f};
         float direction2[] = {0f, -1f, 0f, 1.0f};
+        gl.glEnable(GL2.GL_LIGHT2);
         gl.glLightfv(GL2.GL_LIGHT2, GL2.GL_AMBIENT, ambient2, 0);
         gl.glLightfv(GL2.GL_LIGHT2, GL2.GL_POSITION, position2, 0);
         gl.glLightfv(GL2.GL_LIGHT2, GL2.GL_SPOT_DIRECTION, direction2, 0);
-        gl.glEnable(GL2.GL_LIGHT2);
 
-        gl.glEnable(GL2.GL_NORMALIZE);
+//        gl.glEnable(GL2.GL_NORMALIZE);
     }
 
     public ArrayList<Cube> getItemsList() {
