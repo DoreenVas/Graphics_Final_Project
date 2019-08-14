@@ -51,7 +51,11 @@ public class Boss implements WorldObject {
 
         this.texture.bind(gl);
         this.model.drawModel(gl);
+
+        // return gl to origin
+        gl.glTranslated(-this.pos.getX(), -this.pos.getY(), -this.pos.getZ());
         gl.glRotated(90f, 1.0f, 0.0f, 0.0f);
+        gl.glScaled(1.4,1.4,1.4);
         this.AABB.draw(gl);
         gl.glPopMatrix();
     }
@@ -76,6 +80,7 @@ public class Boss implements WorldObject {
     public void gotHit() {
         hitPoints = hitPoints -1;
         if (hitPoints == 0){
+//            World.getInstance().
                 ViewManager.getInstance().win();
         }
     }

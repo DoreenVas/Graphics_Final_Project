@@ -24,7 +24,6 @@ public class Bullet {
     }
 
     public void draw(GL2 gl) {
-        move();
         float angle = pos.getAngleWithVector(this.direction);
         gl.glPushMatrix();
         gl.glRotated(angle, 0.0f, 0.0f, 1.0f);
@@ -64,6 +63,7 @@ public class Bullet {
 
         gl.glEnd();
         gl.glPopMatrix();
+        move();
     }
 
     public void move() {
