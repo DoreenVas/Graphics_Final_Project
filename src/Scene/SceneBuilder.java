@@ -39,10 +39,6 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
     private World world;
     private Player player;
     private float alpha = (float)Math.toRadians(5);
-//    private Texture t;
-//    private WavefrontObjectLoader_DisplayList axe;
-
-    private static float step = 0.1f;
 
     public void display(GLAutoDrawable gLDrawable) {
         Vector direction = player.getDirection();
@@ -66,14 +62,6 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
         world.draw(gl);
 
-//        gl.glTranslated(0, 0.5, -120);
-//        gl.glRotated(-90f, 0.0f, 0.0f, 1.0f);
-//        gl.glScaled(5,5,5);
-
-//        t.bind(gl);
-//        this.model.drawModel(gl);
-//        this.objectDisplayer.draw(glu, gLDrawable);
-
     }
 
     public void displayChanged(GLAutoDrawable gLDrawable, boolean modeChanged, boolean deviceChanged) {
@@ -90,14 +78,8 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
 
         gl.glEnable(GL2.GL_TEXTURE_2D);
-//        try {
-//            t = TextureIO.newTexture(new File("resources/obj/zombie_light.png"), true);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         gl.glTexParameteri(GL2.GL_TEXTURE_2D, GL2.GL_TEXTURE_MIN_FILTER, GL2.GL_LINEAR);
         gl.glTexParameteri(GL2.GL_TEXTURE_2D, GL2.GL_TEXTURE_MAG_FILTER, GL2.GL_LINEAR);
-//        this.axe = new WavefrontObjectLoader_DisplayList("resources/obj/zombie_normal.obj");
 
         player = new Player();
         world  = World.getInstance();

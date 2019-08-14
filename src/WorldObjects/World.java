@@ -186,7 +186,7 @@ public class World {
 
     private void createLevel2() {
         createWallsLevel2();
-        this.boss = new Boss(new Vector(0, -0.9f, -170),
+        this.boss = new Boss(new Vector(0, -0.9f, -160),
                 "resources/obj/fire_guy/fire_guy.obj",
                 "resources/obj/fire_guy/fire_guy_texture.png",
                   Collidable.Type.boss);
@@ -235,8 +235,17 @@ public class World {
         gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_POSITION, position0, 0);
         gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_DIFFUSE, diffuse0, 0);
         gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_SPECULAR, diffuse0, 0);
-        gl.glLightfv(GL2.GL_LIGHT2, GL2.GL_SPOT_DIRECTION, direction0, 0);
+        gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_SPOT_DIRECTION, direction0, 0);
         gl.glEnable(GL2.GL_LIGHT0);
+
+        // define specular red light
+        float specular1[] = {1f, 0f, 0f,1.0f};
+        float position1[] = {0f, 50f, -170f, 1.0f};
+        float direction1[] = {0f, -1f, -1f, 1.0f};
+        gl.glLightfv(GL2.GL_LIGHT1, GL2.GL_POSITION, position1, 0);
+        gl.glLightfv(GL2.GL_LIGHT1, GL2.GL_SPECULAR, specular1, 0);
+        gl.glLightfv(GL2.GL_LIGHT1, GL2.GL_SPOT_DIRECTION, direction1, 0);
+        gl.glEnable(GL2.GL_LIGHT1);
 
         // define ambient white light
         float ambient2[] = {0.6f, .6f, 0.6f,1.0f};

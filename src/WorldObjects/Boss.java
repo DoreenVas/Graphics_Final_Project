@@ -49,7 +49,7 @@ public class Boss implements WorldObject {
         gl.glRotated(-90f, 1.0f, 0.0f, 0.0f); // for fire guy
         gl.glScaled(0.4,0.4,0.4); // for fire guy
 
-//        move();
+        move();
 
         this.texture.bind(gl);
         this.model.drawModel(gl);
@@ -68,7 +68,7 @@ public class Boss implements WorldObject {
             this.step = this.step * -1;
         }
         this.pos.setX(this.pos.getX() + this.step);
-        this.AABB.p.setX(this.AABB.p.getX() + this.step*this.AABB.width);
+        this.AABB.p.setX(this.AABB.p.getX() + this.step);
     }
 
     @Override
