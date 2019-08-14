@@ -52,6 +52,7 @@ public class World {
         itemsList = new ArrayList<>();
         walls = new ArrayList<>();
         breakWall = new ArrayList<>();
+        bullets = new ArrayList<>();
         createLevel1();
         createLevel2();
     }
@@ -279,6 +280,10 @@ public class World {
 
     public void deleteBullet(Bullet bullet){
         this.bullets.remove(bullet);
+    }
+
+    public void resetBulletsList(){
+        bullets.clear();
     }
 
 }

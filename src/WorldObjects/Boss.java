@@ -35,7 +35,6 @@ public class Boss implements WorldObject {
         width = (this.model.getMaxCord()[0]- this.model.getMinCord()[0]);
         height = (this.model.getMaxCord()[1]  - this.model.getMinCord()[1]);
         depth = (this.model.getMaxCord()[2]  - this.model.getMinCord()[2]);
-        System.out.println("width: "+width+" height: "+height+" depth: "+depth);
         this.AABB = new BlockWall(new Vector(
                 this.pos.getX() - width/2,
                 this.pos.getY(),
@@ -84,8 +83,8 @@ public class Boss implements WorldObject {
     public void gotHit() {
         hitPoints = hitPoints -1;
         if (hitPoints == 0){
-//            World.getInstance().
-                ViewManager.getInstance().win();
+            World.getInstance().resetBulletsList();
+            ViewManager.getInstance().win();
         }
     }
 }
