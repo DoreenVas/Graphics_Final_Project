@@ -186,7 +186,7 @@ public class World {
 
     private void createLevel2() {
         createWallsLevel2();
-        this.boss = new Boss(new Vector(0, -0.9f, -160),
+        this.boss = new Boss(new Vector(0, -0.9f, -170),
                 "resources/obj/fire_guy/fire_guy.obj",
                 "resources/obj/fire_guy/fire_guy_texture.png",
                   Collidable.Type.boss);
@@ -194,33 +194,33 @@ public class World {
 
     private void createWallsLevel2() {
         // floor
-        walls.add(new BlockWall(new Vector(-55,-2f,-80f),
-                110,1,100,
+        walls.add(new BlockWall(new Vector(-75,-2f,-80f),
+                150,1,140,
                 "resources/pics/floor2.jpg",
                 Collidable.Type.stay));
         // ceiling
-        walls.add(new BlockWall(new Vector(-55,70,-80f),
-                110,1,100,
+        walls.add(new BlockWall(new Vector(-75,70,-80f),
+                150,1,140,
                 "resources/pics/stars.jpg",
                 Collidable.Type.stay));
         // front wall
-        walls.add(new BlockWall(new Vector(-55,-2,-80f),
-                110,72,1,
+        walls.add(new BlockWall(new Vector(-75,-2,-80f),
+                150,72,1,
                 "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
         // back wall
-        walls.add(new BlockWall(new Vector(-55,-2,-180),
-                110,72,1,
+        walls.add(new BlockWall(new Vector(-75,-2,-220),
+                150,72,1,
                 "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
         // right wall
-        walls.add(new BlockWall(new Vector(54,-2,-80),
-                1,72,100,
+        walls.add(new BlockWall(new Vector(74,-2,-80),
+                1,72,140,
                 "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
         // left wall
-        walls.add(new BlockWall(new Vector(-54,-2,-80),
-                1,72,100,
+        walls.add(new BlockWall(new Vector(-74,-2,-80),
+                1,72,140,
                 "resources/pics/wall3.jpg",
                 Collidable.Type.stay));
 

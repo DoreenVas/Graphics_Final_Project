@@ -59,7 +59,7 @@ public class Boss implements WorldObject {
         gl.glRotated(90f, 1.0f, 0.0f, 0.0f);
         gl.glTranslated(-this.pos.getX(), -this.pos.getY(), -this.pos.getZ());
 
-        this.AABB.draw(gl);
+//        this.AABB.draw(gl);
         gl.glPopMatrix();
     }
 
