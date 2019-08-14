@@ -5,12 +5,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.sql.SQLException;
 
 public class Menu {
 
-    protected void menu_window(String picPath, String labelText) throws IOException, SQLException {
+    protected void menu_window(String picPath, String labelText) {
         JFrame frame = new JFrame();
         ViewManager manager = ViewManager.getInstance();
         manager.setMenuFrame(frame);

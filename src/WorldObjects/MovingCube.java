@@ -31,7 +31,7 @@ public class MovingCube extends Cube implements Collidable {
         // check collision with player
         collide = CollisionDetector.point_cube(Player.getPos(), new Cube(nextPos, length));
         if(collide) {
-            World.removeFromList(this);
+            World.getInstance().removeFromList(this);
             CollisionHandler.lose();
             return step;
         }
@@ -60,7 +60,7 @@ public class MovingCube extends Cube implements Collidable {
 
     private void collisionWithBoxes() {
         boolean collide;
-        List<Cube> arr = World.getItemsList();
+        List<Cube> arr = World.getInstance().getItemsList();
         for (Cube c : arr) {
             if (c == this) { continue;}
             collide = CollisionDetector.AABB_AABB(this, c);

@@ -7,15 +7,13 @@ import com.jogamp.opengl.util.Animator;
 import javax.media.opengl.awt.GLCanvas;
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
-import java.sql.SQLException;
 
 public class Game {
 
     /***
      * Setting the game window
      */
-    protected void game_window() throws IOException, SQLException {
+    protected void game_window(){
         JFrame game_frame = new JFrame();
         ViewManager manager = ViewManager.getInstance();
         manager.setGameFrame(game_frame);

@@ -16,33 +16,26 @@ public class CollisionHandler {
         if (c.getHp() > 0) {
             c.decreaseHp();
         } else {
-            World.removeFromList(c);
+            World.getInstance().removeFromList(c);
         }
     }
 
     public static void nextLevel(){
         Sounds.makeSound("resources/sounds/portal.wav");
         Player.setLevel(LevelEnum.LEVEL_2);
-        try{
-            ViewManager.getInstance().drawBar();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        ViewManager.getInstance().drawBar();
         World.getInstance().moveToLevel2();
     }
 
     public static void lose(){
         Player.decreaseLives();
-        try {
-            ViewManager manager = ViewManager.getInstance();
-            if (!Player.isAlive()) {
-                manager.lose();
-            }
-            else {
-                manager.drawBar();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        ViewManager manager = ViewManager.getInstance();
+        if (!Player.isAlive()) {
+            manager.lose();
         }
+        else {
+            manager.drawBar();
+        }
+
     }
 }

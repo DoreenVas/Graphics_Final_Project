@@ -83,12 +83,12 @@ public class CollisionDetector {
     }
 
     public static boolean checkPlayerItemsCollisions(Vector point) {
-        ArrayList<Cube> itemsList = World.getItemsList();
+        ArrayList<Cube> itemsList = World.getInstance().getItemsList();
         for(Cube c : itemsList) {
             if(c.checkInside(point)) {
                 if(c.getType()== Collidable.Type.tnt) {
                     Sounds.makeSound("resources/sounds/explosion.wav");
-                    World.removeFromList(c);
+                    World.getInstance().removeFromList(c);
                     CollisionHandler.lose();
                 }
                 else if(c.getType() == Collidable.Type.breakable && Player.isWeaponUsed()) {
@@ -112,8 +112,8 @@ public class CollisionDetector {
         return false;
     }
 
-    public static boolean checkCollisionWithWalls(Vector point) {
-        ArrayList<BlockWall> walls = World.getWalls();
+    public static boolean point_walls(Vector point) {
+        ArrayList<BlockWall> walls = World.getInstance().getWalls();
         for (BlockWall wall : walls) {
             if (wall.checkInside(point)) {
                 if(wall.getType()== Collidable.Type.portal){
@@ -141,7 +141,7 @@ public class CollisionDetector {
     }
 
     public static boolean AABB_walls(BlockWall aabb) {
-        ArrayList<BlockWall> walls = World.getWalls();
+        ArrayList<BlockWall> walls = World.getInstance().getWalls();
         for (BlockWall wall : walls) {
             boolean collision = CollisionDetector.AABB_AABB(aabb, wall);
             if (collision) {

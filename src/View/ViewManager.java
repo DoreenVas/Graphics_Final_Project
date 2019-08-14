@@ -2,10 +2,7 @@ package View;
 
 import WorldObjects.Player;
 import com.jogamp.opengl.util.Animator;
-
 import javax.swing.*;
-import java.io.IOException;
-import java.sql.SQLException;
 
 /***
  * Singleton that manages the view windows.
@@ -20,10 +17,8 @@ public class ViewManager {
     /**
      * Returns the classes instance.
      * @return the classes current instance
-     * @throws IOException thrown from inner function
-     * @throws SQLException thrown from inner function
      */
-    public static ViewManager getInstance() throws IOException, SQLException {
+    public static ViewManager getInstance() {
         if(viewManager == null) {
             viewManager = new ViewManager();
         }
@@ -32,8 +27,6 @@ public class ViewManager {
 
     /**
      * Constructor.
-     * @throws IOException thrown from inner function
-     * @throws SQLException thrown from inner function
      */
     private ViewManager(){ }
 
@@ -45,19 +38,19 @@ public class ViewManager {
         this.menu_frame = frame;
     }
 
-    public void lose() throws IOException, SQLException {
+    public void lose() {
         showWindow("resources/pics/lose.jpg", "");
     }
 
-    public void win() throws IOException, SQLException {
+    public void win() {
         showWindow("resources/pics/win.jpg", "                 Winner, Great Job!");
     }
 
-    public void mainMenu() throws IOException, SQLException {
+    public void mainMenu() {
         showWindow("resources/pics/temple.jpg","Can you escape the temple of doom?");
     }
 
-    private void showWindow(String picPath, String labelText) throws IOException, SQLException {
+    private void showWindow(String picPath, String labelText) {
         Menu menu = new Menu();
         menu.menu_window(picPath,labelText);
         if(game_frame != null){
@@ -71,7 +64,7 @@ public class ViewManager {
         instructions.instructions();
     }
 
-    protected void startGame() throws IOException, SQLException {
+    protected void startGame(){
         Game game = new Game();
         game.game_window();
         if(menu_frame != null){

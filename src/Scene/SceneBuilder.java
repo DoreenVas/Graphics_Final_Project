@@ -174,12 +174,8 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
             System.exit(0);
         }
         else if(e.getKeyCode() == KeyEvent.VK_F1) {
-            try {
-                ViewManager manager = ViewManager.getInstance();
-                manager.showInstructions();
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
+            ViewManager manager = ViewManager.getInstance();
+            manager.showInstructions();
         }
         else if(e.getKeyCode() == KeyEvent.VK_F2) {
             CollisionHandler.nextLevel();

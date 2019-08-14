@@ -20,9 +20,9 @@ import java.util.ArrayList;
 public class World {
     // members
     private static World world;
-    private static ArrayList<Cube> itemsList;
-    private static ArrayList<BlockWall> walls;
-    private static ArrayList<BreakableCube> breakWall;
+    private ArrayList<Cube> itemsList;
+    private ArrayList<BlockWall> walls;
+    private ArrayList<BreakableCube> breakWall;
     private ArrayList<Bullet> bullets;
     private Boss boss;
 
@@ -58,7 +58,7 @@ public class World {
 
     public void draw(GL2 gl) {
 
-        addLightLevel1(gl);
+        addLightLevel(gl);
 
         float mat_ambient[] = {1f, 1f, 1f, 1.0f};
         gl.glMaterialfv(GL2.GL_FRONT, GL2.GL_AMBIENT, mat_ambient, 0);
@@ -225,7 +225,7 @@ public class World {
 
     }
 
-    private void addLightLevel1(GL2 gl) {
+    private void addLightLevel(GL2 gl) {
 
         // define diffusive purple light
         float diffuse0[] = {1f, 0f, 1f,1.0f};
@@ -249,18 +249,21 @@ public class World {
         gl.glEnable(GL2.GL_NORMALIZE);
     }
 
-    public static ArrayList<Cube> getItemsList() {
+    public ArrayList<Cube> getItemsList() {
         return itemsList;
     }
 
-    public static void removeFromList(Cube c) {
+    public void removeFromList(Cube c) {
         itemsList.remove(c);
     }
 
-    public static ArrayList<BlockWall> getWalls() {
+    public ArrayList<BlockWall> getWalls() {
         return walls;
     }
 
+    public Boss getBoss(){
+        return this.boss;
+    }
 
     public void moveToLevel2() {
         Player.setPos(new Vector(0f, 4f, -85f));
@@ -273,4 +276,9 @@ public class World {
                 dir, 0.1f, 0.1f, 0.1f,
                 "resources/pics/stars.jpg", Collidable.Type.bullet));
     }
+
+    public void deleteBullet(Bullet bullet){
+        this.bullets.remove(bullet);
+    }
+
 }

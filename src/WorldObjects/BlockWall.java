@@ -137,11 +137,11 @@ public class BlockWall implements WorldObject, Collidable {
         return depth;
     }
 
-    public boolean checkInside(Vector player) {
+    public boolean checkInside(Vector point) {
         float threshold = 1f;
-        if (player.getX() >= this.p.getX()-threshold && player.getX() <= this.p.getX()+width+threshold &&
-            player.getY() >= this.p.getY()-threshold && player.getY() <= this.p.getY()+height+threshold &&
-            player.getZ() <= this.p.getZ()+threshold && player.getZ() >= this.p.getZ()-depth-threshold) {
+        if (point.getX() >= this.p.getX()-threshold && point.getX() <= this.p.getX()+width+threshold &&
+            point.getY() >= this.p.getY()-threshold && point.getY() <= this.p.getY()+height+threshold &&
+            point.getZ() <= this.p.getZ()+threshold && point.getZ() >= this.p.getZ()-depth-threshold){
             return true;
         }
         return false;

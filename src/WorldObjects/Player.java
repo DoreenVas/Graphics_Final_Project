@@ -32,12 +32,8 @@ public class Player implements HitListener, Collidable {
         direction = getDirection();
         lives = 2;
         level = LevelEnum.LEVEL_1;
-        try {
-            ViewManager manager = ViewManager.getInstance();
-            manager.drawBar();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ViewManager manager = ViewManager.getInstance();
+        manager.drawBar();
     }
 
     public static int getLevel() {
@@ -110,7 +106,7 @@ public class Player implements HitListener, Collidable {
         boolean itemsCollision, wallsCollision;
         Vector nextPos = checkNextPos(pos, direction);
         itemsCollision = CollisionDetector.checkPlayerItemsCollisions(nextPos);
-        wallsCollision = CollisionDetector.checkCollisionWithWalls(nextPos);
+        wallsCollision = CollisionDetector.point_walls(nextPos);
         if (!wallsCollision && !itemsCollision) {
             switch(direction) {
                 case FORWARD: // move forward

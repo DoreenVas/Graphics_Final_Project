@@ -4,11 +4,13 @@ import Collision.Collidable;
 import Collision.CollisionDetector;
 import Scene.WavefrontObjectLoader_DisplayList;
 import Utils.Vector;
+import View.ViewManager;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
 import javax.media.opengl.GL2;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Boss implements WorldObject {
@@ -65,5 +67,16 @@ public class Boss implements WorldObject {
     @Override
     public Vector getLocation() {
         return null;
+    }
+
+    public BlockWall getAABB() {
+        return AABB;
+    }
+
+    public void gotHit() {
+        hitPoints = hitPoints -1;
+        if (hitPoints == 0){
+                ViewManager.getInstance().win();
+        }
     }
 }
