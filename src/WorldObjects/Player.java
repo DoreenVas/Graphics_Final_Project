@@ -2,18 +2,16 @@ package WorldObjects;
 
 import Collision.Collidable;
 import Collision.CollisionDetector;
-import Collision.HitListener;
 import Coordinates.Cartesian;
 import Coordinates.Coordinates;
 import Enums.LevelEnum;
 import Enums.MovementEnum;
-import Enums.SteerEnum;
 import Utils.Vector;
 import View.ViewManager;
 
 import static Enums.MovementEnum.*;
 
-public class Player implements HitListener, Collidable {
+public class Player implements Collidable {
     // members
     private static Vector pos;
     private Vector direction;
@@ -142,15 +140,5 @@ public class Player implements HitListener, Collidable {
 
     public static boolean isWeaponUsed() {
         return weaponUse;
-    }
-
-    @Override
-    public void hitEvent(Collidable beingHit, Player hitter) {
-        return;
-    }
-
-    @Override
-    public void hit(Player hitter) {
-        return;
     }
 }

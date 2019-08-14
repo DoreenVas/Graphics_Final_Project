@@ -7,5 +7,4 @@ public interface Collidable {
         tnt, stay, player, breakable, portal, bullet, boss
     };
 
-    void hit(Player hitter);
 }

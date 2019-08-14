@@ -120,11 +120,6 @@ public class BlockWall implements WorldObject, Collidable {
         return this.p;
     }
 
-    @Override
-    public void hit(Player hitter) {
-        return;
-    }
-
     public float getWidth() {
         return width;
     }

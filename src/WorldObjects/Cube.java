@@ -7,7 +7,6 @@
 package WorldObjects;
 
 import Collision.Collidable;
-import Collision.HitListener;
 import Utils.Vector;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
@@ -19,7 +18,6 @@ import java.util.List;
 
 public class Cube extends BlockWall implements Collidable{
     // members
-    private List<HitListener> hitListeners;
     protected Texture cubeTexture;
     protected Vector o; //left bottom corner close to view
     protected float length;
@@ -55,10 +53,6 @@ public class Cube extends BlockWall implements Collidable{
         }
     }
 
-    public void addHitListener(HitListener hl) {
-        this.hitListeners.add(hl);
-    }
-
     public Type getType() {
         return type;
     }
@@ -81,17 +75,4 @@ public class Cube extends BlockWall implements Collidable{
         return this.arr;
     }
 
-    @Override
-    public void hit(Player hitter) {
-        this.notifyHit(hitter);
-    }
-
-    private void notifyHit(Player hitter) {
-        // Make a copy of the hitListeners before iterating over them.
-        List<HitListener> listeners = new ArrayList<HitListener>(this.hitListeners);
-        // Notify all listeners about a hit event:
-        for (HitListener hl : listeners) {
-            hl.hitEvent(this, hitter);
-        }
-    }
 }
