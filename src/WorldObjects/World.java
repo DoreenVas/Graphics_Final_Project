@@ -268,7 +268,7 @@ public class World {
     public void moveToLevel2() {
         Player.setPos(new Vector(0f, 4f, -85f));
         Player.resetCoordinates();
-        Sounds.makeLoopSound("resources/sounds/evil_laugh.wav");
+//        Sounds.makeLoopSound("resources/sounds/evil_laugh.wav");
     }
 
     public void createBullet(Vector dir) {

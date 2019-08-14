@@ -31,15 +31,13 @@ public class Boss implements WorldObject {
             e.printStackTrace();
         }
 
-        float maxHeight, maxWidth, maxDepth;
-        maxWidth = 108 / (this.model.getMaxCord()[0]- this.model.getMinCord()[0]);
-        maxHeight = 35 / (this.model.getMaxCord()[1]  - this.model.getMinCord()[1]);
-        maxDepth = 100 / (this.model.getMaxCord()[2]  - this.model.getMinCord()[2]);
-        this.AABB = new BlockWall(new Vector(
-                this.pos.getX() - maxWidth/2,
-                this.pos.getY(),
-                this.pos.getZ() + maxDepth/2),
-                maxWidth, maxHeight, maxDepth, null, type);
+        float height, width, depth;
+        width = (this.model.getMaxCord()[0]- this.model.getMinCord()[0]);
+        height = (this.model.getMaxCord()[1]  - this.model.getMinCord()[1]);
+        depth = (this.model.getMaxCord()[2]  - this.model.getMinCord()[2]);
+        System.out.println("width: "+width+" height: "+height+" depth: "+depth);
+        this.AABB = new BlockWall(new Vector(0, 0, 0),
+                width, height, depth, texturePath, type);
     }
 
     @Override
@@ -49,10 +47,12 @@ public class Boss implements WorldObject {
         gl.glRotated(-90f, 1.0f, 0.0f, 0.0f); // for fire guy
         gl.glScaled(0.4,0.4,0.4); // for fire guy
 
-        move();
+//        move();
 
         this.texture.bind(gl);
         this.model.drawModel(gl);
+        gl.glRotated(90f, 1.0f, 0.0f, 0.0f);
+        this.AABB.draw(gl);
         gl.glPopMatrix();
     }
 
