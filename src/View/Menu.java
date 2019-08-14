@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class Menu {
 
-    protected static void menu_window(String picPath, String labelText) throws IOException, SQLException {
+    protected void menu_window(String picPath, String labelText) throws IOException, SQLException {
         JFrame frame = new JFrame();
         ViewManager manager = ViewManager.getInstance();
         manager.setMenuFrame(frame);
