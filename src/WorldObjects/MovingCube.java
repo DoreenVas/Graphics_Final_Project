@@ -102,8 +102,4 @@ public class MovingCube extends Cube implements Collidable {
         this.step = this.step * -1;
     }
 
-    @Override
-    public void hit(Player hitter) {
-        return;
-    }
 }

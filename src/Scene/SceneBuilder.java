@@ -99,9 +99,9 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
         gl.glTexParameteri(GL2.GL_TEXTURE_2D, GL2.GL_TEXTURE_MAG_FILTER, GL2.GL_LINEAR);
 //        this.axe = new WavefrontObjectLoader_DisplayList("resources/obj/zombie_normal.obj");
 
+        player = new Player();
         world  = World.getInstance();
         world.resetWorld();
-        player = new Player();
 
         gl.glEnable(GL2.GL_LIGHTING);
         if (drawable instanceof Window) {
