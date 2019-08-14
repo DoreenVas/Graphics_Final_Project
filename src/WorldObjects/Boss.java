@@ -32,9 +32,9 @@ public class Boss implements WorldObject {
         }
 
         float height, width, depth;
-        width = (this.model.getMaxCord()[0]- this.model.getMinCord()[0]);
-        height = (this.model.getMaxCord()[1]  - this.model.getMinCord()[1]);
-        depth = (this.model.getMaxCord()[2]  - this.model.getMinCord()[2]);
+        width = 0.5f*(this.model.getMaxCord()[0]- this.model.getMinCord()[0]);
+        height =(this.model.getMaxCord()[1]  - this.model.getMinCord()[1]);
+        depth = 0.4f*(this.model.getMaxCord()[2]  - this.model.getMinCord()[2]);
         this.AABB = new BlockWall(new Vector(
                 this.pos.getX() - width/2,
                 this.pos.getY(),
@@ -59,7 +59,7 @@ public class Boss implements WorldObject {
         gl.glRotated(90f, 1.0f, 0.0f, 0.0f);
         gl.glTranslated(-this.pos.getX(), -this.pos.getY(), -this.pos.getZ());
 
-//        this.AABB.draw(gl);
+        this.AABB.draw(gl);
         gl.glPopMatrix();
     }
 
@@ -67,8 +67,8 @@ public class Boss implements WorldObject {
         if (CollisionDetector.AABB_walls(this.AABB)){
             this.step = this.step * -1;
         }
-        this.pos.setX(this.pos.getX() + this.step);
-        this.AABB.p.setX(this.AABB.p.getX() + this.step);
+        pos.setX(pos.getX() + step);
+        AABB.p.setX(AABB.p.getX() + step);
     }
 
     @Override
