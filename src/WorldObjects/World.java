@@ -192,7 +192,7 @@ public class World {
 
     private void createLevel2() {
         createWallsLevel2();
-        this.boss = new Monster(new Vector(0, -0.9f, -150),
+        this.boss = new Monster(new Vector(0, -0.9f, -170),
                 "resources/obj/fire_guy/fire_guy.obj",
                 "resources/obj/fire_guy/fire_guy_texture.png",
                   Collidable.Type.boss);
@@ -279,7 +279,7 @@ public class World {
     }
 
     public void moveToLevel2() {
-        Player.setPos(new Vector(0f, 1.5f, -85f));
+        Player.setPos(new Vector(0f, 4f, -85f));
         Player.resetCoordinates();
     }
 

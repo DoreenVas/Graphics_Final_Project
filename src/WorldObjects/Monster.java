@@ -43,7 +43,7 @@ public class Monster implements WorldObject {
         gl.glPushMatrix();
         gl.glTranslated(this.pos.getX(), this.pos.getY(), this.pos.getZ());
         gl.glRotated(-90f, 1.0f, 0.0f, 0.0f); // for fire guy
-        gl.glScaled(0.5,0.5,0.5); // for fire guy
+        gl.glScaled(0.4,0.4,0.4); // for fire guy
 
 //        move();
 

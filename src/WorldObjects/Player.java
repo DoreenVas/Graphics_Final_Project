@@ -7,6 +7,7 @@ import Coordinates.Cartesian;
 import Coordinates.Coordinates;
 import Enums.LevelEnum;
 import Enums.MovementEnum;
+import Enums.SteerEnum;
 import Utils.Vector;
 import View.ViewManager;
 
@@ -74,6 +75,7 @@ public class Player implements HitListener, Collidable {
 
     public static void resetCoordinates() {
         Coordinates = new Cartesian();
+//        Coordinates.rotate(SteerEnum.UP_X, -0.2f);
     }
 
     public Vector getDirection() {
