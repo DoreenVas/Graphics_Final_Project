@@ -47,7 +47,7 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
     public void display(GLAutoDrawable gLDrawable) {
         Vector direction = player.getDirection();
         Vector up = player.getUp();
-        Vector pos = player.getPos();
+        Vector pos = Player.getPos();
 
         final GL2 gl = gLDrawable.getGL().getGL2();
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
@@ -66,9 +66,9 @@ public class SceneBuilder extends KeyAdapter implements GLEventListener {
 
         world.draw(gl);
 
-        gl.glTranslated(0, 0.5, -120);
-        gl.glRotated(-90f, 0.0f, 0.0f, 1.0f);
-        gl.glScaled(5,5,5);
+//        gl.glTranslated(0, 0.5, -120);
+//        gl.glRotated(-90f, 0.0f, 0.0f, 1.0f);
+//        gl.glScaled(5,5,5);
 
 //        t.bind(gl);
 //        this.model.drawModel(gl);

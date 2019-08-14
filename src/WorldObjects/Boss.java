@@ -6,13 +6,12 @@ import Scene.WavefrontObjectLoader_DisplayList;
 import Utils.Vector;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
-
 import javax.media.opengl.GL2;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Monster implements WorldObject {
+public class Boss implements WorldObject {
     // members
     private Vector pos;
     private BlockWall AABB;
@@ -21,7 +20,7 @@ public class Monster implements WorldObject {
     private Collidable.Type type;
     private float step = 0.2f;
 
-    public Monster(Vector p, String modelPath, String texturePath, Collidable.Type ty) {
+    public Boss(Vector p, String modelPath, String texturePath, Collidable.Type type) {
         this.pos = p;
         try {
             this.texture = TextureIO.newTexture(new File(texturePath), true);
@@ -31,11 +30,10 @@ public class Monster implements WorldObject {
         }
 
         float maxHeight, maxWidth, maxDepth;
-        maxWidth = 108 / (this.model.getMaxCord()[0] * 0.4f - this.model.getMinCord()[0] * 0.4f);
-        maxHeight = 35 / (this.model.getMaxCord()[1] * 0.4f - this.model.getMinCord()[1] * 0.4f);
-        maxDepth = 100 / (this.model.getMaxCord()[2] * 0.4f - this.model.getMinCord()[2] * 0.4f);
-        this.AABB = new BlockWall(p, maxWidth, maxHeight, maxDepth, null, ty);
-
+        maxWidth = 108 / (this.model.getMaxCord()[0]- this.model.getMinCord()[0]);
+        maxHeight = 35 / (this.model.getMaxCord()[1]  - this.model.getMinCord()[1]);
+        maxDepth = 100 / (this.model.getMaxCord()[2]  - this.model.getMinCord()[2]);
+        this.AABB = new BlockWall(this.pos, maxWidth+15, maxHeight, maxDepth, null, type);
     }
 
     @Override
@@ -54,8 +52,8 @@ public class Monster implements WorldObject {
 
     private void move() {
         ArrayList<BlockWall> walls = World.getWallsLevel2();
-        for(BlockWall w : walls) {
-            boolean collision = CollisionDetector.cube_cube(this.AABB, w);
+        for(BlockWall wall : walls) {
+            boolean collision = CollisionDetector.AABB_AABB(this.AABB, wall);
             if (collision) {
                 this.step = this.step * -1;
                 break;

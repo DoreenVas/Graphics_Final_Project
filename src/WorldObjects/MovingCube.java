@@ -21,12 +21,12 @@ public class MovingCube extends Cube implements Collidable {
     }
 
     public void draw(GL2 gl) {
-        this.step = moveCube(this.step, this.direction);
+        this.step = moveCube(this.direction);
         super.draw(gl);
     }
 
 
-    public float moveCube(float step, MovementEnum direction) {
+    public float moveCube(MovementEnum direction) {
         boolean collide = false;
         Vector nextPos = checkNextPos(step, super.getOrigin(), direction);
         // check collision with player
@@ -38,28 +38,19 @@ public class MovingCube extends Cube implements Collidable {
         }
 
         collisionWithBoxes();
-//        collisionWithWalls();
+        collisionWithWalls();
 
         switch (direction) {
             case DOWN:
             case UP:
-                if (o.getY()-1 < -1 || o.getY()+length+1 > 10) {
-                    step = step * -1;
-                }
                 o.setY(o.getY()+step);
                 break;
             case LEFT:
             case RIGHT:
-                if (o.getX()-1 < -10 || o.getX()+length+1 > 10) {
-                    step = step * -1;
-                }
                 o.setX(o.getX()+step);
                 break;
             case FORWARD:
             case BACKWARD:
-                if (o.getZ()-1 < -10 || o.getZ()+length+1 > 10) {
-                    step = step * -1;
-                }
                 o.setZ(o.getZ()+step);
                 break;
         }
@@ -70,10 +61,9 @@ public class MovingCube extends Cube implements Collidable {
         boolean collide;
         List<BlockWall> walls = World.getWalls();
         for (BlockWall w : walls) {
-            collide = CollisionDetector.cube_cube(w, this);
+            collide = CollisionDetector.AABB_AABB(w, this);
             if (collide) {
                 this.changeStep();
-//                break;
             }
         }
     }
@@ -83,13 +73,12 @@ public class MovingCube extends Cube implements Collidable {
         List<Cube> arr = World.getItemsList();
         for (Cube c : arr) {
             if (c == this) { continue;}
-            collide = CollisionDetector.cube_cube(this, c);
+            collide = CollisionDetector.AABB_AABB(this, c);
             if (collide) {
                 this.changeStep();
                 if (c instanceof MovingCube) {
                     ((MovingCube) c).changeStep();
                 }
-//                break;
             }
         }
     }

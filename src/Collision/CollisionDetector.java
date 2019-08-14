@@ -114,9 +114,9 @@ public class CollisionDetector {
 
     public static boolean checkCollisionWithWalls(Vector point) {
         ArrayList<BlockWall> walls = World.getWalls();
-        for (BlockWall w : walls) {
-            if (w.checkInside(point)) {
-                if(w.getType()== Collidable.Type.portal){
+        for (BlockWall wall : walls) {
+            if (wall.checkInside(point)) {
+                if(wall.getType()== Collidable.Type.portal){
                     CollisionHandler.nextLevel();
                 }
                 return true;
@@ -125,7 +125,7 @@ public class CollisionDetector {
         return false;
     }
 
-    public static boolean cube_cube(BlockWall block1, BlockWall block2) {
+    public static boolean AABB_AABB(BlockWall block1, BlockWall block2) {
         Vector c1, c2, d;
         float distX, distY, distZ;
         distX = (block1.getWidth()+block2.getWidth())/2;

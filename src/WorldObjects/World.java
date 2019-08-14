@@ -6,8 +6,8 @@
  */
 package WorldObjects;
 import Collision.Collidable;
-import Coordinates.Coordinates;
 import Enums.MovementEnum;
+import Scene.Sounds;
 import Utils.Vector;
 import javax.media.opengl.GL2;
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class World {
     private static ArrayList<BlockWall> wallsLevel2;
     private static ArrayList<BreakableCube> breakWall;
     private ArrayList<Bullet> bullets;
-    private Monster boss;
+    private Boss boss;
 
     /**
      * Returns the classes instance.
@@ -66,6 +66,8 @@ public class World {
         float mat_ambient[] = {1f, 1f, 1f, 1.0f};
         gl.glMaterialfv(GL2.GL_FRONT, GL2.GL_AMBIENT, mat_ambient, 0);
 
+        this.boss.draw(gl);
+
         for (BlockWall w : wallsLevel1) {
             w.draw(gl);
         }
@@ -85,8 +87,6 @@ public class World {
         for (int i = 0; i < bullets.size(); i++) {
             bullets.get(i).draw(gl);
         }
-
-        this.boss.draw(gl);
 
     }
 
@@ -192,7 +192,7 @@ public class World {
 
     private void createLevel2() {
         createWallsLevel2();
-        this.boss = new Monster(new Vector(0, -0.9f, -170),
+        this.boss = new Boss(new Vector(0, -0.9f, -170),
                 "resources/obj/fire_guy/fire_guy.obj",
                 "resources/obj/fire_guy/fire_guy_texture.png",
                   Collidable.Type.boss);
@@ -281,6 +281,7 @@ public class World {
     public void moveToLevel2() {
         Player.setPos(new Vector(0f, 4f, -85f));
         Player.resetCoordinates();
+        Sounds.makeLoopSound("resources/sounds/evil_laugh.wav");
     }
 
     public void createBullet(Vector dir) {
