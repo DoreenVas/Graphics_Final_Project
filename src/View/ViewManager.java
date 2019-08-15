@@ -71,7 +71,7 @@ public class ViewManager {
      * opens the main menu window.
      */
     public void mainMenu() {
-        showWindow("resources/pics/temple.jpg","Can you escape the temple of doom?");
+        showWindow("resources/pics/temple.jpg","Can You Escape the Temple of Doom?");
     }
 
     /****

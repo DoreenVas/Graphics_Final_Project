@@ -14,7 +14,7 @@ public class Instructions {
      */
     protected void instructions(){
         JFrame frame = new JFrame();
-        frame.setSize(800, 600);
+        frame.setSize(1091, 719);
 
         //Create Image and set in the given frame
         Main.CreateImage.createImage("resources/pics/instructions.png", frame);
