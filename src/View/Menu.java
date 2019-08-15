@@ -14,6 +14,11 @@ import java.awt.event.ActionListener;
 
 public class Menu {
 
+    /****
+     * opens the menu window in a new frame.
+     * @param picPath the path to the background picture.
+     * @param labelText the label text.
+     */
     protected void menu_window(String picPath, String labelText) {
         JFrame frame = new JFrame();
         ViewManager manager = ViewManager.getInstance();

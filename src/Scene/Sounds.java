@@ -18,16 +18,27 @@ import java.util.ArrayList;
 public class Sounds {
     private static ArrayList<AudioClip> clipsArray= new ArrayList<AudioClip>();
 
+    /***
+     * plays a clip.
+     * @param path the clip path.
+     */
     public static void makeSound(String path) {
         play(path);
     }
 
+    /****
+     * play a clip in loops.
+     * @param path the path to the clip.
+     */
     public static void makeLoopSound(String path) {
         AudioClip clip = play(path);
         clipsArray.add(clip);
         clip.loop();
     }
 
+    /***
+     * clear all clips from the sounds lists.
+     */
     public static void emptySounds(){
         for (int i = 0; i < clipsArray.size(); i++) {
             clipsArray.get(i).stop();
@@ -35,6 +46,11 @@ public class Sounds {
         clipsArray.clear();
     }
 
+    /****
+     * plays the clip given audio path.
+     * @param path the path to the sound clip.
+     * @return an audio clip.
+     */
     private static AudioClip play(String path) {
         File file = new File(path);
         URL url = null;

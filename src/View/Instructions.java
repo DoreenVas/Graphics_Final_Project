@@ -9,6 +9,9 @@ import javax.swing.*;
 
 public class Instructions {
 
+    /****
+     * opens the instruction window in a new frame.
+     */
     protected void instructions(){
         JFrame frame = new JFrame();
         frame.setSize(800, 600);

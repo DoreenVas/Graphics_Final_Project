@@ -22,6 +22,11 @@ public class ViewManager {
     private JLabel LivesLabel;
 
     /**
+     * Constructor.
+     */
+    private ViewManager(){ }
+
+    /**
      * Returns the classes instance.
      * @return the classes current instance
      */
@@ -32,31 +37,48 @@ public class ViewManager {
         return viewManager;
     }
 
-    /**
-     * Constructor.
+    /****
+     * sets the game frame.
+     * @param frame a new frame.
      */
-    private ViewManager(){ }
-
     public void setGameFrame(JFrame frame){
         this.game_frame = frame;
     }
 
+    /***
+     * sets the menu frame.
+     * @param frame a new frame.
+     */
     public void setMenuFrame(JFrame frame){
         this.menu_frame = frame;
     }
 
+    /****
+     * open the lose window.
+     */
     public void lose() {
         showWindow("resources/pics/lose.jpg", "");
     }
 
+    /****
+     * open the win window.
+     */
     public void win() {
         showWindow("resources/pics/win.jpg", "                 Winner, Great Job!");
     }
 
+    /***
+     * opens the main menu window.
+     */
     public void mainMenu() {
         showWindow("resources/pics/temple.jpg","Can you escape the temple of doom?");
     }
 
+    /****
+     * shows a window.
+     * @param picPath the picture path.
+     * @param labelText the label text.
+     */
     private void showWindow(String picPath, String labelText) {
         Sounds.emptySounds();
         Menu menu = new Menu();
@@ -67,11 +89,17 @@ public class ViewManager {
         }
     }
 
+    /****
+     * open the instructions window.
+     */
     public void showInstructions() {
         Instructions instructions = new Instructions();
         instructions.instructions();
     }
 
+    /****
+     * Start a new game.
+     */
     protected void startGame(){
         Sounds.emptySounds();
         Game game = new Game();
@@ -81,14 +109,25 @@ public class ViewManager {
         }
     }
 
+    /***
+     * set the animator.
+     * @param animator a new animator.
+     */
     protected void setAnimator(Animator animator) {
         this.animator = animator;
     }
 
+    /****
+     * sets the number of lives in the lives label.
+     * @param label the label.
+     */
     public void setLivesLabel(JLabel label) {
         this.LivesLabel = label;
     }
 
+    /****
+     * draw the lives bar on the screen.
+     */
     public void drawBar(){
         if (!this.LivesLabel.isVisible()) {
             this.LivesLabel.setVisible(true);
