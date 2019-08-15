@@ -23,7 +23,8 @@ public class Sounds {
      * @param path the clip path.
      */
     public static void makeSound(String path) {
-        play(path);
+        AudioClip clip = play(path);
+        clip.play();
     }
 
     /****
@@ -62,7 +63,6 @@ public class Sounds {
             }
         }
         AudioClip clip = Applet.newAudioClip(url);
-        clip.play();
         return clip;
     }
 }
