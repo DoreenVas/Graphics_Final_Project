@@ -30,8 +30,6 @@ public class World {
     /**
      * Returns the classes instance.
      * @return the classes current instance
-     * @throws IOException thrown from inner function
-     * @throws SQLException thrown from inner function
      */
     public static World getInstance(){
         if(world == null) {
@@ -40,6 +38,9 @@ public class World {
         return world;
     }
 
+    /**
+     * Constructor
+     */
     private World() {
         itemsList = new ArrayList<>();
         walls = new ArrayList<>();
@@ -49,6 +50,9 @@ public class World {
         createLevel2();
     }
 
+    /****
+     * Resets the world
+     */
     public void resetWorld(){
         itemsList = new ArrayList<>();
         walls = new ArrayList<>();
@@ -58,11 +62,16 @@ public class World {
         createLevel2();
     }
 
+    /****
+     * goes through all the items in the lists of the world and
+     * draws them.
+     * @param gl the gl
+     */
     public void draw(GL2 gl) {
 
         addLightLevel(gl);
 
-        float mat_ambient[] = {0.6f, 0.6f, 0.6f, 1.0f};
+        float mat_ambient[] = {0.7f, 0.7f, 0.7f, 1.0f};
         gl.glMaterialfv(GL2.GL_FRONT, GL2.GL_AMBIENT, mat_ambient, 0);
 
         this.boss.draw(gl);
@@ -85,11 +94,17 @@ public class World {
 
     }
 
+    /****
+     * initializes the items and space of level 1
+     */
     private void createLevel1() {
         createWallsLevel1();
         createItemsLevel1();
     }
 
+    /******
+     * creates the walls, floor and ceiling of the first level
+     */
     private void createWallsLevel1() {
         // floor
         walls.add(new BlockWall(new Vector(-11f,-2f,25f),
@@ -150,6 +165,9 @@ public class World {
                 Collidable.Type.stay));
     }
 
+    /*****
+     * creates the items of the first level
+     */
     private void createItemsLevel1() {
         Cube tnt1 = new Cube(new Vector(-9,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.tnt);
         Cube tnt2 = new Cube(new Vector(-1,-1,1),2,"resources/pics/tnt.jpg", Collidable.Type.tnt);
@@ -185,6 +203,9 @@ public class World {
         }
     }
 
+    /****
+     * initializes the items and space of level 2
+     */
     private void createLevel2() {
         createWallsLevel2();
         this.boss = new Boss(new Vector(0, -0.9f, -170),
@@ -193,6 +214,9 @@ public class World {
                   Collidable.Type.boss);
     }
 
+    /******
+     * creates the walls, floor and ceiling of the second level
+     */
     private void createWallsLevel2() {
         // floor
         walls.add(new BlockWall(new Vector(-75,-2f,-80f),
@@ -227,12 +251,17 @@ public class World {
 
     }
 
+    /****
+     * Adds lighting to the world.
+     * contains diffuse, ambient and specular lighting.
+     * @param gl the gl
+     */
     private void addLightLevel(GL2 gl) {
 
         // define diffusive purple light
         float diffuse0[] = {0.2f, 0f, 0.2f,1.0f};
         float position0[] = {0f, 3f, 3f, 1.0f};
-        float direction0[] = {0f, -1f, 1f, 1.0f};
+        float direction0[] = {0f, -1f, -1f, 1.0f};
         gl.glEnable(GL2.GL_LIGHT0);
         gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_POSITION, position0, 0);
         gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_DIFFUSE, diffuse0, 0);
@@ -257,41 +286,71 @@ public class World {
         gl.glLightfv(GL2.GL_LIGHT2, GL2.GL_POSITION, position2, 0);
         gl.glLightfv(GL2.GL_LIGHT2, GL2.GL_SPOT_DIRECTION, direction2, 0);
 
-//        gl.glEnable(GL2.GL_NORMALIZE);
+        gl.glEnable(GL2.GL_NORMALIZE);
     }
 
+    /****
+     * returns the list of items in the world
+     * @return list of items
+     */
     public ArrayList<Cube> getItemsList() {
         return itemsList;
     }
 
+    /****
+     * removes an item from the items list
+     * @param c the removed item
+     */
     public void removeFromList(Cube c) {
         itemsList.remove(c);
     }
 
+    /***
+     * returns a list of walls
+     * @return a list of walls
+     */
     public ArrayList<BlockWall> getWalls() {
         return walls;
     }
 
+    /****
+     * returns the boss
+     * @return the boss
+     */
     public Boss getBoss(){
         return this.boss;
     }
 
+    /***
+     * teleports the player to the second level
+     */
     public void moveToLevel2() {
         Player.setPos(new Vector(0f, 4f, -85f));
         Player.resetCoordinates();
         Sounds.makeLoopSound("resources/sounds/evil_laugh.wav");
     }
 
+    /****
+     * creates a new bullet and adds it to the bullets list
+     * @param dir the direction of the bullet
+     */
     public void createBullet(Vector dir) {
         bullets.add(new Bullet(new Vector(Player.getPos()),
                 dir, 0.4f, 0.4f, 0.4f,
                 "resources/pics/stars.jpg", Collidable.Type.bullet));
     }
 
+    /****
+     * removes a bullet from the bullets list
+     * @param bullet the removed bullet
+     */
     public void deleteBullet(Bullet bullet){
         this.bullets.remove(bullet);
     }
 
+    /*****
+     * Clears the bullets list
+     */
     public void resetBulletsList(){
         bullets.clear();
     }

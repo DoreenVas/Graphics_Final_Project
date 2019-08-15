@@ -19,6 +19,11 @@ public class CollisionHandler {
 
     }
 
+    /****
+     * handle breakable box.
+     * decrease life or remove from world.
+     * @param c the current box.
+     */
     public static void vanish(BreakableCube c) {
         if (c.getHp() > 0) {
             c.decreaseHp();
@@ -27,6 +32,9 @@ public class CollisionHandler {
         }
     }
 
+    /****
+     * teleport to the next level.
+     */
     public static void nextLevel(){
         Sounds.makeSound("resources/sounds/portal.wav");
         Player.setLevel(LevelEnum.LEVEL_2);
@@ -34,6 +42,10 @@ public class CollisionHandler {
         World.getInstance().moveToLevel2();
     }
 
+    /****
+     * handle loss.
+     * decrease player's lives or stop game and show lose window.
+     */
     public static void lose(){
         Player.decreaseLives();
         ViewManager manager = ViewManager.getInstance();

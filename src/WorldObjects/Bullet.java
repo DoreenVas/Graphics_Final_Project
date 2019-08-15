@@ -18,7 +18,16 @@ public class Bullet {
     private float width, height, depth;
     private Collidable.Type type;
 
-
+    /****
+     * Constructor
+     * @param leftBottomFront the position of the bullet.
+     * @param dir the direction vector of the bullet.
+     * @param width the width of the bullet.
+     * @param height the height of the bullet.
+     * @param depth the depth of the bullet.
+     * @param texture the texture of the bullet.
+     * @param t the type of the bullet.
+     */
     public Bullet(Vector leftBottomFront, Vector dir, float width, float height, float depth, String texture, Collidable.Type t) {
         this.pos = leftBottomFront;
         this.width = width;
@@ -28,6 +37,10 @@ public class Bullet {
         this.direction = dir;
     }
 
+    /***
+     * draws the bullet.
+     * @param gl the gl.
+     */
     public void draw(GL2 gl) {
         float angle = pos.getAngleWithVector(this.direction);
         gl.glPushMatrix();
@@ -71,6 +84,10 @@ public class Bullet {
         move();
     }
 
+    /****
+     * moves the bullet according to the direction vector.
+     * checks for collision with walls and monsters.
+     */
     public void move() {
         pos.setX(pos.getX() - this.direction.getX());
         pos.setY(pos.getY() + this.direction.getY());

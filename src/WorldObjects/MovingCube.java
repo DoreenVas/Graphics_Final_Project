@@ -19,12 +19,26 @@ public class MovingCube extends Cube implements Collidable {
     private float step;
     private MovementEnum direction;
 
+    /****
+     * Constructor
+     * @param v position vector
+     * @param l length of the cube
+     * @param texturePath texture path
+     * @param t the cube type
+     * @param s step rate
+     * @param dir movement direction
+     */
     public MovingCube(Vector v, float l, String texturePath, Type t, float s, MovementEnum dir) {
         super(v, l, texturePath, t);
         this.step = s;
         this.direction = dir;
     }
 
+    /****
+     * draws the cube.
+     * the cube has a material of diffuse and specular
+     * @param gl the gl
+     */
     public void draw(GL2 gl) {
         float high_shininess[] = {80.0f};
         float mat_specular[] = {0.8f, 0.2f, 0.2f, 1.0f};
@@ -38,6 +52,11 @@ public class MovingCube extends Cube implements Collidable {
     }
 
 
+    /****
+     * apply 1 step of movement to the cube in the given direction.
+     * @param direction the required direction.
+     * @return the new step value.
+     */
     public float moveCube(MovementEnum direction) {
         boolean collide = false;
         Vector nextPos = checkNextPos(step, super.getOrigin(), direction);
@@ -71,6 +90,10 @@ public class MovingCube extends Cube implements Collidable {
         return step;
     }
 
+    /****
+     * check collision with other boxes.
+     * change direction on collision.
+     */
     private void collisionWithBoxes() {
         boolean collide;
         List<Cube> arr = World.getInstance().getItemsList();
@@ -86,6 +109,13 @@ public class MovingCube extends Cube implements Collidable {
         }
     }
 
+    /****
+     * simulate the next position of the cube.
+     * @param step the step rate.
+     * @param pos the current position of the cube.
+     * @param direction the direction of the cube.
+     * @return the new position of the cube.
+     */
     private Vector checkNextPos(float step, Vector pos, MovementEnum direction) {
         Vector newPos = new Vector(pos);
         switch (direction) {
@@ -111,8 +141,10 @@ public class MovingCube extends Cube implements Collidable {
         return newPos;
     }
 
+    /****
+     * change the step of the cube.
+     */
     public void changeStep() {
         this.step = this.step * -1;
     }
-
 }

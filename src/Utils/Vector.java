@@ -92,6 +92,11 @@ public class Vector {
         return new Vector(x, y, z);
     }
 
+    /****
+     * the function substracts one vector from another.
+     * @param v the other vector.
+     * @return the new vector.
+     */
     public Vector sub(Vector v) {
         float x, y, z;
         x = this.x - v.x;
@@ -100,24 +105,46 @@ public class Vector {
         return new Vector(x, y, z);
     }
 
+    /*****
+     * returns the distance between 2 vectors.
+     * @param other the other vector.
+     * @return the distance.
+     */
     public float getDistance(Vector other) {
         double dist = Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2) +Math.pow(this.z - other.z, 2);
         return (float)Math.sqrt(dist);
     }
 
+    /***
+     * returns the angle between 2 vector.
+     * @param other teh other vector.
+     * @return the angle.
+     */
     public float getAngleWithVector(Vector other) {
         float angle = this.dotProduct(other) / (this.getVectorSize() * other.getVectorSize());
         return (float) Math.acos(angle);
     }
 
+    /***
+     * sets x.
+     * @param x new x value.
+     */
     public void setX(float x) {
         this.x = x;
     }
 
+    /***
+     * sets y.
+     * @param y new y value.
+     */
     public void setY(float y) {
         this.y = y;
     }
 
+    /***
+     * sets z.
+     * @param z new z value.
+     */
     public void setZ(float z) {
         this.z = z;
     }

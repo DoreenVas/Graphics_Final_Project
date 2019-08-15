@@ -27,6 +27,13 @@ public class Boss implements WorldObject {
     private float step = 0.2f;
     private int hitPoints = 7;
 
+    /*****
+     * Constructor
+     * @param p the position of the boss.
+     * @param modelPath the path to the OBJ file.
+     * @param texturePath the path to the texture.
+     * @param type the type of the AABB.
+     */
     public Boss(Vector p, String modelPath, String texturePath, Collidable.Type type) {
         this.pos = p;
         try {
@@ -36,6 +43,7 @@ public class Boss implements WorldObject {
             e.printStackTrace();
         }
 
+        // create the AABB around the model.
         float height, width, depth;
         width = 0.5f*(this.model.getMaxCord()[0]- this.model.getMinCord()[0]);
         height =(this.model.getMaxCord()[1]  - this.model.getMinCord()[1]);
@@ -75,6 +83,9 @@ public class Boss implements WorldObject {
         gl.glPopMatrix();
     }
 
+    /****
+     * move the model and the AABB.
+     */
     private void move() {
         if (CollisionDetector.AABB_walls(this.AABB_collision)){
             this.step = this.step * -1;
@@ -89,14 +100,25 @@ public class Boss implements WorldObject {
         return null;
     }
 
+    /***
+     * returns the AABB for the bullets collision.
+     * @return thin AABB.
+     */
     public BlockWall getAABB_bullets() {
         return AABB_bullets;
     }
 
+    /*****
+     * returns the AABB for the player collision.
+     * @return thick AABB.
+     */
     public BlockWall getAABB_collision() {
         return AABB_collision;
     }
 
+    /****
+     * reduce 1 hit point of the boss.
+     */
     public void gotHit() {
         hitPoints = hitPoints -1;
         if (hitPoints == 0){
