@@ -13,8 +13,6 @@ import com.jogamp.opengl.util.texture.TextureIO;
 import javax.media.opengl.GL2;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Cube extends BlockWall implements Collidable{
     // members

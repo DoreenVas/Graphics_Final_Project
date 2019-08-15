@@ -1,3 +1,9 @@
+/******
+ * Student name: Doreen Vaserman
+ * Student ID: 308223627
+ * Student name: Nadav Spitzer
+ * Student ID: 302228275
+ */
 package WorldObjects;
 
 import Collision.Collidable;
@@ -70,7 +76,6 @@ public class Player implements Collidable {
 
     public static void resetCoordinates() {
         Coordinates = new Cartesian();
-//        Coordinates.rotate(SteerEnum.UP_X, -0.2f);
     }
 
     public Vector getDirection() {

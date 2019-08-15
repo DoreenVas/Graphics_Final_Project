@@ -10,7 +10,6 @@ import Collision.Collidable;
 import Utils.Vector;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
-
 import javax.media.opengl.GL2;
 import java.io.File;
 import java.io.IOException;

@@ -11,8 +11,6 @@ import Collision.CollisionHandler;
 import Enums.LevelEnum;
 import Enums.MovementEnum;
 import Enums.SteerEnum;
-import Scene.Shimon.ObjectDisplayer;
-import Scene.Shimon.ObjectLoader;
 import View.ViewManager;
 import WorldObjects.*;
 import com.jogamp.newt.Window;
@@ -24,14 +22,7 @@ import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
 import javax.media.opengl.GLProfile;
 import javax.media.opengl.glu.GLU;
-
 import Utils.Vector;
-import com.jogamp.opengl.util.texture.Texture;
-import com.jogamp.opengl.util.texture.TextureIO;
-
-import java.io.File;
-import java.io.IOException;
-import java.sql.SQLException;
 
 public class SceneBuilder extends KeyAdapter implements GLEventListener {
 

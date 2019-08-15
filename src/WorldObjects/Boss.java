@@ -1,3 +1,9 @@
+/******
+ * Student name: Doreen Vaserman
+ * Student ID: 308223627
+ * Student name: Nadav Spitzer
+ * Student ID: 302228275
+ */
 package WorldObjects;
 
 import Collision.Collidable;
@@ -10,8 +16,6 @@ import com.jogamp.opengl.util.texture.TextureIO;
 import javax.media.opengl.GL2;
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class Boss implements WorldObject {
     // members

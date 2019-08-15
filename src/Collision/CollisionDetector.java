@@ -1,6 +1,11 @@
+/******
+ * Student name: Doreen Vaserman
+ * Student ID: 308223627
+ * Student name: Nadav Spitzer
+ * Student ID: 302228275
+ */
 package Collision;
 
-import Enums.LevelEnum;
 import Scene.Sounds;
 import Utils.Vector;
 import WorldObjects.*;
@@ -20,32 +25,26 @@ public class CollisionDetector {
         Vector[] arr = cube.getVertexes();
         // check front
         if (point_polygon(point, arr[0], arr[1], arr[2], arr[3], itemsThreshold)) {
-            System.out.println("Collision front wall");
             return true;
         }
         // check back
         if (point_polygon(point, arr[4], arr[5], arr[6], arr[7], itemsThreshold)) {
-            System.out.println("Collision back wall");
             return true;
         }
         // check left
         if (point_polygon(point, arr[4], arr[0], arr[3], arr[5], itemsThreshold)) {
-            System.out.println("Collision left wall");
             return true;
         }
         //check right
         if (point_polygon(point, arr[7], arr[6], arr[2], arr[1], itemsThreshold)) {
-            System.out.println("Collision right wall");
             return true;
         }
         //check up
         if (point_polygon(point, arr[5], arr[3], arr[2], arr[6], itemsThreshold)) {
-            System.out.println("Collision up wall");
             return true;
         }
         //check down
         if (point_polygon(point, arr[4], arr[7], arr[1], arr[0], itemsThreshold)) {
-            System.out.println("Collision down wall");
             return true;
         }
         return false;

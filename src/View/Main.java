@@ -1,15 +1,15 @@
-package View;
 /******
  * Student name: Doreen Vaserman
  * Student ID: 308223627
  * Student name: Nadav Spitzer
  * Student ID: 302228275
  */
+package View;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 

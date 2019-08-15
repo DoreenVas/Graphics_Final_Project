@@ -1,4 +1,11 @@
+/******
+ * Student name: Doreen Vaserman
+ * Student ID: 308223627
+ * Student name: Nadav Spitzer
+ * Student ID: 302228275
+ */
 package Collision;
+
 import Enums.LevelEnum;
 import Scene.Sounds;
 import View.ViewManager;

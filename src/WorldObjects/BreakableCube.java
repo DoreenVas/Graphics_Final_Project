@@ -1,7 +1,12 @@
+/******
+ * Student name: Doreen Vaserman
+ * Student ID: 308223627
+ * Student name: Nadav Spitzer
+ * Student ID: 302228275
+ */
 package WorldObjects;
 
 import Utils.Vector;
-
 import javax.media.opengl.GL2;
 
 public class BreakableCube extends Cube{
