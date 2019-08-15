@@ -10,6 +10,8 @@ import Collision.Collidable;
 import Enums.MovementEnum;
 import Scene.Sounds;
 import Utils.Vector;
+import View.ViewManager;
+
 import javax.media.opengl.GL2;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -81,6 +83,11 @@ public class World {
 
         for (int i = 0; i < bullets.size(); i++) {
             bullets.get(i).draw(gl);
+        }
+
+        ViewManager manager = ViewManager.getInstance();
+        if (!Player.isAlive()) {
+            manager.lose();
         }
 
     }
@@ -277,6 +284,7 @@ public class World {
     }
 
     public void moveToLevel2() {
+        Sounds.emptySounds();
         Player.setPos(new Vector(0f, 4f, -85f));
         Player.resetCoordinates();
         Sounds.makeLoopSound("resources/sounds/evil_laugh.wav");

@@ -6,6 +6,7 @@
  */
 package View;
 
+import Scene.Sounds;
 import WorldObjects.Player;
 import com.jogamp.opengl.util.Animator;
 import javax.swing.*;
@@ -57,6 +58,7 @@ public class ViewManager {
     }
 
     private void showWindow(String picPath, String labelText) {
+        Sounds.emptySounds();
         Menu menu = new Menu();
         menu.menu_window(picPath,labelText);
         if(game_frame != null){
@@ -71,6 +73,7 @@ public class ViewManager {
     }
 
     protected void startGame(){
+        Sounds.emptySounds();
         Game game = new Game();
         game.game_window();
         if(menu_frame != null){

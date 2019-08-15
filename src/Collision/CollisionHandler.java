@@ -35,14 +35,10 @@ public class CollisionHandler {
     }
 
     public static void lose(){
+        Sounds.makeSound("resources/sounds/pain.wav");
         Player.decreaseLives();
         ViewManager manager = ViewManager.getInstance();
-        if (!Player.isAlive()) {
-            manager.lose();
-        }
-        else {
-            manager.drawBar();
-        }
+        manager.drawBar();
 
     }
 }
