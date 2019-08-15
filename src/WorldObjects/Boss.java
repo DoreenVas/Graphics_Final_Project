@@ -16,7 +16,8 @@ import java.util.ArrayList;
 public class Boss implements WorldObject {
     // members
     private Vector pos;
-    private BlockWall AABB;
+    private BlockWall AABB_bullets;
+    private BlockWall AABB_collision;
     private Texture texture;
     private WavefrontObjectLoader_DisplayList model;
     private float step = 0.2f;
@@ -35,11 +36,16 @@ public class Boss implements WorldObject {
         width = 0.5f*(this.model.getMaxCord()[0]- this.model.getMinCord()[0]);
         height =(this.model.getMaxCord()[1]  - this.model.getMinCord()[1]);
         depth = 0.4f*(this.model.getMaxCord()[2]  - this.model.getMinCord()[2]);
-        this.AABB = new BlockWall(new Vector(
+        this.AABB_bullets = new BlockWall(new Vector(
                 this.pos.getX() - width/2,
                 this.pos.getY(),
                 this.pos.getZ() + depth/2),
                 width, height, 0.5f, texturePath, type);
+        this.AABB_collision = new BlockWall(new Vector(
+                this.pos.getX() - width/2,
+                this.pos.getY(),
+                this.pos.getZ() + depth/2),
+                width, height, depth, texturePath, type);
     }
 
     @Override
@@ -60,16 +66,18 @@ public class Boss implements WorldObject {
         gl.glRotated(90f, 1.0f, 0.0f, 0.0f);
         gl.glTranslated(-this.pos.getX(), -this.pos.getY(), -this.pos.getZ());
 
-        this.AABB.draw(gl);
+//        this.AABB_bullets.draw(gl);
+//        this.AABB_collision.draw(gl);
         gl.glPopMatrix();
     }
 
     private void move() {
-        if (CollisionDetector.AABB_walls(this.AABB)){
+        if (CollisionDetector.AABB_walls(this.AABB_collision)){
             this.step = this.step * -1;
         }
         pos.setX(pos.getX() + step);
-        AABB.p.setX(AABB.p.getX() + step);
+        AABB_collision.p.setX(AABB_collision.p.getX() + step);
+        AABB_bullets.p.setX(AABB_bullets.p.getX() + step);
     }
 
     @Override
@@ -77,13 +85,16 @@ public class Boss implements WorldObject {
         return null;
     }
 
-    public BlockWall getAABB() {
-        return AABB;
+    public BlockWall getAABB_bullets() {
+        return AABB_bullets;
+    }
+
+    public BlockWall getAABB_collision() {
+        return AABB_collision;
     }
 
     public void gotHit() {
         hitPoints = hitPoints -1;
-        System.out.println("got hit, "+hitPoints +" left");
         if (hitPoints == 0){
             World.getInstance().resetBulletsList();
             ViewManager.getInstance().win();

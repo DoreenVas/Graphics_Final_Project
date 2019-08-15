@@ -283,7 +283,7 @@ public class World {
 
     public void createBullet(Vector dir) {
         bullets.add(new Bullet(new Vector(Player.getPos()),
-                dir, 0.1f, 0.1f, 0.1f,
+                dir, 0.4f, 0.4f, 0.4f,
                 "resources/pics/stars.jpg", Collidable.Type.bullet));
     }
 

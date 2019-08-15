@@ -76,7 +76,7 @@ public class Bullet {
             world.deleteBullet(this);
         }
         Boss boss = world.getBoss();
-        if(boss.getAABB().checkInside(this.pos)){
+        if(boss.getAABB_bullets().checkInside(this.pos)){
             world.deleteBullet(this);
             boss.gotHit();
         }

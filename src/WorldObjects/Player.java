@@ -2,6 +2,7 @@ package WorldObjects;
 
 import Collision.Collidable;
 import Collision.CollisionDetector;
+import Collision.CollisionHandler;
 import Coordinates.Cartesian;
 import Coordinates.Coordinates;
 import Enums.LevelEnum;
@@ -105,6 +106,10 @@ public class Player implements Collidable {
         Vector nextPos = checkNextPos(pos, direction);
         itemsCollision = CollisionDetector.checkPlayerItemsCollisions(nextPos);
         wallsCollision = CollisionDetector.point_walls(nextPos);
+        //player touches boss
+        if(World.getInstance().getBoss().getAABB_collision().checkInside(nextPos)){
+            CollisionHandler.lose();
+        }
         if (!wallsCollision && !itemsCollision) {
             switch(direction) {
                 case FORWARD: // move forward
