@@ -17,7 +17,7 @@ public class Instructions {
         frame.setSize(800, 600);
 
         //Create Image and set in the given frame
-        Main.CreateImage.createImage("resources/pics/instructions.PNG", frame);
+        Main.CreateImage.createImage("resources/pics/instructions.png", frame);
 
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
