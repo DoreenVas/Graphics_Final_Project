@@ -20,13 +20,24 @@ public class Cube extends BlockWall implements Collidable{
     protected Vector o; //left bottom corner close to view
     protected float length;
     protected Type type;
-
     private Vector[] arr = new Vector[8];
 
+    /*****
+     * Constructor
+     * @param v the position of the cube.
+     * @param l the length of the cube.
+     */
     public Cube(Vector v, float l) {
         this(v, l , null, null);
     }
 
+    /*****
+     * Constructor
+     * @param v the position of the cube
+     * @param l the length of the cube
+     * @param texturePath the texture of the cube
+     * @param t the type of teh cube
+     */
     public Cube(Vector v, float l, String texturePath, Type t) {
         super(v, l, l, l, texturePath, t);
         try {
@@ -51,24 +62,44 @@ public class Cube extends BlockWall implements Collidable{
         }
     }
 
+    /****
+     * returns the cube type.
+     * @return the cube type.
+     */
     public Type getType() {
         return type;
     }
 
+    /****
+     * draw the cube.
+     * @param gl the gl
+     */
     public void draw(GL2 gl) {
         if(Player.isAlive()) {
             super.draw(gl);
         }
     }
 
+    /****
+     * returns the origin.
+     * @return the origion point as a vector.
+     */
     public Vector getOrigin() {
         return o;
     }
 
+    /****
+     * returns the length of the cube.
+     * @return the length of the cube.
+     */
     public float getLength() {
         return this.length;
     }
 
+    /****
+     * returns an array of the vertices of the cube.
+     * @return Vectors array.
+     */
     public Vector[] getVertexes() {
         return this.arr;
     }

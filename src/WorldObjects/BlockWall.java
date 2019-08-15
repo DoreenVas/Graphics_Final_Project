@@ -21,10 +21,26 @@ public class BlockWall implements WorldObject, Collidable {
     protected float width, height, depth;
     protected Type type;
 
+    /***
+     * Constructor
+     * @param leftBottomFront the position of the block.
+     * @param width the width of the block.
+     * @param height the height of the block.
+     * @param depth the depth of the block.
+     */
     public BlockWall(Vector leftBottomFront, float width, float height, float depth) {
         this(leftBottomFront, width, height, depth,null,null);
     }
 
+    /****
+     * Constructor
+     * @param leftBottomFront the position of the block.
+     * @param width the width of the block.
+     * @param height the height of the block.
+     * @param depth the depth of the block.
+     * @param texture the texture of the block.
+     * @param t the type of the block.
+     */
     public BlockWall(Vector leftBottomFront, float width, float height, float depth, String texture, Type t) {
         this.p = leftBottomFront;
         this.width = width;
@@ -110,6 +126,10 @@ public class BlockWall implements WorldObject, Collidable {
 //        gl.glFlush();
     }
 
+    /****
+     * returns the type of the block.
+     * @return block type.
+     */
     public Type getType() {
         return this.type;
     }
@@ -119,18 +139,35 @@ public class BlockWall implements WorldObject, Collidable {
         return this.p;
     }
 
+    /***
+     * returns the width of the block.
+     * @return the width.
+     */
     public float getWidth() {
         return width;
     }
 
+    /***
+     * returns the height of the block.
+     * @return the height.
+     */
     public float getHeight() {
         return height;
     }
 
+    /***
+     * returns the depth of the block.
+     * @return the depth.
+     */
     public float getDepth() {
         return depth;
     }
 
+    /****
+     * the function checks if a point is inside the block and returns the indicator.
+     * @param point the given point.
+     * @return true if the point is inside, false otherwise.
+     */
     public boolean checkInside(Vector point) {
         float threshold = 1f;
         if (point.getX() >= this.p.getX()-threshold && point.getX() <= this.p.getX()+width+threshold &&
@@ -141,6 +178,10 @@ public class BlockWall implements WorldObject, Collidable {
         return false;
     }
 
+    /***
+     * returns the center of teh block.
+     * @return the center point of the block as a vector.
+     */
     public Vector getCenter() {
         Vector c = new Vector(p.getX() + width/2, p.getY() + height/2, p.getZ() - depth/2);
         return c;

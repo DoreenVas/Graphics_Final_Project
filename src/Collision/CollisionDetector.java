@@ -81,6 +81,11 @@ public class CollisionDetector {
         return angles;
     }
 
+    /****
+     * the function checks if the player collides with items in the world.
+     * @param point the player's location.
+     * @return true or false.
+     */
     public static boolean checkPlayerItemsCollisions(Vector point) {
         ArrayList<Cube> itemsList = World.getInstance().getItemsList();
         for(Cube c : itemsList) {
@@ -101,6 +106,16 @@ public class CollisionDetector {
         return false;
     }
 
+    /****
+     * the function checks collision between a point and a polygon of 4 points.
+     * @param point the current point.
+     * @param p1 first point.
+     * @param p2 second point.
+     * @param p3 third point.
+     * @param p4 fourth point.
+     * @param threshold threshold.
+     * @return true or false.
+     */
     private static boolean point_polygon(Vector point, Vector p1, Vector p2, Vector p3, Vector p4, float threshold) {
         float angle = 0;
         // get the sum of angles between the point and all vertexes
@@ -111,6 +126,11 @@ public class CollisionDetector {
         return false;
     }
 
+    /****
+     * checks collision between a point and the walls of the game.
+     * @param point the point.
+     * @return true or false.
+     */
     public static boolean point_walls(Vector point) {
         ArrayList<BlockWall> walls = World.getInstance().getWalls();
         for (BlockWall wall : walls) {
@@ -124,6 +144,12 @@ public class CollisionDetector {
         return false;
     }
 
+    /****
+     * checks collision between 2 AABBs.
+     * @param block1 first AABB.
+     * @param block2 second AABB.
+     * @return true of false.
+     */
     public static boolean AABB_AABB(BlockWall block1, BlockWall block2) {
         Vector c1, c2, d;
         float distX, distY, distZ;
@@ -139,6 +165,11 @@ public class CollisionDetector {
         return false;
     }
 
+    /****
+     * checks collision between an AABB and the walls.
+     * @param aabb the AABB.
+     * @return true or false.
+     */
     public static boolean AABB_walls(BlockWall aabb) {
         ArrayList<BlockWall> walls = World.getInstance().getWalls();
         for (BlockWall wall : walls) {

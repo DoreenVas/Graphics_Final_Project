@@ -16,6 +16,9 @@ public class Cartesian implements Coordinates {
     private Vector yAxis;
     private Vector zAxis;
 
+    /****
+     * Constructor
+     */
     public Cartesian() {
         this.xAxis = new Vector(1.0f, 0.0f, 0.0f);
         this.yAxis = new Vector(0.0f, 1.0f, 0.0f);
@@ -86,14 +89,26 @@ public class Cartesian implements Coordinates {
         }
     }
 
+    /***
+     * returns the x axis
+     * @return x axis
+     */
     public Vector getxAxis() {
         return xAxis;
     }
 
+    /***
+     * returns the y axis
+     * @return y axis
+     */
     public Vector getyAxis() {
         return yAxis;
     }
 
+    /***
+     * returns the z axis
+     * @return z axis
+     */
     public Vector getzAxis() {
         return zAxis;
     }
