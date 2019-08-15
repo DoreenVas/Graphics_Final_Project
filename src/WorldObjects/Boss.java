@@ -39,7 +39,7 @@ public class Boss implements WorldObject {
                 this.pos.getX() - width/2,
                 this.pos.getY(),
                 this.pos.getZ() + depth/2),
-                width, height, depth, texturePath, type);
+                width, height, 0.5f, texturePath, type);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class Boss implements WorldObject {
         gl.glRotated(90f, 1.0f, 0.0f, 0.0f);
         gl.glTranslated(-this.pos.getX(), -this.pos.getY(), -this.pos.getZ());
 
-//        this.AABB.draw(gl);
+        this.AABB.draw(gl);
         gl.glPopMatrix();
     }
 
@@ -83,6 +83,7 @@ public class Boss implements WorldObject {
 
     public void gotHit() {
         hitPoints = hitPoints -1;
+        System.out.println("got hit, "+hitPoints +" left");
         if (hitPoints == 0){
             World.getInstance().resetBulletsList();
             ViewManager.getInstance().win();
