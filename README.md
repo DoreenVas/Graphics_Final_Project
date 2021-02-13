@@ -6,5 +6,5 @@ For more information please see the instructions of the game and the Software  d
 
 ***Some ScreenShots of the game***
 
-![](https://github.com/DoreenVas/graphics_final_project/blob/master/AppPic/level1.png)
-![](https://github.com/DoreenVas/graphics_final_project/blob/master/AppPic/level2.png)
+![](https://github.com/DoreenVas/graphics_final_project/blob/master/AppPic/level1.jpg)
+![](https://github.com/DoreenVas/graphics_final_project/blob/master/AppPic/level2.jpg)
